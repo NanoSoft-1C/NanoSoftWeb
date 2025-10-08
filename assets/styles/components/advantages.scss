@@ -1,0 +1,90 @@
+.advantages {
+
+    * {
+        color: color-black();
+    }
+
+    &__title {
+        margin-bottom: 16px;
+        color: color-white();
+    }
+
+    &__text {
+        margin-bottom: 48px;
+        color: color-white()
+    }
+
+    &-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 26px;
+
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+
+    &__block {
+        padding: 10px 20px;
+        background-color: #FFFEFD;
+        justify-content: left;
+        color: color-black();
+
+        &-title{
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto 16px auto;
+        }
+
+        &-text{
+            padding-left: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        &-image {
+            border: 6px solid color-bodily();
+            position: relative;
+            color: color-black();
+            background-color: color-bodily();
+            border-style: solid;
+
+            display: flex;
+            align-items: center;
+
+            transition: .4s ease;
+
+            &:hover{
+                background-color: color-white();
+                cursor: pointer;
+                *{color: color-black();}
+            }
+
+
+            &-woman {
+                position: absolute;
+                right: 5%;
+                bottom: -15px;
+            }
+
+            &-text {
+                text-align: center;
+                justify-content: center;
+                width: calc(100% - 160px);
+                color: color-black();
+                transition: .4s ease;
+            }
+
+            @include phone {
+                height: 150px;
+            }
+
+        }
+
+    }
+
+}

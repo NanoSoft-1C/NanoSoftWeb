@@ -1,0 +1,149 @@
+
+.list{
+    &__title{
+        margin-bottom: 8px; 
+    }
+
+    &__text{
+        margin-bottom: 64px;
+    }
+
+    &-container{
+        gap: 128px;
+        display: flex;
+        justify-content: space-between;
+
+        @include laptop{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 64px;
+        }
+    }
+
+    &__list{
+        color: color-white();
+        border-top: 4px solid color-white();
+
+        &-item{
+            padding: 16px 0;
+            border-bottom: 4px solid color-white();
+            list-style: none;
+            transition: .4s ease;
+
+            &:hover{
+                cursor: pointer;
+                background-color: color-white();
+                padding-left: 8px;
+
+                h3, p{
+                    color: color-black();
+                }
+            }
+
+            h3{
+                transition: .4s ease;
+            }
+
+            p{
+                margin-top: 0px;
+                max-height: 0px;
+                overflow: hidden;
+                transition: .4s ease;
+            }
+
+            &--active{
+                p{
+                    margin-top: 16px;
+                    max-height: 400px;
+                }               
+            }
+        }
+    }
+
+    &-decorate{
+        display: flex;
+        height: 450px;
+
+        @include tablet{
+            display: none;
+        }
+
+        img{
+            height: 80%;
+            translate: -20%;
+
+            @include laptop{
+                translate: 0%;
+            }
+        }
+    }
+
+    &__image{
+        display: flex;
+        height: calc(100% - 24px);
+
+        &-mask{
+            display: flex;
+            align-items: end;
+            height: 100%;
+            width: 367px;
+            align-items: end;
+
+            border-radius: 26px 0px 26px 0px;
+            background-color: color-white();
+
+            @include laptop{
+                width: 100%;
+            }
+        }
+    }
+
+    &--right{
+
+        .list__title, .list__text {
+            text-align: end;
+        } 
+
+        .list-decorate{
+            img{
+                translate: 20%;
+                height: 90%;
+
+                @include laptop{
+                    translate: 0%;
+                }
+            }
+        }
+
+        .list-container{
+            flex-direction: row-reverse;
+
+            @include laptop{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 64px;
+            }
+        }
+
+        @include laptop{
+            *{text-align: left;}
+        }
+    }
+
+    @include tablet{
+        &__title, &__text{
+            text-align: left !important;
+        }
+    }
+
+    @include phone{
+        &__text{
+            margin-bottom: 32px;
+        }
+    }
+
+}
+
+

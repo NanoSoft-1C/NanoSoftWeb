@@ -1,0 +1,43 @@
+@function color-white($alpha: 1) { @return rgba(255, 254, 253, $alpha) };
+@function color-black($alpha: 1) { @return rgba(73, 73, 73, $alpha) };
+@function color-orange($alpha: 1) { @return rgba(255, 188, 108, $alpha) };
+@function color-bodily($alpha: 1) { @return rgba(255, 212, 136, $alpha) };
+@function color-gradient($alpha: 1, $rotate: 90deg) { 
+    @return linear-gradient($rotate, rgba(255, 212, 136, $alpha) 0%, rgba(255, 188, 108, $alpha) 100%) 
+};
+
+
+
+$max-width-content: 1366px;
+
+$font-size-h1: 47.78px;
+$font-size-h2: 39.81px;
+$font-size-h3: 27.65px;
+$font-size-text: 23.04px;
+$font-size-subtext: 16px;
+$font-size-small: 15px;
+
+
+@mixin phone {
+    @media screen and (max-width: 425px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media screen and (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin laptopL {
+    @media screen and (max-width: 1336px) {
+        @content;
+    }
+}

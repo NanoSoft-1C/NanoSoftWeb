@@ -1,0 +1,39 @@
+# robots.txt for https://nanosoft.team
+# Настройки индексации сайта компании "НаноСофт"
+
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_nuxt/
+Disallow: /assets/
+Disallow: /images/
+Disallow: /files/
+Disallow: /server/
+Disallow: /tmp/
+Allow: /
+
+# Указываем, где находится sitemap.xml
+Sitemap: https://nanosoft.team/sitemap.xml
+
+# Ускоряет обработку сайта Яндексом
+Host: nanosoft.team
+Clean-param: ref /  # игнорируем UTM и ref-параметры
+Clean-param: utm_source&utm_medium&utm_campaign / 
+
+User-agent: Yandex
+Disallow: /search
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+# Конец файла robots.txt

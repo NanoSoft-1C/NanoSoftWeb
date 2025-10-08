@@ -1,0 +1,76 @@
+.footer{
+    position: relative;
+    // max-width: $max-width-content;
+    margin: 0 auto;
+
+    &__map{
+        width: 100%;
+        height: 550px;
+        border-top: 16px solid color-bodily();
+    }
+
+    &__info{
+        background-color: color-black();
+        width: fit-content;
+
+        padding: 16px;
+        border-radius: 24px 0 24px 0;
+
+        pointer-events: all;
+
+        p, a{
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        &-container{
+            position: absolute;
+            translate: 0 -50%;
+            top: calc(50% - 40px);
+            width: 100%;
+
+            pointer-events: none;
+
+            @include laptopL{
+                left: 16px;
+            }
+
+            @include phone {
+                top: auto;
+                translate: 0;
+                bottom: calc( 16px);
+                left: 0;
+            }
+        }
+
+        @include phone {
+            left: 0;
+            border: 6px solid color-black();
+            background-color: color-white();
+
+            *{color: color-black();}
+
+            &-wrapper{
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+
+    &__signature{
+        height: 80px;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-text{
+            text-align: center;
+        }
+
+        @include phone {
+            height: fit-content;
+            padding: 100px 16px 16px 16px;
+        }
+    }
+}
