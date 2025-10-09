@@ -15,7 +15,7 @@
               <p class="text-small">Вологодская область, г. Вологда, ул. Фрязиновская, д. 27А/16</p>
               <br>
               <p class="text-medium">Фактический адрес:</p>
-              <p class="text-small">Вологодская область, г. Вологда, ул. Ленинградская, д. 136</p>
+              <p class="text-small">Вологодская область, г. Вологда, ул. Октябрьская, д. 27</p>
               <br>
               <p class="text-medium">Телефон:</p>
               <a class="text-small" href="tel:+78124071767">+7 (812) 407-17-67</a>
@@ -51,7 +51,7 @@ const mapContainer = ref(null)
 
 onMounted(() => {
   // Координаты Вологды, ул. Ленинградская, д. 136
-  const coords = fromLonLat([39.842717, 59.208751])
+  const coords = fromLonLat([39.870026, 59.220050]) 
 
   // Создаем фичу (точку)
   const pointFeature = new Feature({
@@ -67,7 +67,7 @@ onMounted(() => {
         scale: 0.7
       }),
       text: new Text({
-        text: 'Вологодская область,\nг. Вологда, ул. Ленинградская, д. 136',
+        text: 'Вологодская область,\nг. Вологда, ул. Октябрьская, д. 27',
         offsetY: -60,
         font: 'bold 14px Arial',
         fill: new Fill({ color: '#000' }),

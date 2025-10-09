@@ -1,21 +1,23 @@
 <template>
     <section class="result wrapper">
         <div class="result-content">
-            <h2 class="result__title title-h2">Результаты в цифрах:</h2>
+            <h2 class="result__title title-h2">Почему нам доверяют бизнес?</h2>
             
             <ul class="result__list">
-                <li class="result__list-item text-medium">Более 5 лет успешной работы на рынке автоматизации 1С</li>
-                <li class="result__list-item text-medium">Более 50 довольных клиентов и 3 компании из CLUB-500</li>
-                <li class="result__list-item text-medium">Все наши эксперты имеют сертификаты '1С:Специалист' и '1С:Профессионал'</li>
-                <li class="result__list-item text-medium">Гарантия на работы 12 месяцев, а также исправление ошибок за свой счет</li>
+                <li class="result__list-item text-medium">Более 5 лет опыта в автоматизации и цифровизации бизнеса</li>
+                <li class="result__list-item text-medium">Более 50 довольных клиентов, являемся партнерами группы компаний "BatyrevConsultingGroup" и бизнес-клуба "Club 500"</li>
+                <li class="result__list-item text-medium">Только сертифицированные специалисты 1С:Профессионал и 1С:Специалист</li>
+                <li class="result__list-item text-medium">12 месяцев гарантии и бесплатное устранение ошибок</li>
                 <li class="result__list-item text-medium">
-                    Среднее время от старта до запуска проекта - 14 рабочих дней <br>
-
-                </li>
-                <li class="result__list-item text-medium">Помогаем клиентам экономить до 30% бюджета на автоматизации</li>
+                    Индивидуальные решения под задачи вашего бизнеса <br>
+                </li>             
             </ul>
+            <h2 class="result__title title-h3">Результаты в цифрах:</h2>
+            <ul class="result__list">
+                <li class="result__list-item text-medium">В среднем запускаем проект за 14 рабочих дней</li>
+                <li class="result__list-item text-medium">Помогаем клиентам экономить до 30% бюджета на автоматизации</li>
+            </ul>   
         </div>
-
         <div class="result-gecorate">
             <div class="result__image-container">
                 <div class="result__image-mask">
