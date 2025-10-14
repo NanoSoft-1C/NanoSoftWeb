@@ -93,7 +93,7 @@
         </div>
 
         <div class="callback__form-agreement">
-          Отправляя форму Вы соглашаетесь с <a href="./files/policy.pdf">Политикой конфиденциальности</a> и даёте <a href="./files/agreement.pdf">согласие на обработку персональных данных</a> компанией "НаноСофт"
+          Отправляя форму Вы соглашаетесь с <a href="./files/policy.pdf">Политикой конфиденциальности</a> и даёте <a href="./files/agreement.pdf">согласие на обработку персональных данных</a> компанией "Нано Софт"
         </div>
       </form>
     </div>
@@ -207,46 +207,37 @@ async function submitPopup() {
 }
 
 async function sendCallback(communication, comment) {
-  const webhookURL = 'https://nanosoft.bitrix24.ru/rest/15/l0y3bw0s7a3erwwi/crm.lead.add.json'
-
-  const payload = {
-    fields: {
-      TITLE: `Обратная связь с сайта (${communication === 'tel' ? 'Звонок' : 'Сообщение'})`,
-      NAME: form.name,
-      PHONE: [{ VALUE: form.phone, VALUE_TYPE: 'WORK' }],
-      EMAIL: [{ VALUE: form.email, VALUE_TYPE: 'WORK' }],
-      COMPANY_TITLE: form.company,
-      SOURCE_ID: 'WEB',
-      COMMENTS: comment
-    }
-  }
-
   try {
-    const response = await fetch(webhookURL, {
+    const response = await $fetch('/api/sendCallback', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: {
+        communication,
+        comment,
+        form: {
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          company: form.company
+        }
+      }
     })
 
-    const result = await response.json()
-
-    if (result.result) {
+    if (response.success) {
       form.name = ''
       form.phone = ''
       form.email = ''
       form.company = ''
-      
+
       popupStatusOk.value = true
-      setTimeout(() => {
-        popupStatusOk.value = false
-      }, 2000);
+      setTimeout(() => popupStatusOk.value = false, 2000)
     } else {
-      console.error('Ошибка при добавлении лида:', result)
+      console.error('Ошибка при добавлении лида:', response.error)
     }
   } catch (error) {
     console.error('Ошибка сети:', error)
   }
 }
+
 </script>
 
 <style scoped>

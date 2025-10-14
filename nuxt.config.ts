@@ -7,4 +7,7 @@ export default defineNuxtConfig({
   css: [
     "~/assets/styles/main.scss",
   ],
+  runtimeConfig: {
+    bitrixWebhook: process.env.BITRIX_WEBHOOK,
+  }
 })

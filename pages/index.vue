@@ -142,8 +142,8 @@
     ></BlocksList>
 
     <BlocksList
-        :titleHead="'Вы не останетесь один - наша поддержка после внедрения'" 
-        :titleSubtext="'Наши этапы дальнейшей поддержки вашего бизнеса'"   
+        :titleHead="'Техническая поддержка и сопровождение вашего бизнеса'" 
+        :titleSubtext="'Вы не останетесь один на один с вашей проблемой'"   
         :textArray="textArray2" 
         :srcImage="'woman-computer-2'" 
         class="list--right"

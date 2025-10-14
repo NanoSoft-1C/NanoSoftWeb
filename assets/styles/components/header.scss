@@ -94,7 +94,7 @@
             display: inline-block;
             overflow: hidden;
 
-            width: calc(57px + 16px*2);
+            min-width: calc(57px + 16px*2);
             height: 60px;
 
             background: color-gradient();
