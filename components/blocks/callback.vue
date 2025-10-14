@@ -93,7 +93,7 @@
         </div>
 
         <div class="callback__form-agreement">
-          Отправляя форму Вы соглашаетесь с <a href="./files/policy.pdf">Политикой конфиденциальности</a> и даёте <a href="./files/agreement.pdf">согласие на обработку персональных данных</a> компанией "НаноСофт"
+          Отправляя форму Вы соглашаетесь с <a href="./files/policy.pdf">Политикой конфиденциальности</a> и даёте <a href="./files/agreement.pdf">согласие на обработку персональных данных</a> компанией "Нано Софт"
         </div>
       </form>
     </div>
@@ -241,12 +241,13 @@ async function sendCallback(communication, comment) {
         popupStatusOk.value = false
       }, 2000);
     } else {
-      console.error('Ошибка при добавлении лида:', result)
+      console.error('Ошибка при добавлении лида:', response.error)
     }
   } catch (error) {
     console.error('Ошибка сети:', error)
   }
 }
+
 </script>
 
 <style scoped>
