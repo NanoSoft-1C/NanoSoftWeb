@@ -20,7 +20,6 @@
                     <div class="header__title-transfer">
                         <span class="header__title-transfer-item">1С</span>
                         <span class="header__title-transfer-item">CRM</span>
-                        <span class="header__title-transfer-item">Telegram-боты</span>
                     </div>
                 </div>
 

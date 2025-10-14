@@ -33,6 +33,22 @@ body{
     overflow-x: hidden;
 }
 
+.errorPage{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 64px;
+
+    &__video{
+        border-radius: 6px;
+    }
+}
+
 .wrapper{
     position: relative;
     max-width: $max-width-content;

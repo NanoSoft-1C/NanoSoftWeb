@@ -136,7 +136,7 @@
 
     <BlocksList 
         :titleHead="'Работаем честно и с гарантией результата '"
-        :titleSubtext="'Предоставляем множество разных фактором, что нам стоит доверять '"  
+        :titleSubtext="'Нам стоит доверять!'"
         :textArray="textArray" 
         :srcImage="'woman-computer'"
     ></BlocksList>

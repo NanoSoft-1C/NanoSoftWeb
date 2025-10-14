@@ -14,8 +14,12 @@
                         { 'list__list-item--active': activeIndex === index }
                     ]"
                 >
-                <h3>{{ item[0] }}</h3> 
-                <p>{{ item[1] }}</p>
+                    <h3>{{ item[0] }}</h3> 
+                    <p>{{ item[1] }}</p>
+
+                    <svg class="list__list-item-plus">
+                        <use xlink:href="@/assets/sprites/sprite.svg#plus"></use>
+                    </svg>
                 </li>
             </ol>
             <div class="list-decorate">

@@ -26,10 +26,13 @@
         border-top: 4px solid color-white();
 
         &-item{
+            position: relative;
             padding: 16px 0;
             border-bottom: 4px solid color-white();
             list-style: none;
             transition: .4s ease;
+
+            padding-right: 32px;
 
             &:hover{
                 cursor: pointer;
@@ -38,6 +41,11 @@
 
                 h3, p{
                     color: color-black();
+                }
+
+                .list__list-item-plus{
+                    stroke: color-black();
+                    rotate: 45deg;
                 }
             }
 
@@ -52,11 +60,28 @@
                 transition: .4s ease;
             }
 
+            &-plus{
+                position: absolute;
+                right: 16px;
+
+                top: 50%;
+                translate: 0 -50%;
+                transition: .4s ease;
+
+                height: 30px;
+                width: 30px;
+                stroke: color-white();
+            }
+
             &--active{
                 p{
                     margin-top: 16px;
                     max-height: 400px;
-                }               
+                }
+                
+                .list__list-item-plus{
+                    rotate: 45deg;
+                }
             }
         }
     }

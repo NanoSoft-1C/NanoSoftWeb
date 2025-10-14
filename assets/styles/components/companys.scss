@@ -275,7 +275,9 @@
                 gap: 16px;
 
                 img{
-                     @include laptop {
+                    border-radius: 24px;
+
+                    @include laptop {
                         width: 100%;
                         max-height: 200px;
                         object-fit: contain;
