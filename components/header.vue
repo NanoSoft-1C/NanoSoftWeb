@@ -7,6 +7,8 @@
             <button class="header__menu-btn" @click="props.scrollToAnchor('footer')">Контакты</button>
         </div>
 
+        <canvas ref="canvas" class="header__canvas"></canvas>
+        
         <div class="header-container">
             <div class="header__subtitle">разработка / внедрение / поддержка</div>
 
@@ -15,7 +17,7 @@
             <div class="header__title">
                 <div class="header__title-container">
                     <p class="header__title-text--mobile title-h3">Экспертные решения для вашего бизнеса</p>
-                    
+
                     <span class="header__title-text">Экспертные решения</span>
                     <div class="header__title-transfer">
                         <span class="header__title-transfer-item">1С</span>
@@ -30,10 +32,97 @@
 </template>
 
 <script setup>
-    const props = defineProps({
-        scrollToAnchor: {
-            type: Function,
-            required: true,
+const props = defineProps({
+    scrollToAnchor: {
+        type: Function,
+        required: true,
+    }
+});
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+
+const canvas = ref(null);
+let ctx;
+let animationFrameId;
+
+const points = [];
+const pointsCount = 80;
+const maxDistance = 300;
+
+
+function resize() {
+    canvas.value.width = canvas.value.clientWidth;
+    canvas.value.height = canvas.value.clientHeight;
+}
+
+function initPoints() {
+    points.length = 0;
+    for (let i = 0; i < pointsCount; i++) {
+        points.push({
+            x: Math.random() * canvas.value.width,
+            y: Math.random() * canvas.value.height,
+            vx: (Math.random() - 0.5) * 1.5,
+            vy: (Math.random() - 0.5) * 1.5,
+            radius: 3,
+        });
+    }
+}
+
+function drawLine(p1, p2, opacity) {
+    ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+    ctx.lineWidth = 0.5;
+    ctx.beginPath();
+    ctx.moveTo(p1.x, p1.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.stroke();
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
+
+    for (const p of points) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x <= 0 || p.x >= canvas.value.width) p.vx *= -1;
+        if (p.y <= 0 || p.y >= canvas.value.height) p.vy *= -1;
+    }
+
+    // Рисуем линии между близкими точками
+    for (let i = 0; i < pointsCount; i++) {
+        for (let j = i + 1; j < pointsCount; j++) {
+            const dx = points[i].x - points[j].x;
+            const dy = points[i].y - points[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < maxDistance) {
+                const opacity = 1 - dist / maxDistance;
+                drawLine(points[i], points[j], opacity);
+            }
         }
+    }
+
+    // Рисуем точки
+    for (const p of points) {
+        ctx.fillStyle = 'white';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    animationFrameId = requestAnimationFrame(animate);
+}
+
+onMounted(() => {
+    ctx = canvas.value.getContext('2d');
+    resize();
+    initPoints();
+    window.addEventListener('resize', () => {
+        resize();
+        initPoints();
     });
+    animate();
+});
+
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', resize);
+    cancelAnimationFrame(animationFrameId);
+});
 </script>

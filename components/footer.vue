@@ -28,6 +28,19 @@
 
         <div class="footer__signature">
           <p class="footer__signature-text">© 2025 Nano-Soft<br> Все права защищены</p>
+
+          <button 
+            class="footer__signature-developers"
+            :class="{ 'footer__signature-developers--open': blockDevVisible }" 
+            @click="changeVisibleDevBlock"
+          >
+            <p class="footer__signature-developers-preview text-small">Сайт разработан организацией "Нано Софт"</p>
+
+            <img class="footer__signature-developers-gif" src="@/assets/video/KaeruYami.gif" alt="">
+
+            <p class="footer__signature-developers-dev">Совместно с разработчиком <a href="https://KaeruYami.wtf">KaeruYami.wtf</a></p>
+
+          </button>
         </div>
     </footer>
 </template>
@@ -48,6 +61,8 @@ import { Icon, Style, Text, Fill, Stroke } from 'ol/style'
 import XYZ from 'ol/source/XYZ'
 
 const mapContainer = ref(null)
+const countClickDev = ref(0)
+const blockDevVisible = ref(false)
 
 onMounted(() => {
   // Координаты Вологды, ул. Ленинградская, д. 136
@@ -118,6 +133,19 @@ onMounted(() => {
   })
 
 })
+
+function changeVisibleDevBlock(){
+  countClickDev.value++  
+
+  if(countClickDev.value > 4) {
+    blockDevVisible.value = true
+
+    setTimeout(() => {
+      blockDevVisible.value = false
+      countClickDev.value = 0
+    }, 5000);
+  }
+}
 
 </script>
 

@@ -6,5 +6,8 @@ export default defineNuxtConfig({
   },
   css: [
     "~/assets/styles/main.scss",
-  ]
+  ],
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+  ],
 })
