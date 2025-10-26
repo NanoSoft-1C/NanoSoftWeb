@@ -13,7 +13,7 @@
                   <use xlink:href="@/assets/sprites/sprite.svg#menu"></use>
                 </svg> -->
 
-                <img class="headerFixed__menu-svg" @click="isScrolled = false" src="@/assets/sprites/menu.svg" alt="menu.svg">
+                <img class="headerFixed__menu-svg" @click="changeVisibleMenu" src="@/assets/sprites/menu.svg" alt="menu.svg">
 
                 <div 
                     class="headerFixed__menu"

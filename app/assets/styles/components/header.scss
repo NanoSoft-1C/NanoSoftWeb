@@ -131,6 +131,10 @@
 
         translate: 50% 0;
         animation: 1.6s ease cornerMove infinite;
+
+        @include phone{
+            bottom: 96px;
+        }
     }
 
     @keyframes cornerMove {
