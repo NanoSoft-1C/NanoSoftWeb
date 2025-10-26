@@ -49,6 +49,30 @@ body{
     }
 }
 
+.technicalWork{
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: auto auto;
+    gap: 20px;
+
+
+    &__h3{
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+
+    &__h4{
+        font-size: 16px;
+    }
+    &__text{
+        max-width: 600px;
+    }
+}
+
 .wrapper{
     position: relative;
     max-width: $max-width-content;
@@ -236,7 +260,7 @@ body{
 .text{
     &-big{
         font-size: $font-size-h3;
-        line-height: 100%;
+        line-height: 120%;
         letter-spacing: 0%;
 
         @include tablet{
@@ -246,7 +270,7 @@ body{
 
     &-medium{
         font-size: $font-size-text;
-        line-height: 100%;
+        line-height: 120%;
         letter-spacing: 0%;
 
         @include tablet{

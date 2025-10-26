@@ -38,7 +38,7 @@
             @include phone {
                 top: auto;
                 translate: 0;
-                bottom: calc( 16px);
+                bottom: calc(32px);
                 left: 0;
             }
         }
@@ -135,7 +135,7 @@
 
         @include phone {
             height: fit-content;
-            padding: 100px 16px 16px 16px;
+            padding: 140px 16px 16px 16px;
         }
     }
 }

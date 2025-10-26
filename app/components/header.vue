@@ -8,7 +8,7 @@
         </div>
 
         <canvas ref="canvas" class="header__canvas"></canvas>
-        
+
         <div class="header-container">
             <div class="header__subtitle">разработка / внедрение / поддержка</div>
 
@@ -28,6 +28,8 @@
                 <span class="header__title-text">для вашего бизнеса</span>
             </div>
         </div>
+
+        <img class="header__corner" src="@/assets/sprites/arrowCorner.svg" alt="Corner">
     </header>
 </template>
 
@@ -43,11 +45,35 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 const canvas = ref(null);
 let ctx;
 let animationFrameId;
+let windowWidthOld = 0
 
 const points = [];
-const pointsCount = 80;
-const maxDistance = 300;
 
+function getPointsCount() {
+    const width = window.innerWidth;
+    if (width <= 425) {
+        return 25;
+    } else if (width <= 768) {
+        return 30;
+    } else if (width <= 1024) {
+        return 40;
+    } else {
+        return 80;
+    }
+}
+
+function dynamicMaxDistance() {
+    const width = window.innerWidth;
+    if (width <= 425) {
+        return 300;
+    } else if (width <= 768) {
+        return 400;
+    } else if (width <= 1024) {
+        return 420;
+    } else {
+        return 450;
+    }
+}
 
 function resize() {
     canvas.value.width = canvas.value.clientWidth;
@@ -56,7 +82,8 @@ function resize() {
 
 function initPoints() {
     points.length = 0;
-    for (let i = 0; i < pointsCount; i++) {
+    const currentPointsCount = getPointsCount();
+    for (let i = 0; i < currentPointsCount; i++) {
         points.push({
             x: Math.random() * canvas.value.width,
             y: Math.random() * canvas.value.height,
@@ -79,6 +106,8 @@ function drawLine(p1, p2, opacity) {
 function animate() {
     ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
 
+    const maxDistance = dynamicMaxDistance();
+
     for (const p of points) {
         p.x += p.vx;
         p.y += p.vy;
@@ -86,9 +115,8 @@ function animate() {
         if (p.y <= 0 || p.y >= canvas.value.height) p.vy *= -1;
     }
 
-    // Рисуем линии между близкими точками
-    for (let i = 0; i < pointsCount; i++) {
-        for (let j = i + 1; j < pointsCount; j++) {
+    for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
             const dx = points[i].x - points[j].x;
             const dy = points[i].y - points[j].y;
             const dist = Math.sqrt(dx * dx + dy * dy);
@@ -99,7 +127,6 @@ function animate() {
         }
     }
 
-    // Рисуем точки
     for (const p of points) {
         ctx.fillStyle = 'white';
         ctx.beginPath();
@@ -110,19 +137,27 @@ function animate() {
     animationFrameId = requestAnimationFrame(animate);
 }
 
+function handleResize() {
+    if(windowWidthOld != canvas.value.clientWidth) {
+        resize()
+        initPoints()
+    }
+}
+
 onMounted(() => {
+
     ctx = canvas.value.getContext('2d');
-    resize();
-    initPoints();
-    window.addEventListener('resize', () => {
-        resize();
-        initPoints();
-    });
+
+    handleResize()
+
+    windowWidthOld = canvas.value.clientWidth
+
+    window.addEventListener('resize', handleResize);
     animate();
 });
 
 onBeforeUnmount(() => {
-    window.removeEventListener('resize', resize);
+    window.removeEventListener('resize', handleResize);
     cancelAnimationFrame(animationFrameId);
 });
 </script>
