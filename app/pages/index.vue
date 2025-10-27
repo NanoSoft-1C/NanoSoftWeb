@@ -15,7 +15,7 @@
                         "horizontally": {
                             "type": "elem",
                             "align": "right",
-                            "value": ".company__title",
+                            "value": ".company",
                             "parent": "#app"
                         },
 
@@ -29,33 +29,6 @@
                     "margin": {
                         "vertically": 0,
                         "horizontally": 48
-                    },
-                    "line": "horizontally"
-                },{
-                    "type": "corner",
-                    "position": {
-                        "horizontally": {
-                            "type": "elem",
-                            "align": "right",
-                            "value": ".company",
-                            "parent": "#app"
-                        },
-
-                        "vertically": {
-                            "type": "elem",
-                            "align": "center",
-                            "value": ".company__title",
-                            "parent": "#app"
-                        },
-
-                        "global": {
-                            "horizontally": "left",
-                            "vertically": "bottom"
-                        }
-                    },
-                    "margin": {
-                        "vertically": 0,
-                        "horizontally": 36
                     },
                     "line": "vertically"
                 },{
@@ -82,7 +55,7 @@
                     },
                     "margin": {
                         "vertically": 0,
-                        "horizontally": 36
+                        "horizontally": 48
                     },
                     "line": "horizontally"
                 },{
@@ -113,7 +86,7 @@
                     },
                     "line": "vertically"
                 },{
-                    "type": "point",
+                    "type": "start",
                     "position": {
                         "horizontally": {
                             "type": "elem",
@@ -166,6 +139,438 @@
                         "horizontally": 36
                     },
                     "line": "vertically"
+                },{
+                    "type": "start",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "left",
+                            "value": ".advantages__title",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": ".advantages__title",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "right",
+                            "vertically": "center"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "left",
+                            "value": ".advantages",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": ".advantages__block",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "right",
+                            "vertically": "top"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "horizontally"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": ".advantages",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": ".advantages__block",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "bottom"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                },{
+                    "type": "point",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": ".advantages",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": "#Sistem",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "top"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": ".advantages",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": "#Individyal",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "top"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "horizontally"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "left",
+                            "value": ".advantages",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": "#Individyal",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "right",
+                            "vertically": "bottom"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "left",
+                            "value": ".advantages",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": "#Soprovodenie",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "right",
+                            "vertically": "top"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "horizontally"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": ".advantages",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": "#callback",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "bottom"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                },{
+                    "type": "start",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": ".advantages",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": ".mapCompanys__block-title",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "bottom"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": ".advantages",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": ".mapCompanys__block-download",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "top"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "horizontally"
+                },{
+                    "type": "start",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "left",
+                            "value": ".list",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": ".list__title",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "top"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "left",
+                            "value": ".list",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "bottom",
+                            "value": ".list",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "right",
+                            "vertically": "top"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "horizontally"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": ".list",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "bottom",
+                            "value": ".list",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "bottom"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                },{
+                    "type": "start",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": "#block__list2",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": "#block__list2",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "bottom"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": "#list__block2",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": ".callback__title",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "center"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "horizontally"
+                },{
+                    "type": "start",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": ".callback__title",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": ".callback__title",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "center"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": -300
+                    },
+                    "line": "horizontally"
                 }
             ]
         }'
@@ -193,10 +598,10 @@
                     :class="{ 'headerFixed__menu--open': isMenuOpen }"
                 >
                     <div class="headerFixed__menu-btns">
-                        <button class="headerFixed__menu-btn" @click="scrollToAnchor('company'); isScrolled = false">О компании</button>
-                        <button class="headerFixed__menu-btn" @click="scrollToAnchor('advantages', 50); isScrolled = false">Услуги</button>
-                        <button class="headerFixed__menu-btn" @click="scrollToAnchor('cases'); isScrolled = false">Кейсы</button>
-                        <button class="headerFixed__menu-btn" @click="scrollToAnchor('footer'); isScrolled = false">Контакты</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('company'); isScrolled = false">О компании</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('advantages', 50); isScrolled = false">Услуги</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('cases'); isScrolled = false">Кейсы</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('footer'); isScrolled = false">Контакты</button>
                     </div>
 
                     <div 
@@ -229,13 +634,17 @@
     <BlocksList 
         :titleHead="'Работаем честно и с гарантией результата '"
         :titleSubtext="'Нам стоит доверять!'"
+        :listBlock="'list__block1'"
+        :listId="'block__list1'"
         :textArray="textArray" 
         :srcImage="'woman-computer'"
     ></BlocksList>
 
     <BlocksList
         :titleHead="'Техническая поддержка и сопровождение вашего бизнеса'" 
-        :titleSubtext="'Вы не останетесь один на один с вашей проблемой'"   
+        :titleSubtext="'Вы не останетесь один на один с вашей проблемой'"
+        :listBlock="'list__block2'"
+        :listId="'block__list2'"   
         :textArray="textArray2" 
         :srcImage="'woman-computer-2'" 
         class="list--right"

@@ -10,6 +10,8 @@
         <canvas ref="canvas" class="header__canvas"></canvas>
 
         <div class="header-container">
+            <div class="header__shadow"></div>
+
             <div class="header__subtitle">разработка / внедрение / поддержка</div>
 
             <img class="header__logo" src="@/assets/sprites/NSLogo.svg" alt="Логотип">

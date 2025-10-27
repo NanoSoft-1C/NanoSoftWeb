@@ -27,7 +27,7 @@
         </div>
 
         <div class="footer__signature">
-          <p class="footer__signature-text">© 2025 Nano-Soft<br> Все права защищены</p>
+          <p class="footer__signature-text">© 2025 Nano Soft<br> Все права защищены</p>
 
           <button 
             class="footer__signature-developers"

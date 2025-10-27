@@ -135,9 +135,17 @@ function printPoint(context, type, mobile, global, paddingLeft, x, y) {
                     )
                 }
                 
-                
             context.stroke()
 
+            break;
+        
+        case 'break':
+            // context.beginPath()
+            // context.strokeStyle = "rgba(208, 208, 208, 0)"
+            // context.fillStyle = "rgba(208, 208, 208, 0)"
+            // context.moveTo(x,y);
+            // context.lineTo(x+20,y);
+            // context.stroke()
             break;
     
         default:

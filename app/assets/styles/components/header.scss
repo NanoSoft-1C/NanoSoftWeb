@@ -7,6 +7,20 @@
     color: color-white();
     border-bottom: 12px orange solid;
 
+    *{
+        z-index: 2;
+    }
+
+    &__shadow{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: color-black();
+        background: radial-gradient(at center, color-black() 40%, color-black(0));
+        z-index: 1;
+        scale: 1 1.5;
+    }
+
     &__canvas{
         position: absolute;
         top: 0;
@@ -133,7 +147,7 @@
         animation: 1.6s ease cornerMove infinite;
 
         @include phone{
-            bottom: 96px;
+            bottom: 20%;
         }
     }
 
@@ -165,7 +179,7 @@
                 &--mobile{
                     display: block;
                     text-align: center;
-                    margin-bottom: 64px;
+                    margin-bottom: 32px;
                 }
             }
         }

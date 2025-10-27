@@ -1,7 +1,7 @@
 <template>
-    <section class="list wrapper">
+    <section :id="listBlock" class="list wrapper">
         <div class="list-headers">
-            <h2 class="list__title title-h2"> {{titleHead}}</h2>
+            <h2 :id="listId" class="list__title title-h2"> {{titleHead}}</h2>
             <p class="list__text text-big">{{ titleSubtext }} </p>
         </div>
         <div class="list-container">
@@ -54,6 +54,14 @@
             required: true,
         },
         titleSubtext:{
+            type: String,
+            required: true,
+        },
+        listId:{
+            type: String,
+            required: true,
+        },
+        listBlock:{
             type: String,
             required: true,
         }
