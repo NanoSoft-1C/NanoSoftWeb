@@ -49,6 +49,14 @@ body{
     }
 }
 
+#app{
+    position: relative;
+}
+
+.globalLine{
+    position: absolute;
+}
+
 .technicalWork{
     width: 100vw;
     height: 100vh;

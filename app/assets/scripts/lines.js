@@ -9,142 +9,8 @@ const offsetWidth = 50
 const offsetHeight = 25
 
 
-function initAllLines() {
-    const wrappers = document.querySelectorAll('.canvasItem')
-
-    wrappers.forEach(wrapper => {
-        const canvas = document.createElement('canvas')
-            canvas.width = wrapper.offsetWidth + offsetWidth*2
-            canvas.style.width = `${wrapper.offsetWidth + offsetWidth*2}px`;
-            canvas.height = wrapper.clientHeight
-            canvas.classList.add('lineCanvas')
-        const ctx = canvas.getContext('2d')
-
-        wrapper.style.position = wrapper.style.position || 'relative'
-        wrapper.appendChild(canvas)
-
-        const pointsString = wrapper.getAttribute('points')
-        const points = new Function(`return (${pointsString})`)()
-
-        if (!points) return
-
-        points.forEach(point => {
-
-            let x, y = 0
-            const wrapperRect = wrapper.getBoundingClientRect()
-
-            const targetRectX = point.position.x.elem ? 
-                document.getElementById(point.position.x.elem).getBoundingClientRect() :
-                wrapperRect
-            const targetRectY = point.position.y.elem ? 
-                document.getElementById(point.position.y.elem).getBoundingClientRect() :
-                wrapperRect
-
-            // const cornerHoriz = point.corner == 'right' || point.corner == 'left'
-            // const directionHoriz = point.direction == 'right' || point.direction == 'left'
-
-
-            const pos = point.position || {}
-            switch (pos.x.value) {
-                case 'center':
-                    x = targetRectX.left - wrapperRect.left + targetRectX.width / 2;
-                    break;
-            }
-
-            switch (pos.y.value) {
-                case 'center':
-                    y = targetRectY.top - wrapperRect.top + targetRectY.height / 2;
-                    break;
-            }
-
-
-            switch (point.type) {
-                case 'start':
-                    ctx.moveTo(x, y)
-
-                    break;
-
-                case 'point':
-                    // рисуем внешний кружок
-                    ctx.beginPath()
-                    ctx.arc(x, y, pointRadius, 0, Math.PI * 2)
-                    ctx.fillStyle = colorWhite
-                    ctx.fill()
-
-                    // внутренний кружок
-                    ctx.beginPath()
-                    ctx.arc(x, y, pointRadius/2, 0, Math.PI * 2)
-                    ctx.fillStyle = colorBlack
-                    ctx.fill()
-
-                    ctx.beginPath()
-                    ctx.moveTo(
-                        point.direction == 'left' ? x + pointRadius/2 : 
-                            point.direction == 'right' ? x - pointRadius/2 : x, 
-                        point.direction == 'top' ? y + pointRadius/2 : 
-                            point.direction == 'bottom' ? y + pointRadius/2 : y
-                    )
-
-                    break;
-
-                // case 'line':
-                //     if (point.direction) {
-                //         const dx = cornerLength * Math.cos(Math.PI / 4)
-
-                //         ctx.lineTo(
-                //             x-dx, 
-                //             directionHoriz ? y : y + 50
-                //         )
-                //     } else {
-                //         ctx.lineTo(
-                //             x, 
-                //             cornerHoriz ? y - lineWidth : y
-                //         )
-                //     }
-
-                //     ctx.lineWidth = lineWidth
-                //     ctx.strokeStyle = colorWhite
-                //     ctx.stroke()
-
-                //     break;
-            
-                default:
-                    break;
-            }
-
-            // if (point.corner && !point.direction) {
-            //     const dx = cornerLength * Math.cos(Math.PI / 4)
-            //     const dy = cornerLength * Math.sin(Math.PI / 4)
-
-            //     ctx.lineTo(
-            //         x + (point.corner == 'right' ? dx : -dx), 
-            //         (cornerHoriz ? y - lineWidth : y) + dy
-            //     )
-            //     ctx.lineWidth = lineWidth
-            //     ctx.strokeStyle = colorWhite
-            //     ctx.stroke()
-            // }
-        })
-
-    })
-}
-
-const DTLine = {
-    initAllLines,
-}
-  
-export  { DTLine }
-
-
-
-
-
-
-
-
-
-
 function relativePos(item, parent) {
+    
     return {
         top    : item.getBoundingClientRect().top - parent.getBoundingClientRect().top,
         right  : item.getBoundingClientRect().right - parent.getBoundingClientRect().right,
@@ -188,37 +54,58 @@ function getPosition(value, margin, position) {
 function printPoint(context, type, mobile, global, paddingLeft, x, y) {
     switch (type) {
         case 'start':
-            context.lineCap = 'round';
             context.beginPath()
-                context.arc(
-                    x, y, 
-                    (mobile ? 5 : 8), 0, 
-                    Math.PI * 2, true
-                );
-                context.fill()
 
-                context.moveTo(x + (mobile ? 15 : 22), y)
+            //     context.strokeStyle = colorBlack
+            //     context.fillStyle = colorBlack
+            //     context.arc(
+            //         x, y, 
+            //         (mobile ? pointRadius/2 : pointRadius), 0, 
+            //         Math.PI * 2, true
+            //     )
+
+            // context.fill()
+
+                context.moveTo(x + (mobile ? pointRadius/2 : pointRadius), y)
+                context.strokeStyle = colorWhite
+                context.fillStyle = colorWhite
                 context.arc(
                     x, y, 
-                    (mobile ? 15 : 22), 0, 
+                    (mobile ? pointRadius/2 : pointRadius), 0, 
                     Math.PI * 2, true
-                );
-            context.setLineDash([0, 0])
+                )
+
             context.stroke()
 
             break;
 
         case 'point':
-            context.lineCap = 'round';
+            context.lineWidth = 1
             context.beginPath()
+
+                context.strokeStyle = colorWhite
+                context.fillStyle = colorWhite
                 context.arc(
-                    x, y, 
-                    (mobile ? 2 : 4), 0, 
+                    x-1, y, 
+                    (mobile ? pointRadius/3+pointRadius/2 : pointRadius/2+pointRadius/2), 0, 
                     Math.PI * 2, true
-                );
-                context.fill()
-            context.setLineDash([0, 0])
+                )
+
+            context.fill()
+
+            //     context.moveTo(x + (mobile ? pointRadius/3+pointRadius/2 : pointRadius/2+pointRadius/2), y)
+            //     context.strokeStyle = colorBlack
+            //     context.fillStyle = colorBlack
+            //     context.arc(
+            //         x, y, 
+            //         (mobile ? 2 : 2), 0, 
+            //         Math.PI * 2, true
+            //     )
+
+            // context.fill()
+
             context.stroke()
+            context.lineWidth = lineWidth
 
             break;
 
@@ -226,30 +113,29 @@ function printPoint(context, type, mobile, global, paddingLeft, x, y) {
             context.beginPath()
                 if (global.vertically == 'bottom') {
                     context.moveTo(
-                        x + (global.horizontally == 'right' ? 32 : -33) + (paddingLeft ? paddingLeft : 0), 
+                        x + (global.horizontally == 'right' ? cornerLength : -cornerLength-2) + (paddingLeft ? paddingLeft : 0), 
                         y
                     )
 
                     context.bezierCurveTo(
-                        x - 1 + (global.horizontally == 'right' ? 16 : -16),  y,
-                        x - 1, y + 8,
-                        x - 1, y + 32,
+                        x - 0 + (global.horizontally == 'right' ? cornerLength/2 : -cornerLength/2),  y,
+                        x - 1, y + cornerLength/4,
+                        x - 1, y + cornerLength,
                     )
                 } else {
                     context.moveTo(
-                        x + (paddingLeft ? paddingLeft - 1 : 0), 
-                        y - 32
+                        x + (paddingLeft ? paddingLeft : -1), 
+                        y - cornerLength
                     )
 
                     context.bezierCurveTo(
-                        x - 1 + (global.horizontally == 'right' ? 0 : 0)    + (paddingLeft ? paddingLeft : 0),  y - 8,
-                        x - 1 + (global.horizontally == 'right' ? 16 : -16) + (paddingLeft ? paddingLeft : 0),  y,
-                        x - 1 + (global.horizontally == 'right' ? 32 : -32) + (paddingLeft ? paddingLeft : 0),  y,
+                        x - 1 + (global.horizontally == 'right' ? 0 : 0) + (paddingLeft ? paddingLeft : 0),  y - cornerLength/4,
+                        x - 0 + (global.horizontally == 'right' ? cornerLength/2 : -cornerLength/2) + (paddingLeft ? paddingLeft : 0),  y,
+                        x - 2 + (global.horizontally == 'right' ? cornerLength : -cornerLength) + (paddingLeft ? paddingLeft : 0),  y,
                     )
                 }
                 
                 
-            context.setLineDash([5, 5])
             context.stroke()
 
             break;
@@ -286,7 +172,6 @@ function printLine(context, line, lineRevert, mobile, type1, global1, x1, y1, ty
             x2 + getPoint(type2, line, global2, 'horizontally') - 1, 
             y2 - getPoint(type2, line, global2, 'vertically')
         )
-    context.setLineDash([5, 5])
     context.stroke()
 }
 
@@ -306,29 +191,38 @@ function initCanvas( canvas ) {
     let context = canvas.getContext("2d");
 
 
-    context.strokeStyle = "#04B8FF"
-    context.fillStyle = "#04B8FF";
-    context.lineWidth = 2
+    context.strokeStyle = colorWhite
+    context.fillStyle = colorWhite
+    context.lineWidth = lineWidth
+    context.lineCap = "round"
 
-    for (const key in points) {
+    points.forEach((point, index) => {
+        let nextPoint = points[index+1]
+
         printPoint(
-            context, points[Number(key)].type, mobile, 
-            points[Number(key)].position.global, points[Number(key)].paddingLeft,
+            context, point.type, mobile, 
+            point.position.global, point.paddingLeft,
 
-            getPosition('x', points[Number(key)].margin, points[Number(key)].position),
-            getPosition('y', points[Number(key)].margin, points[Number(key)].position)
+            getPosition('x', point.margin, point.position),
+            getPosition('y', point.margin, point.position)
         ) 
 
-        if (points[Number(key)+1]) printLine(
-            context, points[Number(key)].line, points[Number(key)].lineRevert, mobile,
+        if (nextPoint) printLine(
+            context, point.line, point.lineRevert, mobile,
 
-            points[Number(key)].type, points[Number(key)].position.global,
-            getPosition('x', points[Number(key)].margin, points[Number(key)].position),
-            getPosition('y', points[Number(key)].margin, points[Number(key)].position),
+            point.type, point.position.global,
+            getPosition('x', point.margin, point.position),
+            getPosition('y', point.margin, point.position),
 
-            points[Number(key)+1].type, points[Number(key)+1].position.global,
-            getPosition('x', points[Number(key)+1].margin, points[Number(key)+1].position),
-            getPosition('y', points[Number(key)+1].margin, points[Number(key)+1].position)
+            nextPoint.type, nextPoint.position.global,
+            getPosition('x', nextPoint.margin, nextPoint.position),
+            getPosition('y', nextPoint.margin, nextPoint.position)
         )
-    }
+    })
 }
+
+const DTLine = {
+    initCanvas,
+}
+  
+export  { DTLine }

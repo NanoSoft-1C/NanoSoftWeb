@@ -1,4 +1,177 @@
 <template>
+
+    <canvas class="globalLine" 
+
+        setting='{
+            "height": "#app",
+            "width": "#app"
+        }'
+
+        points='{
+            "laptop": [
+                {
+                    "type": "start",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": ".company__title",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": ".company__title",
+                            "parent": "#app"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 48
+                    },
+                    "line": "horizontally"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": ".company",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": ".company__title",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "bottom"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "right",
+                            "value": ".company",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "bottom",
+                            "value": ".company",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "top",
+                            "vertically": "left"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "horizontally"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "left",
+                            "value": ".company",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "bottom",
+                            "value": ".company",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "right",
+                            "vertically": "bottom"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                },{
+                    "type": "point",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "left",
+                            "value": "#result__title--1",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": "#result__title--1",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "right",
+                            "vertically": "bottom"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                },{
+                    "type": "point",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "left",
+                            "value": "#result__title--2",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": "#result__title--2",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "right",
+                            "vertically": "bottom"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "vertically"
+                }
+            ]
+        }'
+
+    ></canvas>
+
     <header 
         :class="[
             'headerFixed',
@@ -43,94 +216,13 @@
         <div class="headerFixed__shadow"></div>
     </header>
 
-    <Header
-        :scrollToAnchor="scrollToAnchor"
-    ></Header>
+    <Header :scrollToAnchor="scrollToAnchor"></Header>
 
-    <BlocksCompany 
-        id="company" 
-        class="canvasItem"
-        points="[
-            {
-                type: 'point',
-                direction: 'bottom',
-                position: {
-                    x: {
-                        value: 'right'
-                    },
-                    y: {
-                        elem: 'line-title',
-                        value: 'center'
-                    }
-                }
-            },{
-                type: 'line',
-                offset: 'bottom',
-                position: {
-                    x: {
-                        value: 'right'
-                    },
-                    y: {
-                        value: 'bottom'
-                    }
-                }
-            },{
-                type: 'corner',
-                corner: 'top-left',
-                position: {
-                    x: {
-                        value: 'left'
-                    },
-                    y: {
-                        value: 'bottom'
-                    }
-                }
-            },{
-                type: 'line',
-                offset: 'right',
-                position: {
-                    x: {
-                        value: 'left'
-                    },
-                    y: {
-                        value: 'bottom'
-                    }
-                }
-            },{
-                type: 'corner',
-                corner: 'right-bottom',
-                position: {
-                    x: {
-                        value: 'left'
-                    },
-                    y: {
-                        value: 'bottom'
-                    }
-                }
-            },{
-                type: 'line',
-                ending: true,
-                corner: 'top',
-                position: {
-                    x: {
-                        value: 'left'
-                    },
-                    y: {
-                        value: 'bottom'
-                    }
-                }
-            }
-        ]"
-    ></BlocksCompany>
+    <BlocksCompany id="company" class="canvasItem"></BlocksCompany>
 
-    <BlocksResult
-        
-    ></BlocksResult>
+    <BlocksResult></BlocksResult>
 
-    <BlocksAdvantages
-        id="advantages"
-        :scrollToAnchor="scrollToAnchor"
-    ></BlocksAdvantages>
+    <BlocksAdvantages id="advantages" :scrollToAnchor="scrollToAnchor"></BlocksAdvantages>
 
     <BlocksCompanys id="cases"></BlocksCompanys>
 
@@ -182,7 +274,7 @@
         window.addEventListener('scroll', handleScroll)
         window.addEventListener('resize', handleResize)
 
-        DTLine.initAllLines()
+        // DTLine.initCanvas(document.querySelector('.globalLine'))
     })
 
     onBeforeUnmount(() => {
