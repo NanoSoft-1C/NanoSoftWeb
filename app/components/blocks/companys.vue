@@ -334,7 +334,7 @@ function flyTo(coords, key) {
   flyToActive.value = true
   setTimeout(() => {
     flyToActive.value = false
-  }, duration*2);
+  }, (markerCount.value ? duration : duration*2));
   markerCount.value++
 }
 
