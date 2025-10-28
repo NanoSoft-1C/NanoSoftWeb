@@ -1,9 +1,10 @@
 <template>
-    <header class="header">
+    <header class="header" id="header">
         <div class="header__menu">
             <button class="header__menu-btn" @click="props.scrollToAnchor('company')">О компании</button>
-            <button class="header__menu-btn" @click="props.scrollToAnchor('advantages', 50)">Услуги</button>
+            <button class="header__menu-btn" @click="props.scrollToAnchor('advantages')">Услуги</button>
             <button class="header__menu-btn" @click="props.scrollToAnchor('cases')">Кейсы</button>
+            <button class="header__menu-btn" @click="props.scrollToAnchor('callback')">Обратная связь</button>
             <button class="header__menu-btn" @click="props.scrollToAnchor('footer')">Контакты</button>
         </div>
 

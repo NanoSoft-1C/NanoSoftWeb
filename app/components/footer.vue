@@ -66,7 +66,7 @@ const blockDevVisible = ref(false)
 
 onMounted(() => {
   // Координаты Вологды, ул. Ленинградская, д. 136
-  const coords = fromLonLat([39.870026, 59.220050]) 
+  const coords = fromLonLat([39.871326, 59.220060]) 
 
   // Создаем фичу (точку)
   const pointFeature = new Feature({

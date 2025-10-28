@@ -46,7 +46,7 @@
                     <li class="text-medium">Оптимизация бизнес-процессов</li>
                 </ul>
             </div>
-            <div id="callback" class="advantages__block-image advantages__block--grid-6 border" @click="props.scrollToAnchor('callback')">
+            <div id="callback-btn" class="advantages__block-image advantages__block--grid-6 border" @click="props.scrollToAnchor('callback')">
                 <h2 class="advantages__block-image-text title-h3">Заказать<br> обратный звонок</h2>
                 <img src="@/assets/sprites/woman-with.svg" class="advantages__block-image-woman" alt="">
             </div>

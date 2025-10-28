@@ -5,9 +5,6 @@ const lineWidth = 16
 const pointRadius = 16
 const cornerLength = 32
 
-const offsetWidth = 50
-const offsetHeight = 25
-
 
 function relativePos(item, parent) {
     
@@ -56,21 +53,11 @@ function printPoint(context, type, mobile, global, paddingLeft, x, y) {
         case 'start':
             context.beginPath()
 
-            //     context.strokeStyle = colorBlack
-            //     context.fillStyle = colorBlack
-            //     context.arc(
-            //         x, y, 
-            //         (mobile ? pointRadius/2 : pointRadius), 0, 
-            //         Math.PI * 2, true
-            //     )
-
-            // context.fill()
-
-                context.moveTo(x + (mobile ? pointRadius/2 : pointRadius), y)
+                context.moveTo(x-1 + (mobile ? pointRadius/2 : pointRadius), y)
                 context.strokeStyle = colorWhite
                 context.fillStyle = colorWhite
                 context.arc(
-                    x, y, 
+                    x-1, y, 
                     (mobile ? pointRadius/2 : pointRadius), 0, 
                     Math.PI * 2, true
                 )
@@ -80,7 +67,6 @@ function printPoint(context, type, mobile, global, paddingLeft, x, y) {
             break;
 
         case 'point':
-            context.lineWidth = 1
             context.beginPath()
 
                 context.strokeStyle = colorWhite
@@ -92,20 +78,6 @@ function printPoint(context, type, mobile, global, paddingLeft, x, y) {
                 )
 
             context.fill()
-
-            //     context.moveTo(x + (mobile ? pointRadius/3+pointRadius/2 : pointRadius/2+pointRadius/2), y)
-            //     context.strokeStyle = colorBlack
-            //     context.fillStyle = colorBlack
-            //     context.arc(
-            //         x, y, 
-            //         (mobile ? 2 : 2), 0, 
-            //         Math.PI * 2, true
-            //     )
-
-            // context.fill()
-
-            context.stroke()
-            context.lineWidth = lineWidth
 
             break;
 
@@ -138,15 +110,6 @@ function printPoint(context, type, mobile, global, paddingLeft, x, y) {
             context.stroke()
 
             break;
-        
-        case 'break':
-            // context.beginPath()
-            // context.strokeStyle = "rgba(208, 208, 208, 0)"
-            // context.fillStyle = "rgba(208, 208, 208, 0)"
-            // context.moveTo(x,y);
-            // context.lineTo(x+20,y);
-            // context.stroke()
-            break;
     
         default:
             //console.log('switch none');
@@ -154,8 +117,8 @@ function printPoint(context, type, mobile, global, paddingLeft, x, y) {
     }
 }
 
-function printLine(context, line, lineRevert, mobile, type1, global1, x1, y1, type2, global2, x2, y2) {
-    if (line == "move") return
+function printLine(context, line, lineBreak=false, lineRevert, mobile, type1, global1, x1, y1, type2, global2, x2, y2) {
+    if (line == "move" || lineBreak) return
 
     function getPoint(type, line, global, position) {
         let result = 0
@@ -216,7 +179,7 @@ function initCanvas( canvas ) {
         ) 
 
         if (nextPoint) printLine(
-            context, point.line, point.lineRevert, mobile,
+            context, point.line, point.lineBreak, point.lineRevert, mobile,
 
             point.type, point.position.global,
             getPosition('x', point.margin, point.position),

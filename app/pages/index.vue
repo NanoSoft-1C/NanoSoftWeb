@@ -341,7 +341,7 @@
                         "vertically": {
                             "type": "elem",
                             "align": "center",
-                            "value": "#callback",
+                            "value": "#callback-btn",
                             "parent": "#app"
                         },
 
@@ -409,6 +409,34 @@
                         "horizontally": 36
                     },
                     "line": "horizontally"
+                },{
+                    "type": "corner",
+                    "position": {
+                        "horizontally": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": ".advantages",
+                            "parent": "#app"
+                        },
+
+                        "vertically": {
+                            "type": "elem",
+                            "align": "center",
+                            "value": ".mapCompanys__block-download",
+                            "parent": "#app"
+                        },
+
+                        "global": {
+                            "horizontally": "left",
+                            "vertically": "top"
+                        }
+                    },
+                    "margin": {
+                        "vertically": 0,
+                        "horizontally": 36
+                    },
+                    "line": "horizontally",
+                    "lineBreak": true
                 },{
                     "type": "start",
                     "position": {
@@ -577,7 +605,8 @@
 
     ></canvas>
 
-    <header 
+    <header
+        id="headerFixed"
         :class="[
             'headerFixed',
             isScrolled ? 'headerFixed--visible' : ''
@@ -598,10 +627,11 @@
                     :class="{ 'headerFixed__menu--open': isMenuOpen }"
                 >
                     <div class="headerFixed__menu-btns">
-                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('company'); isScrolled = false">О компании</button>
-                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('advantages', 50); isScrolled = false">Услуги</button>
-                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('cases'); isScrolled = false">Кейсы</button>
-                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('footer'); isScrolled = false">Контакты</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('company')">О компании</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('advantages')">Услуги</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('cases')">Кейсы</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('callback')">Обратная связь</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('footer')">Контакты</button>
                     </div>
 
                     <div 
@@ -691,19 +721,17 @@
         window.removeEventListener('resize', handleResize)
     })
 
-    function scrollToAnchor(anchorId, headerOffset = 0) {
+    function scrollToAnchor(anchorId) {
         if (process.server) return 
 
         const element = document.getElementById(anchorId)
+        const header = document.getElementById('headerFixed')
         if (!element) return
 
         const elementRect = element.getBoundingClientRect()
         const elementTop = elementRect.top + window.scrollY
-        const elementHeight = elementRect.height
-        const windowHeight = window.innerHeight
 
-        const scrollPosition =
-            elementTop - (windowHeight / 2) + (elementHeight / 2) - headerOffset
+        const scrollPosition = elementTop - header.offsetHeight
 
         window.scrollTo({
             top: scrollPosition,
