@@ -34,7 +34,7 @@
             :class="{ 'footer__signature-developers--open': blockDevVisible }" 
             @click="changeVisibleDevBlock"
           >
-            <p class="footer__signature-developers-preview text-small">Сайт разработан организацией "Нано Софт"</p>
+            <p class="footer__signature-developers-preview">Сайт разработан организацией "Нано Софт"</p>
 
             <img class="footer__signature-developers-gif" src="@/assets/video/KaeruYami.gif" alt="">
 
