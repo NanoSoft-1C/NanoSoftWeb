@@ -22,7 +22,7 @@
                     <li class="text-medium">Настройка KPI и аналитики</li>
                 </ul>
             </div> 
-            <div class="advantages__block advantages__block--grid-3 border">
+            <div id="Sistem" class="advantages__block advantages__block--grid-3 border">
                 <h2 class="advantages__block-title text-big">Системная интеграция продуктов 1С</h2>
                 <ul class="advantages__block-text text-ul">
                     <li class="text-medium">Интеграция 1С с CRM, телефонией, сайтами и прочими системами</li>
@@ -30,7 +30,7 @@
                     <li class="text-medium">Поддержка и обновления внедренных и разработанных решений</li>
                 </ul>
             </div> 
-            <div class="advantages__block advantages__block--grid-4 border">
+            <div id="Individyal" class="advantages__block advantages__block--grid-4 border">
                 <h2 class="advantages__block-title text-big">Индивидуальная разработка на платформе 1С</h2>
                 <ul class="advantages__block-text text-ul">
                     <li class="text-medium">Разработка решений для вашего бизнеса (от нестандартного модуля до собственной конфигурации)</li>
@@ -38,7 +38,7 @@
                     <li class="text-medium">Сопровождение и адаптация доработанных конфигураций</li>
                 </ul>
             </div>                                                          
-            <div class="advantages__block advantages__block--grid-5 border">
+            <div id="Soprovodenie" class="advantages__block advantages__block--grid-5 border">
                 <h2 class="advantages__block-title text-big">Сопровождение 1С</h2>
                 <ul class="advantages__block-text text-ul">
                     <li class="text-medium">Техническая поддержка и обновления</li>
@@ -46,7 +46,7 @@
                     <li class="text-medium">Оптимизация бизнес-процессов</li>
                 </ul>
             </div>
-            <div class="advantages__block-image advantages__block--grid-6 border" @click="props.scrollToAnchor('callback')">
+            <div id="callback" class="advantages__block-image advantages__block--grid-6 border" @click="props.scrollToAnchor('callback')">
                 <h2 class="advantages__block-image-text title-h3">Заказать<br> обратный звонок</h2>
                 <img src="@/assets/sprites/woman-with.svg" class="advantages__block-image-woman" alt="">
             </div>
