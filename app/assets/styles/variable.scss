@@ -19,7 +19,7 @@ $font-size-small: 15px;
 
 
 @mixin phone {
-    @media screen and (max-width: 425px) {
+    @media screen and (max-width: 500px) {
         @content;
     }
 }
