@@ -31,7 +31,6 @@
         }
     }
 
-
     &__block {
         padding: 10px 20px;
         background-color: #FFFEFD;
@@ -61,7 +60,7 @@
             border: 6px solid color-bodily();
             position: relative;
             color: color-black();
-            background-color: color-bodily();
+            // background-color: color-bodily();
             border-style: solid;
 
             display: flex;
@@ -70,24 +69,57 @@
             transition: .4s ease;
 
             &:hover{
-                background-color: color-white();
+                background-color: color-bodily();
                 cursor: pointer;
                 *{color: color-black();}
             }
 
+            @include laptop {
+                padding: 16px;
+
+                background-color: color-bodily();
+
+                &:hover{
+                    background-color: color-black();
+                    cursor: pointer;
+                    *{color: color-white();}
+                }
+            }
 
             &-woman {
                 position: absolute;
-                right: 5%;
-                bottom: -15px;
+                right: 0%;
+                bottom: -19px;
+                height: 100%;
+
+                @include laptop {
+                    display: none;
+                }
+            }
+
+            &-background {
+                position: absolute;
+                height: 105%;
+                right: -6px;
+                bottom: -6px;
+                border-radius: 0 0 36px 0;
+
+                @include laptop {
+                    display: none;
+                }
             }
 
             &-text {
                 text-align: center;
                 justify-content: center;
                 width: calc(100% - 160px);
-                color: color-black();
+                color: color-white();
                 transition: .4s ease;
+
+                @include laptop {
+                    width: 100%;
+                    color: color-black();
+                }
             }
 
             @include phone {

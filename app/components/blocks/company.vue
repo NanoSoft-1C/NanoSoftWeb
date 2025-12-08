@@ -1,11 +1,49 @@
 <template>
     <section ref="wrapper" class="company wrapper">
-        <h2 class="company__title title-h2">Компания Нано софт</h2>
-        <span class="company-line"></span>
-        <p class="company__text text-big">Эксперт в разработке и сопровождении индивидуальных программных решений на платформе 1С, создании CRM-систем и интеграций, а также технической поддержке.</p>
+        <div class="company__franch" ref="companyFranchSVG">
+            <img src="@/assets/sprites/1CLogo.svg" class="company__franch-background">
+
+            <svg class="company__franch-mask" preserveAspectRatio="xMidYMid meet">
+                <mask id="wipeMask">
+                <rect width="100%" height="100%" fill="white"/>
+
+                <path id="wipe1"
+                    d="M55 45.0039L598.5 113.504L39.5 142.504L617.5 251.504L67 244.504L588 340.004H45"
+                    fill="none" stroke="black" stroke-width="90" stroke-linecap="round" stroke-linejoin="round"/>
+                </mask>
+
+                <rect width="100%" height="100%" fill="#494949" mask="url(#wipeMask)"/>
+            </svg>
+        </div>
+        <div class="company__content">
+            <h2 class="company__content-title title-h2">Компания Нано софт</h2>
+            <span class="company__content-line"></span>
+            <p class="company__content-text text-big">
+                Эксперт в разработке и сопровождении индивидуальных программных решений <br>
+                на платформе 1С, создании CRM-систем и интеграций, а также технической поддержке
+            </p>
+        </div>
     </section>
 </template>
 
 <script setup>
+    import { ref, onMounted } from 'vue'
 
+    const companyFranchSVG = ref(null)
+
+    onMounted(() => {
+        if (!companyFranchSVG.value) return
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelector('#wipe1').style.animation = 'wipe 2s ease-in-out forwards'
+                    obs.unobserve(entry.target)
+                }
+            })
+        }, { threshold: 1.0 })
+
+        observer.observe(companyFranchSVG.value)
+    })
 </script>
+
