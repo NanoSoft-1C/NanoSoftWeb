@@ -2,42 +2,45 @@
 
     <BlocksStarting :scrollToAnchor="scrollToAnchor"></BlocksStarting>
 
-    <BlocksCompany id="company" class="canvasItem"></BlocksCompany>
+    <BlocksFindServices :servicesData="servicesData"></BlocksFindServices>
 
-    <BlocksResult></BlocksResult>
+    <BlocksServices :servicesData="servicesData"></BlocksServices>
 
-    <BlocksAdvantages id="advantages" :scrollToAnchor="scrollToAnchor"></BlocksAdvantages>
-
-    <BlocksCompanys id="cases"></BlocksCompanys>
-
-    <BlocksList 
-        :titleHead="'Работаем честно и с гарантией результата '"
-        :titleSubtext="'Нам стоит доверять!'"
-        :listBlock="'list__block1'"
-        :listId="'block__list1'"
-        :textArray="textArray" 
-        :srcImage="'woman-computer'"
-        :svgVisible="'woman-computer'"
-    ></BlocksList>
-
-    <BlocksList
-        :titleHead="'Техническая поддержка и сопровождение вашего бизнеса'" 
-        :titleSubtext="'Вы не останетесь один на один с вашей проблемой'"
-        :listBlock="'list__block2'"
-        :listId="'block__list2'"   
-        :textArray="textArray2" 
-        :srcImage="'woman-computer-2'"
-        :svgVisible="'woman-computer-2'" 
-        class="list--right"
-    ></BlocksList>
+    <!-- <div v-if="modalState.isOpen" class="modal-overlay" @click="closeModal">
+        <div class="modal-content" @click.stop>
+            <ModalServices 
+                :is="modalState.component" 
+                v-bind="modalState.props"
+                :closeModal="closeModal"
+            />
+        </div>
+    </div> -->
 
 </template>
 
 <script setup>
-    import { ref, onMounted } from 'vue'
+    import { onMounted, reactive, markRaw } from 'vue'
+    import servicesData from './../../assets/data/services.json'
+    // import MyModal from '@/components/modal/modalServices.vue'
+
+    // const modalState = reactive({
+    //     isOpen: false,
+    //     component: null,
+    //     props: {}
+    // })
+
+    // function openModal(component, props = {}) {
+    //     modalState.component = markRaw(component)
+    //     modalState.props = props
+    //     modalState.isOpen = true
+    // }
+
+    // function closeModal() {
+    //     modalState.isOpen = false
+    // }
 
     onMounted(() => {
-        svgAnimator()
+        svgAnimator()        
     })
 
     function scrollToAnchor(anchorId) {
@@ -172,25 +175,5 @@
             });
         }
     }
-
-    const textArray = ref([
-        ['Прозрачный договор с четкими сроками и результатами', 
-        'Заключая с нами договор, вы получаете уверенность в соблюдении сроков и достижении целей. Мы ставим перед собой амбициозные задачи и гарантируем их выполнение.'],
-        ['Бесплатное устранение ошибок в течение 12 месяцев - ваша защита', 
-        'Мы уверены в качестве нашей работы! В случае возникновения проблем в течение года мы берем на себя ответственность за их устранение, освобождая ваш бюджет от непредвиденных расходов.'],
-        ['Минимум бюрократии - максимум результатов', 
-        'Мы берем на себя всю работу по подготовке документов, чтобы вы могли сосредоточиться на стратегии и развитии бизнеса, не отвлекаясь на рутинные задачи.'],
-        ['Ваш успех - наша приоритетная цель!', 
-        'Мы не просто выполняем проект, мы стремимся к тому, чтобы ваши показатели росли. Ваш успех — это наша гордость и главный ориентир.']
-    ])
     
-    const textArray2 = ref([
-        ['Техническая поддержка, которая всегда на связи', 
-        'Мы понимаем, что бизнес не останавливается. Наша команда готова помочь вам 24/7, обеспечивая стабильность и бесперебойную работу ваших систем.'],
-        ['Актуальные обновления и инновации для вашего бизнеса', 
-        'Мы следим за динамикой рынка и внедряем самые современные решения, чтобы ваш бизнес всегда оставался на шаг впереди конкурентов.'],
-        ['Индивидуальные решения для вашего уникального бизнеса', 
-        'Мы знаем, что у каждого бизнеса свои потребности. Мы разрабатываем персонализированные стратегии, которые помогут вам достичь максимальной эффективности.'],
-        ['Быстрая реакция на ваши запросы - мы ценим ваше время', 'Наша команда оперативно реагирует на любые ваши запросы, обеспечивая быстрое разрешение вопросов и минимизацию простоя.']
-    ])
 </script>

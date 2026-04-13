@@ -1,166 +1,59 @@
 <template>
-    <header class="header" id="header">
-        <div class="header__menu">
-            <button class="header__menu-btn" @click="props.scrollToAnchor('company')">О компании</button>
-            <button class="header__menu-btn" @click="props.scrollToAnchor('advantages')">Услуги</button>
-            <button class="header__menu-btn" @click="props.scrollToAnchor('cases')">Кейсы</button>
-            <button class="header__menu-btn" @click="props.scrollToAnchor('callback')">Обратная связь</button>
-            <button class="header__menu-btn" @click="props.scrollToAnchor('footer')">Контакты</button>
-        </div>
+    <header
+        id="headerFixed"
+        :class="[
+            'headerFixed',
+            isScrolled ? 'headerFixed--visible' : ''
+        ]"
+    >
+        <div class="headerFixed-wrapper">
+            <img class="headerFixed__logo" src="@/assets/sprites/NSLogoGorizont.svg" alt="Логотип">
 
-        <canvas ref="canvas" class="header__canvas"></canvas>
+            <div class="headerFixed__menu-container">
 
-        <div class="header-container">
-            <div class="header__shadow"></div>
+                <img class="headerFixed__menu-svg" @click="changeVisibleMenu" src="@/assets/sprites/menu.svg" alt="menu.svg">
 
-            <div class="header__subtitle">разработка / внедрение / поддержка</div>
+                <div 
+                    class="headerFixed__menu"
+                    :class="{ 'headerFixed__menu--open': isMenuOpen }"
+                >
+                    <div class="headerFixed__menu-btns">
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('company')">О компании</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('advantages')">Услуги</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('cases')">Кейсы</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('callback')">Обратная связь</button>
+                        <button class="headerFixed__menu-btn" @click="changeVisibleMenu(); scrollToAnchor('footer')">Контакты</button>
+                    </div>
 
-            <img class="header__logo" src="@/assets/sprites/NSLogo.svg" alt="Логотип">
-
-            <div class="header__title">
-                <div class="header__title-container">
-                    <p class="header__title-text--mobile title-h3">Экспертные решения для вашего бизнеса</p>
-
-                    <span class="header__title-text">Экспертные решения</span>
-                    <div class="header__title-transfer">
-                        <span class="header__title-transfer-item">1С</span>
-                        <span class="header__title-transfer-item">CRM</span>
+                    <div 
+                        class="headerFixed__menu-links" 
+                        :class="{ 'headerFixed__menu-links--visible': isMenuOpen }"
+                    >
+                        <p class="text-medium">Телефон:</p>
+                        <a class="text-small" href="tel:+78124071767">+7 (812) 407-17-67</a>
+                        <br>
+                        <p class="text-medium">Email:</p>
+                        <a class="text-small" href="mailto:nanosoft-1c@yandex.ru">nanosoft-1c@yandex.ru</a>
                     </div>
                 </div>
-
-                <span class="header__title-text">для вашего бизнеса</span>
             </div>
         </div>
 
-        <img class="header__corner" src="@/assets/sprites/arrowCorner.svg" alt="Corner">
+        <div class="headerFixed__shadow"></div>
     </header>
 </template>
 
 <script setup>
-const props = defineProps({
-    scrollToAnchor: {
-        type: Function,
-        required: true,
-    }
-});
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+    import { ref } from 'vue'
 
-const canvas = ref(null);
-let ctx;
-let animationFrameId;
-let windowWidthOld = 0
+    const isMenuOpen = ref(false)
 
-const points = [];
-
-function getPointsCount() {
-    const width = window.innerWidth;
-    if (width <= 425) {
-        return 25;
-    } else if (width <= 768) {
-        return 30;
-    } else if (width <= 1024) {
-        return 40;
-    } else {
-        return 80;
-    }
-}
-
-function dynamicMaxDistance() {
-    const width = window.innerWidth;
-    if (width <= 425) {
-        return 300;
-    } else if (width <= 768) {
-        return 400;
-    } else if (width <= 1024) {
-        return 420;
-    } else {
-        return 450;
-    }
-}
-
-function resize() {
-    canvas.value.width = canvas.value.clientWidth;
-    canvas.value.height = canvas.value.clientHeight;
-}
-
-function initPoints() {
-    points.length = 0;
-    const currentPointsCount = getPointsCount();
-    for (let i = 0; i < currentPointsCount; i++) {
-        points.push({
-            x: Math.random() * canvas.value.width,
-            y: Math.random() * canvas.value.height,
-            vx: (Math.random() - 0.5) * 1.5,
-            vy: (Math.random() - 0.5) * 1.5,
-            radius: 3,
-        });
-    }
-}
-
-function drawLine(p1, p2, opacity) {
-    ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-    ctx.lineWidth = 0.5;
-    ctx.beginPath();
-    ctx.moveTo(p1.x, p1.y);
-    ctx.lineTo(p2.x, p2.y);
-    ctx.stroke();
-}
-
-function animate() {
-    ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
-
-    const maxDistance = dynamicMaxDistance();
-
-    for (const p of points) {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x <= 0 || p.x >= canvas.value.width) p.vx *= -1;
-        if (p.y <= 0 || p.y >= canvas.value.height) p.vy *= -1;
+    function changeVisibleMenu() {
+        isMenuOpen.value = !isMenuOpen.value
     }
 
-    for (let i = 0; i < points.length; i++) {
-        for (let j = i + 1; j < points.length; j++) {
-            const dx = points[i].x - points[j].x;
-            const dy = points[i].y - points[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < maxDistance) {
-                const opacity = 1 - dist / maxDistance;
-                drawLine(points[i], points[j], opacity);
-            }
-        }
-    }
-
-    for (const p of points) {
-        ctx.fillStyle = 'white';
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
-    }
-
-    animationFrameId = requestAnimationFrame(animate);
-}
-
-function handleResize() {
-    if(windowWidthOld != canvas.value.clientWidth) {
-        resize()
-        initPoints()
-    }
-}
-
-onMounted(() => {
-
-    ctx = canvas.value.getContext('2d');
-
-    handleResize()
-
-    windowWidthOld = canvas.value.clientWidth
-
-    window.addEventListener('resize', handleResize);
-    animate();
-});
-
-onBeforeUnmount(() => {
-    window.removeEventListener('resize', handleResize);
-    cancelAnimationFrame(animationFrameId);
-});
+    const props = defineProps({
+        isScrolled: Boolean,
+        scrollToAnchor: Function,
+    })
 </script>
