@@ -107,6 +107,9 @@ function drawLine(p1, p2, opacity) {
 }
 
 function animate() {
+    
+    if (canvas.value.style.opacity < 1) canvas.value.style.opacity = Number(canvas.value.style.opacity) + 0.005;
+
     ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
 
     const maxDistance = dynamicMaxDistance();
@@ -148,7 +151,9 @@ function handleResize() {
 }
 
 onMounted(() => {
-
+    
+    canvas.value.style.opacity = 0;
+    
     ctx = canvas.value.getContext('2d');
 
     handleResize()

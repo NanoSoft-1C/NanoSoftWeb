@@ -2,7 +2,7 @@
   <section class="services">
     <div class="services__header">
       <h2 class="services__header-title title-h2">что мы умеем делать</h2>
-      <p class="services__header-text text-big">Самое главное, мы умеем делать качественно</p>
+      <p class="services__header-text text-medium">Самое главное, мы умеем делать качественно</p>
     </div>
 
     <canvas class="services__canvas" ref="canvas"></canvas>
@@ -353,7 +353,7 @@ onMounted(async () => {
     const img = service.icon ? await loadImage(service.icon) : null
 
     createBlock(
-      key,
+      service.name,
       img,
       service.width,
       null,

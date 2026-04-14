@@ -20,7 +20,7 @@
                         :alt="item.key" />
 
                     <span class="findServices__finds-btn-text">
-                        {{ item.key }}
+                        {{ item.name }}
                     </span>
                 </NuxtLink>
             </div>

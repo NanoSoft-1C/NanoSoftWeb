@@ -9,10 +9,19 @@
     }
 
     &__description{
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        align-items: center;
+        gap: 64px;
         margin-bottom: 64px;
 
         &-title{
             margin-bottom: 16px;
+        }
+
+        &-image{
+            width: 100%;
+            height: fit-content;
         }
     }
 
@@ -43,8 +52,7 @@
             justify-content: center;
             gap: 16px;
 
-            border: 4px solid color-white();
-            border-radius: 6px;
+            border: 4px solid color-orange();
             padding: 8px;
 
             &-image{
