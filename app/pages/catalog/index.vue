@@ -1,6 +1,6 @@
 <template>
 
-    <BlocksStarting :scrollToAnchor="scrollToAnchor"></BlocksStarting>
+    <!-- <BlocksStarting :scrollToAnchor="scrollToAnchor"></BlocksStarting> -->
 
     <BlocksFindServices :servicesData="servicesData"></BlocksFindServices>
 
