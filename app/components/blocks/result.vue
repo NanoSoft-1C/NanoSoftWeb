@@ -7,7 +7,7 @@
                 <li class="result__list-item text-medium">Более 5 лет опыта в автоматизации и цифровизации бизнеса</li>
                 <li class="result__list-item text-medium">Более 50 довольных клиентов, являемся партнерами группы компаний "BatyrevConsultingGroup" и бизнес-клуба "Club 500"</li>
                 <li class="result__list-item text-medium">Только сертифицированные специалисты 1С:Профессионал и 1С:Специалист</li>
-                <li class="result__list-item text-medium">Гарантия на работы 12 месяцев</li>
+                <li class="result__list-item text-medium">Гарантия на работы до 12 месяцев</li>
                 <li class="result__list-item text-medium">
                     Индивидуальные решения под задачи вашего бизнеса <br>
                 </li>             

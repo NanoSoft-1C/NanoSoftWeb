@@ -1,10 +1,18 @@
 <template>
 
-    <!-- <BlocksStarting :scrollToAnchor="scrollToAnchor"></BlocksStarting> -->
-
-    <BlocksFindServices :servicesData="servicesData"></BlocksFindServices>
+    <!-- <BlocksFindServices :servicesData="servicesData"></BlocksFindServices> -->
 
     <BlocksServices :servicesData="servicesData"></BlocksServices>
+
+    <BlocksServicesList :servicesData="servicesData"></BlocksServicesList>
+
+    <BlocksTheSeller 
+        :title="'Мы ебать какие пиздатые'"
+        :text="'Вы должны бпрать услугши только у нас нахуй и ни у кого другого никогда'"
+        :image="'https://masterpiecer-images.s3.yandex.net/5f965c037d497af:upscaled'"
+    ></BlocksTheSeller>
+
+    <BlocksServicesList :servicesData="servicesData"></BlocksServicesList>
 
     <!-- <div v-if="modalState.isOpen" class="modal-overlay" @click="closeModal">
         <div class="modal-content" @click.stop>
