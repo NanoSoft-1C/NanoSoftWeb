@@ -1,12 +1,10 @@
 <template>
-    <div class="modal modal-overlay">
-        <div class="modal-content">
-            {{ title }}
-            <br><br>
-            {{ content }}
-            <br><br><br><br>
-            <div @click="closeModal">Закрыть</div>
-        </div>
+    <div class="modal-content">
+        <p class="modal-white">{{ article }}</p>
+        <br><br>
+        {{ content }}
+        <br><br><br><br>
+        <div @click="closeModal">Закрыть</div>
     </div>
 </template>
 
@@ -42,7 +40,7 @@
     }
 
     defineProps({
-        title: String,
+        article: String,
         content: Number,
         closeModal: Function
     })

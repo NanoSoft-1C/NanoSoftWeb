@@ -1,13 +1,28 @@
 .service{
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+
     background-color: color-white();
     box-shadow: 0px 0px 22px 26px color-white();
 
     *{
         color: color-black();
+        fill: color-black();
+        stroke: color-black();
+    }
+
+    .title-h2{
+        margin-bottom: 16px;
+    }
+
+    .theSeller-image-container::after{
+        background: linear-gradient(to right, color-white() 0%, color-white(0.4) 100%);
     }
 
     &__title{
         margin-bottom: 32px;
+        text-align: center;
     }
 
     &__image{
@@ -22,10 +37,6 @@
         gap: 64px;
         margin-bottom: 64px;
 
-        &-title{
-            margin-bottom: 16px;
-        }
-
         &-image{
             width: 100%;
             height: fit-content;
@@ -33,12 +44,6 @@
     }
 
     &__howHelp{
-        margin-bottom: 64px;
-
-        &-title{
-            margin-bottom: 16px;
-        }
-
         &-items{
             display: grid; 
             grid-template-columns: 1fr 1fr 1fr;
@@ -54,6 +59,9 @@
         }
 
         &-item{
+            position: relative;
+            overflow: hidden;
+
             display: flex;
             align-items: center;
             justify-content: center;
@@ -63,22 +71,30 @@
             padding: 8px;
 
             &-image{
+                position: inherit;
+                z-index: 2;
                 max-width: 100px;
             }
 
             &-text{
+                position: inherit;
+                z-index: 2;
                 text-align: center;
+            }
+
+            &-plug{
+                position: absolute;
+                top: 50%;
+                right: calc(100% - 150px);
+                translate: 0% -50%;
+
+                min-height: 100%;
+                max-height: 110%;
             }
         }
     }
 
     &__reasonsTry{
-        margin-bottom: 64px;
-        
-        &-title{
-            margin-bottom: 16px;
-        }
-
         &-items{
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -126,12 +142,115 @@
                     border-radius: 0 0 0 50px;
                 }
             }
+
+            &-list{
+                padding-left: 32px;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                list-style-type: circle;
+            }
+        }
+    }
+
+    &__products{
+        &-items{
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        &-item{
+            position: relative;
+            overflow: hidden;
+
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            gap: 32px;
+
+            border-radius: 6px;
+            padding: 8px 0;
+
+            &::after, &::before{
+                content: "";
+                position: absolute;
+                display: block;
+                height: 3px;
+                width: 100%;
+                background: linear-gradient(90deg, color-orange(0) 0%, color-orange(1) 100%);
+            }
+
+            &::before{
+                bottom: 0;
+            }
+
+            &-info, &-buy{
+                position: inherit;
+                z-index: 2;
+            }
+
+            &-info{
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            &-buy{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: end;
+                gap: 16px;
+                padding-right: 16px;
+
+                *{
+                    font-weight: bold;
+                    color: color-white();
+                }
+
+                &-button{
+                    transition: .4s ease;
+                    position: relative;
+                    right: calc(-16px + -6px);
+
+                    border-radius: 6px;
+                    border: 3px solid color-white();
+                    background-color: color-white();
+
+                    padding: 8px calc(16px + 6px) 8px 8px;
+                    color: color-black();
+
+                    &:hover{
+                        padding: 8px calc(16px + 6px + 8px) 8px calc(16px + 6px + 8px);
+                        background-color: color-orange();
+                        border: 3px solid color-white();
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            &-plug{
+                position: absolute;
+                top: 0;
+                left: calc(100% - 200px);
+                height: 100%;
+                transform: scaleX(-1);
+            }
         }
     }
 
     &__frequentQuestions{
-        &-title{
-            margin-bottom: 16px;
+
+        .list__list{
+            border-top: 3px solid color-black();
+
+            &-item{
+                border-bottom: 3px solid color-black();
+
+                &:hover{
+                    background-color: color-orange();
+                }
+            }
         }
     }
 }

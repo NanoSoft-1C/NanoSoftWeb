@@ -234,6 +234,11 @@ body{
         background: linear-gradient(0deg, color-black(0) 10%, color-black() 100%);
     }
 
+    &--static{
+        opacity: 1;
+        pointer-events: all;
+    }
+
     &--visible{
         opacity: 1;
         pointer-events: all;
@@ -522,6 +527,9 @@ body{
     }
 
     &-content{
+        width: 80%;
+        height: 80%;
+
         background-color: color-black();
         border: 1px solid color-orange();
         border-radius: 6px;
@@ -531,6 +539,10 @@ body{
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+
+    &-white{
+        color: color-white() !important;
     }
 }
 

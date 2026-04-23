@@ -3,7 +3,8 @@
         id="headerFixed"
         :class="[
             'headerFixed',
-            isScrolled ? 'headerFixed--visible' : ''
+            isScrolled ? 'headerFixed--visible' : '',
+            route.fullPath != '/' ? 'headerFixed--static' : ''
         ]"
     >
         <div class="headerFixed-wrapper">
@@ -47,6 +48,7 @@
     import { ref } from 'vue'
 
     const isMenuOpen = ref(false)
+    const route = useRoute()
 
     function changeVisibleMenu() {
         isMenuOpen.value = !isMenuOpen.value

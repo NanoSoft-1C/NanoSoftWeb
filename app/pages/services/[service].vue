@@ -249,6 +249,13 @@
         >
           <img
             v-if="item.image"
+            class="service__howHelp-item-plug"
+            src="/images/vectors/side-plug.svg"
+            alt="Изображение боковой заглушки"
+          />
+
+          <img
+            v-if="item.image"
             class="service__howHelp-item-image"
             :src="'/images/services/' + item.image"
             alt="Изображение описания помощи"
@@ -263,6 +270,58 @@
       </div>
     </div>
 
+    <div v-if="serviceData.benefits" class="service__reasonsTry">
+      <h2 class="service__reasonsTry-title title-h2">Все пункты, почему стоит брать именно у нас:</h2>
+
+      <div class="service__reasonsTry-items">
+        <div class="service__reasonsTry-item">
+          <div class="service__reasonsTry-item-index-container">
+            <span class="service__reasonsTry-item-index">1</span>
+          </div>
+          <ul class="service__reasonsTry-item-list text-medium">
+            <li
+              class="service__reasonsTry-item-list-item"
+              v-for="item in serviceData.whatIncluded" :key="item"
+              v-html="item"
+            ></li>
+          </ul>
+        </div>
+
+        <div class="service__reasonsTry-item">
+          <div class="service__reasonsTry-item-index-container">
+            <span class="service__reasonsTry-item-index">2</span>
+          </div>
+          <ul class="service__reasonsTry-item-list text-medium">
+            <li
+              class="service__reasonsTry-item-list-item"
+              v-for="item in serviceData.steps" :key="item"
+              v-html="item"
+            ></li>
+          </ul>
+        </div>
+
+        <div class="service__reasonsTry-item">
+          <div class="service__reasonsTry-item-index-container">
+            <span class="service__reasonsTry-item-index">3</span>
+          </div>
+          <ul class="service__reasonsTry-item-list text-medium">
+            <li
+              class="service__reasonsTry-item-list-item"
+              v-for="item in serviceData.whyUs" :key="item"
+              v-html="item"
+            ></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <BlocksTheSeller
+      v-if="serviceData.promo"
+      :title="serviceData.promo.title"
+      :text="serviceData.promo.text"
+      :image="serviceData.promo.image"
+    ></BlocksTheSeller>
+
     <div v-if="serviceData.reasonsTry" class="service__reasonsTry">
       <h2 class="service__reasonsTry-title title-h2">
         {{ serviceData.reasonsTry.length }} причины попробовать тестовый доступ
@@ -276,13 +335,66 @@
           :key="item"
         >
           <div class="service__reasonsTry-item-index-container">
-            <span class="service__reasonsTry-item-index">{{ index }}</span>
+            <span class="service__reasonsTry-item-index">{{ index+1 }}</span>
           </div>
           <p
             v-if="item"
             class="service__reasonsTry-item-text text-medium"
             v-html="item"
           ></p>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="serviceData.products" class="service__products">
+      <h2 class="service__products-title title-h2">Продукты</h2>
+
+      <div class="service__products-items">
+        <div 
+          class="service__products-item"
+          v-for="product in serviceData.products" :key="product"
+        >
+          <div class="service__products-item-info">
+            <h3 
+              class="service__products-item-info-title title-h3" 
+              v-if="product.title" 
+              v-html="product.title"
+            ></h3>
+
+            <p
+              class="service__products-item-info-description text-medium"
+              v-if="product.description"
+              v-html="product.description"
+            ></p>
+          </div>
+
+          <div class="service__products-item-buy">
+            <p
+              class="service__products-item-buy-price text-small"
+              v-if="product.price"
+              v-html="product.price + ' руб.'"
+            ></p>
+
+            <button
+              class="service__products-item-buy-button text-small"
+              @click="openModal(modalServices, {
+                article: product.article,
+                content: 123,
+              })"
+            >Заказать</button>
+
+            <p
+              class="service__products-item-buy-article text-small"
+              v-if="product.article"
+              v-html="product.article"
+            ></p>
+          </div>
+
+          <img
+            class="service__products-item-plug"
+            src="/images/vectors/side-plug.svg"
+            alt="Изображение боковой заглушки"
+          />
         </div>
       </div>
     </div>
@@ -314,12 +426,37 @@
         </li>
       </ol>
     </div>
+
+    <div v-if="modalState.isOpen" class="modal-overlay" @click.self="closeModal">
+      <component 
+        :is="modalState.component" 
+        v-bind="modalState.props"
+        :closeModal="closeModal"
+      />
+    </div> 
   </section>
 </template>
 
 <script setup>
 import { onMounted } from "vue";
 import servicesData from "./../../assets/data/services.json";
+import modalServices from '@/components/modal/modalServices.vue'
+
+const modalState = reactive({
+  isOpen: false,
+  component: null,
+  props: {}
+})
+
+function openModal(component, props = {}) {
+  modalState.component = markRaw(component)
+  modalState.props = props
+  modalState.isOpen = true
+}
+
+function closeModal() {
+  modalState.isOpen = false
+}
 
 const route = useRoute();
 const serviceData = servicesData[route.params.service];
@@ -331,8 +468,8 @@ function toggleItem(index) {
 }
 
 onMounted(() => {
-    svgAnimator();
-});
+  svgAnimator();
+})
 
 function svgAnimator() {
   const colorBlack = "#211715";
