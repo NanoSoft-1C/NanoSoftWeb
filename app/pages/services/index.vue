@@ -4,7 +4,7 @@
 
     <BlocksServices :servicesData="servicesData"></BlocksServices>
 
-    <BlocksServicesList :servicesData="servicesData"></BlocksServicesList>
+    <BlocksServicesList :servicesData="servicesData" :titleHead="'Сопровождение'"></BlocksServicesList>
 
     <BlocksTheSeller 
         :title="'Мы ебать какие пиздатые'"
@@ -12,7 +12,7 @@
         :image="'https://masterpiecer-images.s3.yandex.net/5f965c037d497af:upscaled'"
     ></BlocksTheSeller>
 
-    <BlocksServicesList :servicesData="servicesData"></BlocksServicesList>
+    <BlocksServicesList :servicesData="servicesData" :titleHead="'Сопровождение'"></BlocksServicesList>
 
     <!-- <div v-if="modalState.isOpen" class="modal-overlay" @click="closeModal">
         <div class="modal-content" @click.stop>
