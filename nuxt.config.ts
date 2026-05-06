@@ -10,5 +10,8 @@ export default defineNuxtConfig({
   link: [
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
   ],
+  runtimeConfig: {
+    bitrixKey: process.env.BITRIX_KEY,
+  },
   pages: true
 })

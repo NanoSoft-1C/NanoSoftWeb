@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
             }
         }
     
-        const response = await $fetch("https://nanosoft.bitrix24.ru/rest/15/ivfj4rae0zab3dxm/crm.lead.add.json", {
+        const response = await $fetch(`https://nanosoft.bitrix24.ru/rest/15/${useRuntimeConfig().bitrixKey}/crm.lead.add.json`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: payload
