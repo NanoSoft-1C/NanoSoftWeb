@@ -14,7 +14,7 @@
     import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 
-    const isScrolled = ref(Boolean)
+    const isScrolled = ref(false)
 
     function handleScroll() {
         isScrolled.value = window.scrollY > window.innerHeight/2

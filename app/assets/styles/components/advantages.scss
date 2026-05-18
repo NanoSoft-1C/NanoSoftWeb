@@ -1,3 +1,5 @@
+@use '../variable' as *;
+
 .advantages {
 
     * {
@@ -57,11 +59,9 @@
         }
 
         &-image {
-            border: 6px solid color-bodily();
+            border: 6px solid color-bodily() !important;
             position: relative;
             color: color-black();
-            // background-color: color-bodily();
-            border-style: solid;
 
             display: flex;
             align-items: center;

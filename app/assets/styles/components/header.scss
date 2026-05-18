@@ -1,53 +1,183 @@
+@use '../variable' as *;
+
 .header{
-    position: relative;
-    box-sizing: content-box;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 10;
+    background-color: color-black();
+    padding: 8px 0;
 
-    width: 100%;
-    height: 100vh;
-    color: color-white();
-    border-bottom: 12px color-orange() solid;
+    opacity: 0;
+    pointer-events: none;
+    transition: .4s ease;
 
-    *{
-        z-index: 2;
+    &__dropdown{
+        &-menu {
+            position: absolute;
+    
+            top: 100%;
+            left: 0;
+    
+            width: 100%;
+    
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+            background: color-black();
+    
+            border-radius: 0 0 6px 6px;
+            border: 1px solid color-white();
+            border-top: 0px solid color-white();
+    
+            z-index: 100;
+            box-sizing: border-box;
+    
+            will-change: opacity, transform;
+    
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+    
+            transform: translateY(-10px);
+    
+            transition:
+                opacity .25s ease,
+                transform .25s ease,
+                visibility .25s ease;
+    
+            &--open{
+                opacity: 1;
+                visibility: visible;
+                pointer-events: all;
+    
+                transform: translateY(0);
+            }
+
+            @include tablet {
+                position: fixed;
+
+                top: 50px;
+                left: 100%;
+
+                width: 100vw;
+                height: calc(100vh - 50px);
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 16px;
+
+                padding: 24px;
+
+                background: color-black();
+
+                border: none;
+                border-radius: 0;
+
+                transition: .4s ease;
+
+                z-index: 30;
+
+                &--open{
+                    left: 0;
+                }
+            }
+        }
+
+        &-item{
+            transition: .4s ease;
+            background-color: color-orange(0);
+            border: 0px solid color-black();
+            padding: 8px;
+            text-align: center;
+
+            @include tablet {
+                width: 100%;
+                font-size: $font-size-h3;
+                padding: 16px;
+            }
+            
+            &:hover{
+                background-color: color-orange(1);
+                cursor: pointer;
+            }
+        }
     }
 
-    &__shadow{
-        position: absolute;
+    &-wrapper{
+        max-width: $max-width-content;
         width: 100%;
-        height: 100%;
-        background: color-black();
-        background: radial-gradient(at center, color-black() 30%, color-black(0));
-        z-index: 1;
-        scale: 1 1.5;
-    }
+        margin: 0 auto;
 
-    &__canvas{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
+        display: flex;
+        justify-content: space-between;
+
+        @include laptopL {
+            padding: 0px 16px;;  
+        }
     }
 
     &__menu{
-        width: max-content;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        translate: -50% 0;
+        position: relative;
+        display: flex;
+
+        @include tablet{
+            position: fixed;
+            top: 50px;
+            right: -100%; 
+
+            width: 100vw;
+            height: calc(100vh - 50px);
+
+            background: color-black();
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            transition: right 0.3s ease;
+
+            pointer-events: all;
+
+            &-btn{
+                font-size: $font-size-h3;
+            }
+
+            &--open {
+                right: 0; 
+            }
+        }
+
+        &-btns{
+            @include tablet{
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
 
         &-btn{
-            color: color-white(0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+
+            color: color-white();
             background-color: color-black(0);
             border: none;
             border-bottom: 1px solid color-white(0.5);
 
-            font-size: $font-size-text;
+            tab-size: $font-size-text;
             text-transform: uppercase;
             padding: 8px 16px;
 
             transition: .4s ease;
+
+            &-corner{
+                width: 10px;
+            }
 
             &:hover{
                 color: color-white();
@@ -56,134 +186,248 @@
             }
         }
 
-        @include tablet{
+        &-links{
             display: none;
+
+            &--visible{
+                display: none;
+                flex-direction: column;
+            }
+
+            a, p{
+                font-size: $font-size-text;
+                text-align: center;
+                margin-bottom: 4px;
+            }
+        }
+
+        &-svg{
+            display: none;
+            fill: color-white();
+            height: 40px;
+            width: 40px;
+
+            pointer-events: all;
+            transition: .4s ease;
+
+            @include tablet{
+                display: block;
+            }
+
+            &:hover{
+                cursor: pointer;
+                scale: 1.1;
+            }
         }
     }
 
-    &-container{
+    &__shadow{
         position: absolute;
-        translate: -50% -50%;
-        top: 50%;
-        left: 50%;
+        bottom: -38px;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    &__subtitle{
-        color: color-white(0.5);
-        text-transform: uppercase;
-        tab-size: $font-size-text;
-        margin-bottom: 16px;
-    }
-
-    &__logo{
-        max-width: 600px;
         width: 100%;
+        height: 40px;
+
+        background: linear-gradient(0deg, color-black(0) 10%, color-black() 100%);
     }
 
-    &__title{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        flex-direction: column;
-
-        font-size: $font-size-h1;
-
-        @include laptop {
-            font-size: $font-size-h2;  
-        }
-
-        &-container{
-            display: flex;
-            align-items: center;
-            gap: 4px;
-
-            @include laptop {
-                flex-direction: column;  
-            }
-        }
-
-        &-text{
-            min-width: fit-content;
-
-            &--mobile{
-                display: none;
-            }
-        }
-
-        &-transfer{
-            display: inline-block;
-            overflow: hidden;
-
-            min-width: calc(57px + 16px*2);
-            height: 60px;
-
-            background: color-gradient();
-            border-radius: 26px 0 26px 0;
-
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-
-            &-item{
-                word-wrap: nowrap;
-                line-height: 57px;
-            }
-        }
+    &--static{
+        opacity: 1;
+        pointer-events: all;
     }
 
-    &__corner{
-        height: 24px;
-
-        position: absolute;
-        bottom: 48px;
-        right: 50%;
-
-        translate: 50% 0;
-        animation: 1.6s ease cornerMove infinite;
-
-        @include phone{
-            bottom: 20%;
-        }
-    }
-
-    @keyframes cornerMove {
-        0%{
-            translate: 50% 0%;
-        }
-        50%{
-            translate: 50% 100%; 
-        }
-        100%{
-            translate: 50% 0%;
-        }
-    }
-
-    @include laptop {
-        &-container{
-            width: calc(100% - 16px * 2);
-        }
-
-        &__subtitle{
-            margin-bottom: 8px;
-        }
-
-        &__title{
-            &-text{
-                display: none;
-
-                &--mobile{
-                    display: block;
-                    text-align: center;
-                    margin-bottom: 32px;
-                }
-            }
-        }
+    &--visible{
+        opacity: 1;
+        pointer-events: all;
     }
 }
+
+// .header{
+//     position: relative;
+//     box-sizing: content-box;
+
+//     width: 100%;
+//     height: 100vh;
+//     color: color-white();
+//     border-bottom: 12px color-orange() solid;
+
+//     *{
+//         z-index: 2;
+//     }
+
+//     &__shadow{
+//         position: absolute;
+//         width: 100%;
+//         height: 100%;
+//         background: color-black();
+//         background: radial-gradient(at center, color-black() 30%, color-black(0));
+//         z-index: 1;
+//         scale: 1 1.5;
+//     }
+
+//     &__canvas{
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 100%;
+//         height: 100%;
+//         z-index: -1;
+//     }
+
+//     &__menu{
+//         width: max-content;
+//         position: absolute;
+//         top: 0;
+//         left: 50%;
+//         translate: -50% 0;
+
+//         &-btn{
+//             color: color-white(0.5);
+//             background-color: color-black(0);
+//             border: none;
+//             border-bottom: 1px solid color-white(0.5);
+
+//             font-size: $font-size-text;
+//             text-transform: uppercase;
+//             padding: 8px 16px;
+
+//             transition: .4s ease;
+
+//             &:hover{
+//                 color: color-white();
+//                 border-bottom: 1px solid color-orange();
+//                 cursor: pointer;
+//             }
+//         }
+
+//         @include tablet{
+//             display: none;
+//         }
+//     }
+
+//     &-container{
+//         position: absolute;
+//         translate: -50% -50%;
+//         top: 50%;
+//         left: 50%;
+
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         flex-direction: column;
+//         gap: 8px;
+//     }
+
+//     &__subtitle{
+//         color: color-white(0.5);
+//         text-transform: uppercase;
+//         tab-size: $font-size-text;
+//         margin-bottom: 16px;
+//     }
+
+//     &__logo{
+//         max-width: 600px;
+//         width: 100%;
+//     }
+
+//     &__title{
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         flex-wrap: wrap;
+//         flex-direction: column;
+
+//         font-size: $font-size-h1;
+
+//         @include laptop {
+//             font-size: $font-size-h2;  
+//         }
+
+//         &-container{
+//             display: flex;
+//             align-items: center;
+//             gap: 4px;
+
+//             @include laptop {
+//                 flex-direction: column;  
+//             }
+//         }
+
+//         &-text{
+//             min-width: fit-content;
+
+//             &--mobile{
+//                 display: none;
+//             }
+//         }
+
+//         &-transfer{
+//             display: inline-block;
+//             overflow: hidden;
+
+//             min-width: calc(57px + 16px*2);
+//             height: 60px;
+
+//             background: color-gradient();
+//             border-radius: 26px 0 26px 0;
+
+//             display: flex;
+//             align-items: center;
+//             flex-direction: column;
+
+//             &-item{
+//                 word-wrap: nowrap;
+//                 line-height: 57px;
+//             }
+//         }
+//     }
+
+//     &__corner{
+//         height: 24px;
+
+//         position: absolute;
+//         bottom: 48px;
+//         right: 50%;
+
+//         translate: 50% 0;
+//         animation: 1.6s ease cornerMove infinite;
+
+//         @include phone{
+//             bottom: 20%;
+//         }
+//     }
+
+//     @keyframes cornerMove {
+//         0%{
+//             translate: 50% 0%;
+//         }
+//         50%{
+//             translate: 50% 100%; 
+//         }
+//         100%{
+//             translate: 50% 0%;
+//         }
+//     }
+
+//     @include laptop {
+//         &-container{
+//             width: calc(100% - 16px * 2);
+//         }
+
+//         &__subtitle{
+//             margin-bottom: 8px;
+//         }
+
+//         &__title{
+//             &-text{
+//                 display: none;
+
+//                 &--mobile{
+//                     display: block;
+//                     text-align: center;
+//                     margin-bottom: 32px;
+//                 }
+//             }
+//         }
+//     }
+// }

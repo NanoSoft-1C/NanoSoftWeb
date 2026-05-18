@@ -1,6 +1,6 @@
 1. Установить node-v22....
 2. Открыть PowerShell в винде под админом (ПКМ вставить в консоль)
-    2.1 первая команда: Set-ExecutionPolicy
+    2.1 первая команда: Set-ExecutionPolicy  (Команда запуска скриптов  в текущей версии терминала Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process)
     2.2 вторая команда: Unrestricted
     2.3 третья команда: Y
 3. Я использую VS code. Открываю терминал

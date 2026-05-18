@@ -13,5 +13,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     bitrixKey: process.env.BITRIX_KEY,
   },
-  pages: true
+  pages: true,
+  nitro: {  
+    prerender: {  
+      routes: ['/'],  
+      ignore: ['/services/1с-buh', '/services/1c-fresh']  
+    }  
+  }  
 })

@@ -31,6 +31,8 @@
         class="list--right"
     ></BlocksList>
 
+    <BlocksCertificates></BlocksCertificates>
+
 </template>
 
 <script setup>

@@ -2,8 +2,6 @@
 
     <!-- <BlocksFindServices :servicesData="servicesData"></BlocksFindServices> -->
 
-    <BlocksServices :servicesData="servicesData"></BlocksServices>
-
     <BlocksServicesList :servicesData="servicesData" :titleHead="'Сопровождение'"></BlocksServicesList>
 
     <BlocksTheSeller 
@@ -14,6 +12,8 @@
 
     <BlocksServicesList :servicesData="servicesData" :titleHead="'Сопровождение'"></BlocksServicesList>
 
+    <BlocksServices :servicesData="servicesData"></BlocksServices>
+    
     <!-- <div v-if="modalState.isOpen" class="modal-overlay" @click="closeModal">
         <div class="modal-content" @click.stop>
             <ModalServices 

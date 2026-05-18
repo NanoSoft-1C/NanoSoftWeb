@@ -1,39 +1,87 @@
 <template>
-    <header class="header" id="header">
-        <div class="header__menu">
-            <button class="header__menu-btn" @click="props.scrollToAnchor('company')">О компании</button>
-            <button class="header__menu-btn" @click="props.scrollToAnchor('advantages')">Услуги</button>
-            <button class="header__menu-btn" @click="props.scrollToAnchor('cases')">Кейсы</button>
-            <button class="header__menu-btn" @click="props.scrollToAnchor('callback')">Обратная связь</button>
-            <button class="header__menu-btn" @click="props.scrollToAnchor('footer')">Контакты</button>
+    <section class="starting" id="starting">
+        <div class="starting__menu">
+
+            <button class="starting__menu-btn" @click="props.scrollToAnchor('company')">О компании</button>
+
+            <div
+                class="starting__dropdown"
+                @mouseenter="!isMobile && openServices()"
+                @mouseleave="!isMobile && closeServices()"
+            >
+
+                <button
+                    class="starting__menu-btn"
+                    @click="handleServicesClick"
+                >
+                    Услуги
+
+                    <img
+                        class="starting__menu-btn-corner"
+                        src="@/assets/sprites/arrowCorner.svg"
+                        alt="Corner"
+                    >
+                </button>
+
+                <div
+                    class="starting__dropdown-menu"
+                    :class="{
+                        'starting__dropdown-menu--open': isServicesOpen
+                    }"
+                >
+                    <button
+                        class="starting__dropdown-item"
+                        @click="props.scrollToAnchor('footer')"
+                    >Продукты 1C</button>
+
+                    <button
+                        class="starting__dropdown-item"
+                        @click="props.scrollToAnchor('footer')"
+                    >Аренда серверов</button>
+
+                    <button
+                        class="starting__dropdown-item"
+                        @click="props.scrollToAnchor('footer')"
+                    >CRM Битрикс 24</button>
+
+                    <button
+                        class="starting__dropdown-item"
+                        @click="props.scrollToAnchor('footer')"
+                    >Аудит отдела продаж</button>
+                </div>
+            </div>
+
+            <button class="starting__menu-btn" @click="props.scrollToAnchor('cases')">Кейсы</button>
+            <button class="starting__menu-btn" @click="props.scrollToAnchor('callback')">Обратная связь</button>
+            <button class="starting__menu-btn" @click="props.scrollToAnchor('footer')">Контакты</button>
         </div>
 
-        <canvas ref="canvas" class="header__canvas"></canvas>
+        <canvas ref="canvas" class="starting__canvas"></canvas>
 
-        <div class="header-container">
-            <div class="header__shadow"></div>
+        <div class="starting-container">
+            <div class="starting__shadow"></div>
 
-            <div class="header__subtitle">разработка / внедрение / поддержка</div>
+            <div class="starting__subtitle">разработка / внедрение / поддержка</div>
 
-            <img class="header__logo" src="@/assets/sprites/NSLogo.svg" alt="Логотип">
+            <img class="starting__logo" src="@/assets/sprites/NSLogo.svg" alt="Логотип">
 
-            <div class="header__title">
-                <div class="header__title-container">
-                    <p class="header__title-text--mobile title-h3">Экспертные решения для вашего бизнеса</p>
+            <div class="starting__title">
+                <div class="starting__title-container">
+                    <p class="starting__title-text--mobile title-h3">Экспертные решения для вашего бизнеса</p>
 
-                    <span class="header__title-text">Экспертные решения</span>
-                    <div class="header__title-transfer">
-                        <span class="header__title-transfer-item">1С</span>
-                        <span class="header__title-transfer-item">CRM</span>
+                    <span class="starting__title-text">Экспертные решения</span>
+                    <div class="starting__title-transfer">
+                        <span class="starting__title-transfer-item">1С</span>
+                        <span class="starting__title-transfer-item">CRM</span>
                     </div>
                 </div>
 
-                <span class="header__title-text">для вашего бизнеса</span>
+                <span class="starting__title-text">для вашего бизнеса</span>
             </div>
         </div>
 
-        <img class="header__corner" src="@/assets/sprites/arrowCorner.svg" alt="Corner">
-    </header>
+        <img class="starting__corner" src="@/assets/sprites/arrowCorner.svg" alt="Corner">
+    </section>
 </template>
 
 <script setup>
@@ -44,6 +92,13 @@ const props = defineProps({
     }
 });
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+
+const isServicesOpen = ref(false)
+const windowWidth = ref(1920)
+
+const isMobile = computed(() => windowWidth.value <= 768)
+
+let servicesTimeout = null
 
 const canvas = ref(null);
 let ctx;
@@ -148,6 +203,28 @@ function handleResize() {
         resize()
         initPoints()
     }
+    windowWidth.value = window.innerWidth
+}
+
+function openServices() {
+    clearTimeout(servicesTimeout)
+    isServicesOpen.value = true
+}
+
+function closeServices() {
+    servicesTimeout = setTimeout(() => {
+        isServicesOpen.value = false
+    }, 150)
+}
+
+function handleServicesClick() {
+
+    if (isMobile.value) {
+        isServicesOpen.value = !isServicesOpen.value
+        return
+    }
+
+    props.scrollToAnchor('advantages')
 }
 
 onMounted(() => {

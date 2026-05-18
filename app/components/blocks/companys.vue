@@ -218,7 +218,9 @@ onMounted(() => {
       countListCompanysBtn--
     }
 
-    if (countListCompanysBtn == 0 || countListCompanysBtn == 13) directionListCompanysBtn = !directionListCompanysBtn
+    if (
+      countListCompanysBtn == 0 || countListCompanysBtn == 13
+    ) directionListCompanysBtn = !directionListCompanysBtn
   }, 3000);
 
   vectorLayer = new VectorLayer({

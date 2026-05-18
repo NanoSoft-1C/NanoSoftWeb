@@ -1,5 +1,5 @@
 <template>
-  <section class="callback wrapper">
+  <section class="callback">
     <h2 class="callback__title title-h2">Обратная связь</h2>
     <p class="callback__text text-big">
       Мы свяжемся с вами в течение <span class="text-bodily">15 минут</span>!

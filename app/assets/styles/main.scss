@@ -1,7 +1,21 @@
-@import 'variable.scss';
+@use './variable.scss' as *;
+
+@use './components/starting';
+@use './components/company';
+@use './components/result';
+@use './components/companys';
+@use './components/advantages';
+@use './components/list';
+@use './components/callback';
+@use './components/service';
+@use './components/services';
+@use './components/findServices';
+@use './components/theSeller';
+@use './components/certificates.scss';
+@use './components/header';
+@use './components/footer';
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap');
-
 
 
 *{
@@ -94,154 +108,8 @@ body{
 
     @include laptopL{
         max-width: 100vw;
-        margin: 60px;
         padding: 0 16px;
         overflow: hidden;
-    }
-}
-
-.lineCanvas{
-    position: absolute;
-    height: 100%;
-    translate: -50% -50%;
-    top: 50%;
-    left: 50%;
-    pointer-events: none;
-}
-
-.headerFixed{
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    z-index: 10;
-    background-color: color-black();
-    padding: 8px 0;
-
-    opacity: 0;
-    pointer-events: none;
-    transition: .4s ease;
-
-    &-wrapper{
-        max-width: $max-width-content;
-        width: 100%;
-        margin: 0 auto;
-
-        display: flex;
-        justify-content: space-between;
-
-        @include laptopL {
-            padding: 0px 16px;;  
-        }
-    }
-
-    &__menu{
-        @include tablet{
-            position: fixed;
-            top: 50px;
-            right: -100%; 
-
-            width: 100vw;
-            height: calc(100vh - 50px);
-
-            background: color-black();
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-            transition: right 0.3s ease;
-
-            pointer-events: all;
-
-            &-btn{
-                font-size: $font-size-h3;
-            }
-
-            &--open {
-                right: 0; 
-            }
-        }
-
-        &-btns{
-            @include tablet{
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
-            }
-        }
-
-        &-btn{
-            color: color-white();
-            background-color: color-black(0);
-            border: none;
-            border-bottom: 1px solid color-white(0.5);
-
-            tab-size: $font-size-text;
-            text-transform: uppercase;
-            padding: 8px 16px;
-
-            transition: .4s ease;
-
-            &:hover{
-                color: color-white();
-                border-bottom: 1px solid color-orange();
-                cursor: pointer;
-            }
-        }
-
-        &-links{
-            display: none;
-
-            &--visible{
-                display: none;
-                flex-direction: column;
-            }
-
-            a, p{
-                font-size: $font-size-text;
-                text-align: center;
-                margin-bottom: 4px;
-            }
-        }
-
-        &-svg{
-            display: none;
-            fill: color-white();
-            height: 40px;
-            width: 40px;
-
-            pointer-events: all;
-            transition: .4s ease;
-
-            @include tablet{
-                display: block;
-            }
-
-            &:hover{
-                cursor: pointer;
-                scale: 1.1;
-            }
-        }
-    }
-
-    &__shadow{
-        position: absolute;
-        bottom: -38px;
-
-        width: 100%;
-        height: 40px;
-
-        background: linear-gradient(0deg, color-black(0) 10%, color-black() 100%);
-    }
-
-    &--static{
-        opacity: 1;
-        pointer-events: all;
-    }
-
-    &--visible{
-        opacity: 1;
-        pointer-events: all;
     }
 }
 
@@ -318,6 +186,17 @@ body{
 .border{
     border: 1px solid color-white();
     border-radius: 26px 0px 26px 0px;
+}
+
+.tag{
+    width: fit-content;
+    height: fit-content;
+    border-radius: 12px;
+    border: 1px solid color-orange(.5);
+    padding: 8px 16px;
+    background-color: color-orange(.25);
+    color: color-orange();
+    font-weight: bold;
 }
 
 .corner{
@@ -575,15 +454,3 @@ body{
 }
 
 
-@import './components/header.scss';
-@import './components/company.scss';
-@import './components/result.scss';
-@import './components/companys.scss';
-@import './components/advantages.scss';
-@import './components/list.scss';
-@import './components/callback.scss';
-@import './components/service.scss';
-@import './components/services.scss';
-@import './components/findServices.scss';
-@import './components/theSeller.scss';
-@import './components/footer.scss';
