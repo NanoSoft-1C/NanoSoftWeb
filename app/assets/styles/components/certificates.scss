@@ -1,4 +1,8 @@
+@use '../variable' as *;
+
 .certificates{
+    margin-bottom: 64px;
+
     &-title{
         margin-bottom: 64px;
         text-align: center;
@@ -7,12 +11,15 @@
     .certificatesSlider{
         &-slider{
             width: 100%;
+            padding: 0 64px;
+            position: relative;
         }
 
         &-line{
             display: flex;
-            gap: 32px;
             flex-wrap: nowrap;
+            gap: 32px;
+
             width: fit-content;
             height: auto;
 
@@ -22,27 +29,44 @@
         }
 
         &-item{
-            border-radius: 6px;
-            pointer-events: all;
-            transition: .4s ease;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 32px;
 
-            &:hover{
-                transform: scale(1.2);
+            height: 100%;
+            width: fit-content;
+
+            &-img{
+                width: 300px;
+
+                border-radius: 6px;
+                pointer-events: all;
+                transition: .4s ease;
+                border: 1px solid color-black();
+
+                &:hover{
+                    transform: scale(1.2);
+                }
             }
         }
 
-        &-btn-prev, &-btn-next{
-            display: none;
+        &-shadow{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            width: 40px;
+            height: 100%;
+
+            background: linear-gradient(90deg,color-black() 0%, color-black(0) 100%);
+        
+            &-next{
+                right: 0;
+                left: auto;
+                rotate: 180deg;
+                scale: 1.2;
+            }
+        
         }
-
-        // &-shadow{
-        //     position: absolute;
-        //     bottom: 0;
-
-        //     width: 40px;
-        //     height: 100%;
-
-        //     background: linear-gradient(90deg,rgb(0, 0, 0) 0%, rgba(255, 255, 255, 1) 100%);
-        // }
     }
 }

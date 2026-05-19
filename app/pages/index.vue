@@ -45,14 +45,16 @@
     function scrollToAnchor(anchorId) {
         if (process.server) return 
 
-        const element = document.getElementById(anchorId)
-        const header = document.getElementById('headerFixed')
+        const element = document.querySelector("#" + anchorId)
+        const header = document.querySelector('#header')
+        const headerShadow = document.querySelector('.header__shadow')
+
         if (!element) return
 
         const elementRect = element.getBoundingClientRect()
         const elementTop = elementRect.top + window.scrollY
 
-        const scrollPosition = elementTop - header.offsetHeight
+        const scrollPosition = elementTop - header.offsetHeight - headerShadow.offsetHeight
 
         window.scrollTo({
             top: scrollPosition,
