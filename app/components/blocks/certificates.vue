@@ -32,9 +32,6 @@
     import { onMounted } from 'vue'
     import { DTScroll } from '@/assets/scripts/slider'
 
-    const certificatesSliderBtnPrev = ref(null)
-    const certificatesSliderBtnNext = ref(null)
-
     const mouseInCertificates = ref(false)
 
     onMounted(() => {
