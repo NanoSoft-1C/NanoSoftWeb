@@ -28,7 +28,7 @@
 
     <div class="bitrix-hero__image">
       <img
-        src="/images/bitrix24/hero-bitrix.SVG"
+        src="/images/bitrix24/hero-bitrix.svg"
         alt="Интеграция Битрикс24"
       >
     </div>
