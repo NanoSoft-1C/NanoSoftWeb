@@ -15,6 +15,7 @@
                 <rect width="100%" height="100%" fill="#494949" mask="url(#wipeMask)"/>
             </svg>
         </div>
+
         <div class="company__content">
             <h2 class="company__content-title title-h2">Компания Нано софт</h2>
             <span class="company__content-line"></span>
@@ -22,6 +23,10 @@
                 Эксперт в разработке и сопровождении индивидуальных программных решений <br>
                 на платформе 1С, создании CRM-систем и интеграций, а также технической поддержке
             </p>
+            <!-- <div>
+                <span class="company__content-line" style="margin: 0 0 8px 0; background-color: rgb(255 254 253 / 30%);"></span>
+                <p style="color: rgb(255 254 253 / 30%);">Мы акредитованная ИТ компания</p>
+            </div> -->
         </div>
     </section>
 </template>

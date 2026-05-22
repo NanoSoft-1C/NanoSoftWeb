@@ -8,11 +8,11 @@
         ]"
     >
         <div class="header-wrapper">
-            <img
+            <nuxt-link to="/"><img
                 class="header__logo"
                 src="@/assets/sprites/NSLogoGorizont.svg"
                 alt="Логотип"
-            >
+            ></nuxt-link>
 
             <div class="header__menu-container">
 

@@ -11,7 +11,7 @@
     }
 
     .title-h2{
-        margin-bottom: 16px;
+        margin-bottom: 32px;
     }
 
     .theSeller-image-container::after{
@@ -51,35 +51,49 @@
 
     &__howHelp{
         &-items{
-            display: grid; 
-            grid-template-columns: 1fr 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
             gap: 32px;
-
-            @include laptopL{
-                grid-template-columns: 1fr 1fr;
-            }
+            justify-content: center;
 
             @include tablet{
-                grid-template-columns: 1fr;
+                gap: 16px;
             }
         }
 
         &-item{
+            flex: 0 0 calc((100% - 64px) / 3);
+
+            @include laptopL{
+                flex: 0 0 calc((100% - 32px) / 2);
+            }
+
+            @include tablet{
+                flex: 0 0 calc((100%) / 1);
+            }
+
             position: relative;
             overflow: hidden;
 
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             gap: 16px;
 
-            border: 4px solid color-orange();
+            border: 4px solid color-white(.3) !important;
             padding: 8px;
 
             &-image{
                 position: inherit;
                 z-index: 2;
+
                 max-width: 100px;
+                max-height: 100%;
+                height: 100%;
+                width: 100%;
+
+                border-radius: 12px;
+                object-fit: contain;
             }
 
             &-text{
@@ -102,19 +116,34 @@
 
     &__reasonsTry{
         &-items{
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 32px;
+            justify-content: center;
+
+            @include tablet{
+                gap: 16px;
+            }
         }
 
         &-item{
+            flex: 0 0 calc((100% - 64px) / 3);
+
+            @include laptopL{
+                flex: 0 0 calc((100% - 32px) / 2);
+            }
+
+            @include tablet{
+                flex: 0 0 calc((100%) / 1);
+            }
+
             overflow: hidden;
             position: relative;
 
             display: flex;
             align-items: center;
 
-            border: 4px solid color-orange();
+            border: 4px solid color-white(.3);
             border-radius: 6px;
             padding: 8px;
 
@@ -143,7 +172,7 @@
 
                     width: 30px;
                     height: 30px;
-                    background-color: color-orange();
+                    background-color: color-white(.3);
 
                     border-radius: 0 0 0 50px;
                 }
@@ -179,11 +208,12 @@
 
             &::after, &::before{
                 content: "";
+                z-index: 1;
                 position: absolute;
                 display: block;
                 height: 3px;
                 width: 100%;
-                background: linear-gradient(90deg, color-orange(0) 0%, color-orange(1) 100%);
+                background: linear-gradient(90deg, color-white(0) 0%, rgb(128 128 127) 100%);
             }
 
             &::before{
@@ -228,8 +258,9 @@
 
                     &:hover{
                         padding: 8px calc(16px + 6px + 8px) 8px calc(16px + 6px + 8px);
-                        background-color: color-orange();
+                        background-color: rgb(128 128 127);
                         border: 3px solid color-white();
+                        color: color-white();
                         cursor: pointer;
                     }
                 }
@@ -248,13 +279,19 @@
     &__frequentQuestions{
 
         .list__list{
-            border-top: 3px solid color-black();
+            border-top: 3px solid color-white(.3);
 
             &-item{
-                border-bottom: 3px solid color-black();
+                border-bottom: 3px solid color-white(.3);
 
                 &:hover{
-                    background-color: color-orange();
+                    background-color: color-white(.3);
+                    border-bottom: 3px solid color-white(0);
+                    
+                    *{
+                        color: color-white();
+                        stroke: color-white();
+                    }
                 }
             }
         }
