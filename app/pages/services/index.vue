@@ -5,9 +5,9 @@
     <BlocksServicesList :servicesData="servicesData" :titleHead="'Сопровождение'"></BlocksServicesList>
 
     <BlocksTheSeller 
-        :title="'Мы ебать какие пиздатые'"
-        :text="'Вы должны бпрать услугши только у нас нахуй и ни у кого другого никогда'"
-        :image="'https://masterpiecer-images.s3.yandex.net/5f965c037d497af:upscaled'"
+        :title="'Мы самые крутые'"
+        :text="'Какое то очень крутое промо, которые все должны увидеть'"
+        :image="'https://www.shutterstock.com/image-vector/kitten-puppy-punk-mohawk-stripes-260nw-2121014093.jpg'"
     ></BlocksTheSeller>
 
     <BlocksServicesList :servicesData="servicesData" :titleHead="'Сопровождение'"></BlocksServicesList>
