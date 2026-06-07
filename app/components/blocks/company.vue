@@ -17,11 +17,10 @@
         </div>
 
         <div class="company__content">
-            <h2 class="company__content-title title-h2">Компания Нано софт</h2>
+            <h2 class="company__content-title title-h2">Нано софт</h2>
             <span class="company__content-line"></span>
             <p class="company__content-text text-big">
-                Эксперт в разработке и сопровождении индивидуальных программных решений <br>
-                на платформе 1С, создании CRM-систем и интеграций, а также технической поддержке
+                Официальный партнер 1С и аккредитованная IT-компания с подтвержденной экспертизой в области автоматизации и цифровизации бизнеса
             </p>
             <!-- <div>
                 <span class="company__content-line" style="margin: 0 0 8px 0; background-color: rgb(255 254 253 / 30%);"></span>

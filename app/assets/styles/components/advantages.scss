@@ -7,7 +7,7 @@
     }
 
     &__title {
-        margin-bottom: 16px;
+        margin-bottom: 32px;
         color: color-white();
     }
 
@@ -34,10 +34,11 @@
     }
 
     &__block {
-        padding: 10px 20px;
-        background-color: #FFFEFD;
+        background-color: color-white(.1);
+        border: 1px solid color-white(.4);
+        border-radius: 16px;
+        padding: 16px;
         justify-content: left;
-        color: color-black();
 
         &--grid-1 { grid-area: --grid-1; }
         &--grid-2 { grid-area: --grid-2; }
@@ -47,15 +48,25 @@
         &--grid-6 { grid-area: --grid-6; }
 
         &-title{
-            text-align: center;
+            position: relative;
             margin: 0 auto 16px auto;
+            color: color-orange();
+            font-weight: bold;
+            padding-right: 16px;
+
+            &::after{
+                content: "+";
+
+                position: absolute;
+                right: 0;
+            }
         }
 
         &-text{
-            padding-left: 24px;
             display: flex;
             flex-direction: column;
             gap: 8px;
+            color: color-white();
         }
 
         &-image {

@@ -9,6 +9,26 @@
     color: color-white();
     border-bottom: 12px color-orange() solid;
 
+    &__btn{
+        position: absolute;
+        top: 8px;
+        right: 8px;
+
+        border: 2px solid color-white();
+        border-radius: 6px;
+        padding: 8px;
+
+        transition: .4s ease;
+        opacity: .5;
+
+        &:hover{
+            background-color: color-white();
+            color: color-black();
+            cursor: pointer;
+            opacity: 1;
+        }
+    }
+
     &__dropdown{
 
         &-menu{
@@ -111,7 +131,7 @@
         background: color-black();
         background: radial-gradient(at center, color-black() 30%, color-black(0));
         z-index: 1;
-        scale: 1 1.5;
+        scale: 3 3.5;
     }
 
     &__canvas{
@@ -185,15 +205,17 @@
     }
 
     &__subtitle{
-        color: color-white(0.5);
-        text-transform: uppercase;
-        tab-size: $font-size-text;
-        margin-bottom: 16px;
-    }
-
-    &__logo{
+        color: color-white(0.65);
+        font-size: $font-size-subtext;
+        text-align: center;
         max-width: 600px;
-        width: 100%;
+        line-height: 1.5;
+        margin-top: 20px;
+
+        @include laptop {
+            font-size: $font-size-small;
+            max-width: 90%;
+        }
     }
 
     &__title{
@@ -202,48 +224,29 @@
         align-items: center;
         flex-wrap: wrap;
         flex-direction: column;
+        gap: 4px;
+        text-align: center;
 
         font-size: $font-size-h1;
+        font-weight: 700;
+        line-height: 1.15;
 
         @include laptop {
-            font-size: $font-size-h2;  
+            font-size: $font-size-h2;
         }
 
-        &-container{
-            display: flex;
-            align-items: center;
-            gap: 4px;
-
-            @include laptop {
-                flex-direction: column;  
-            }
+        @include tablet {
+            font-size: $font-size-h3;
         }
 
         &-text{
             min-width: fit-content;
 
-            &--mobile{
-                display: none;
-            }
-        }
-
-        &-transfer{
-            display: inline-block;
-            overflow: hidden;
-
-            min-width: calc(57px + 16px*2);
-            height: 60px;
-
-            background: color-gradient();
-            border-radius: 26px 0 26px 0;
-
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-
-            &-item{
-                word-wrap: nowrap;
-                line-height: 57px;
+            &--accent{
+                background: color-gradient();
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
             }
         }
     }
@@ -279,21 +282,9 @@
         &-container{
             width: calc(100% - 16px * 2);
         }
-
-        &__subtitle{
-            margin-bottom: 8px;
-        }
-
-        &__title{
-            &-text{
-                display: none;
-
-                &--mobile{
-                    display: block;
-                    text-align: center;
-                    margin-bottom: 32px;
-                }
-            }
-        }
     }
 }
+
+
+
+
