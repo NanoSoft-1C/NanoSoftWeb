@@ -7,15 +7,19 @@
             <div class="footer__info">
               <h2 class="title-h3">Контакты ООО "НАНО СОФТ"</h2>
 
-              <p class="text-small">ИНН: 3500005965</p>
-              <p class="text-small">КПП: 350001001</p>
-              <p class="text-small">ОГРН: 1243500004000</p>
+              <p class="text-small" @click="copyToClipboard('3500005965')">ИНН: 3500005965</p>
+              <p class="text-small" @click="copyToClipboard('350001001')">КПП: 350001001</p>
+              <p class="text-small" @click="copyToClipboard('1243500004000')">ОГРН: 1243500004000</p>
               <br>
-              <p class="text-medium">Юридический адрес: </p>
-              <p class="text-small">Вологодская область, г. Вологда, ул. Фрязиновская, д. 27А/16</p>
+              <p class="text-medium" @click="copyToClipboard('Вологодская область, г. Вологда, ул. Фрязиновская, д. 27А/16')">Юридический адрес: </p>
+              <p class="text-small" @click="copyToClipboard('Вологодская область, г. Вологда, ул. Фрязиновская, д. 27А/16')">
+                Вологодская область, г. Вологда, ул. Фрязиновская, д. 27А/16
+              </p>
               <br>
-              <p class="text-medium">Фактический адрес:</p>
-              <p class="text-small">Вологодская область, г. Вологда, ул. Октябрьская, д. 27</p>
+              <p class="text-medium" @click="copyToClipboard('Вологодская область, г. Вологда, ул. Октябрьская, д. 27')">Фактический адрес:</p>
+              <p class="text-small" @click="copyToClipboard('Вологодская область, г. Вологда, ул. Октябрьская, д. 27')">
+                Вологодская область, г. Вологда, ул. Октябрьская, д. 27
+              </p>
               <br>
               <p class="text-medium">Телефон:</p>
               <a class="text-small" href="tel:+78124071767">+7 (812) 407-17-67</a>
@@ -147,6 +151,53 @@ function changeVisibleDevBlock(){
   }
 }
 
+function copyToClipboard(text) {
+  // Копируем текст в буфер обмена
+  navigator.clipboard.writeText(text).then(() => {
+    // Создаем элемент уведомления
+    const notification = document.createElement('div')
+    notification.textContent = 'Данные скопированы'
+    
+    // Добавляем стили
+    notification.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: sans-serif;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    `
+    
+    // Добавляем в DOM
+    document.body.appendChild(notification)
+    
+    // Плавно показываем
+    requestAnimationFrame(() => {
+      notification.style.opacity = '1'
+    })
+    
+    // Через 2 секунды плавно скрываем
+    setTimeout(() => {
+      notification.style.opacity = '0'
+      
+      // Удаляем элемент после завершения анимации
+      setTimeout(() => {
+        document.body.removeChild(notification)
+      }, 300) // 300ms = время transition
+    }, 2000)
+    
+  }).catch(err => {
+    console.error('Ошибка копирования:', err)
+  })
+}
 </script>
 
 <style scoped>
