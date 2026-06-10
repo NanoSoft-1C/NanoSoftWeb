@@ -1,3 +1,24 @@
+<script setup>
+const scrollToAnchor = (id) => {
+    const element = document.getElementById(id)
+
+    if (element) {
+
+        const offset = 120
+
+        const elementPosition =
+            element.getBoundingClientRect().top + window.pageYOffset
+
+        const offsetPosition = elementPosition - offset
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+        })
+    }
+}
+</script>
+
 <template>
   <section class="server-hero wrapper">
 
@@ -17,20 +38,29 @@
         1С, CRM, сайтов и высоконагруженных проектов
       </p>
 
-      <div class="server-hero__buttons">
+      <!-- <div class="server-hero__buttons">
 
         <button class="btn-primary">
-          Подобрать сервер или получить консультацию        
-        
+          ПОДОБРАТЬ СЕРВЕР ИЛИ ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ               
         </button>
         
-      </div>
+      </div> -->
+
+      <div
+       id="server-btn"
+       class="advantages__block-image advantages__block--grid-6 border"
+       @click="scrollToAnchor('callback')"
+      >
+       <h2 class="advantages__block-image-text title-h3">
+         Подобрать сервер <br>или<br> получить консультацию
+       </h2>
+     </div>
 
     </div>
 
     <div class="server-hero__image">
       <img
-        src="/images/server-rent/server-hero.webp"
+        src="/images/server-rent/server-hero.png"
         alt="Аренда серверов"
       >
     </div>
@@ -101,6 +131,7 @@
   transform: translateY(-2px);
 }
 
+
 .btn-secondary {
   background: transparent;
   border: 1px solid rgba(255,255,255,.15);
@@ -123,4 +154,7 @@
     font-size: 42px !important;
   }
 }
+
+
+
 </style>

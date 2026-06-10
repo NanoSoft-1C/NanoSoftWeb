@@ -1,3 +1,24 @@
+<script setup>
+const scrollToAnchor = (id) => {
+    const element = document.getElementById(id)
+
+    if (element) {
+
+        const offset = 120
+
+        const elementPosition =
+            element.getBoundingClientRect().top + window.pageYOffset
+
+        const offsetPosition = elementPosition - offset
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+        })
+    }
+}
+</script>
+
 <template>
   <section class="server-cta wrapper">
 
@@ -13,8 +34,11 @@
         Bitrix24, CRM, сайты или внутреннюю инфраструктуру.
       </p>
 
-      <button>
-        Получить консультацию
+      <button
+       class="server-cta__button"
+       @click="scrollToAnchor('callback')"
+      >
+        ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
       </button>
 
     </div>
@@ -73,5 +97,33 @@
   .server-cta__box h2 {
     font-size: 38px;
   }
+}
+
+.server-cta__button {
+    height: 60px;
+
+    padding: 0 36px;
+
+    border-radius: 18px;
+    border: 1px solid transparent;
+
+    background: color-orange();
+    color: color-black();
+
+    font-weight: 700;
+
+    transition: .4s ease;
+
+    cursor: pointer;
+
+    &:hover{
+        background: transparent;
+
+        color: color-white();
+
+        border: 1px solid color-orange();
+
+        transform: translateY(-2px);
+    }
 }
 </style>

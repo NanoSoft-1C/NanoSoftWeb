@@ -1,3 +1,24 @@
+<script setup>
+const scrollToAnchor = (id) => {
+    const element = document.getElementById(id)
+
+    if (element) {
+
+        const offset = 120
+
+        const elementPosition =
+            element.getBoundingClientRect().top + window.pageYOffset
+
+        const offsetPosition = elementPosition - offset
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+        })
+    }
+}
+</script>
+
 <template>
   <section class="bitrix-hero wrapper">
 
@@ -8,18 +29,21 @@
       </span>
 
       <h1 class="bitrix-hero__title">
-        ИНТЕГРАЦИЯ<br>
-        БИТРИКС24
+        ВНЕДРЕНИЕ<br>
+        БИТРИКС 24
       </h1>
 
       <p class="bitrix-hero__text">
-        Настроим обмен между Битрикс24 и 1С,
-        автоматизируем продажи,<br>счета, сделки, документы и бизнес процессы
+        Внедрим Битрикс24 под любые задачи вашего бизнеса,<br>
+        от базовой настройки до комплексной автоматизации и интеграций с внешними сервисами.
+        
       </p>
 
       <div class="bitrix-hero__buttons">
-        <button class="btn-primary">
-          Связаться с нами и обсудить Ваш проект
+        <button class="btn-primary"
+         @click="scrollToAnchor('callback')"
+        >
+          СВЯЗАТЬСЯ С НАМИ И ОБСУДИТЬ ВАШ ПРОЕКТ
         </button>
 
       </div>
@@ -100,7 +124,7 @@
 }
 
 .bitrix-hero__image img {
-  width: 100%;
+  width: 85%;
   border-radius: 32px;
 }
 

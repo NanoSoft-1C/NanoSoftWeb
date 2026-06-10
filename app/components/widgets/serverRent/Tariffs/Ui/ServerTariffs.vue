@@ -31,6 +31,29 @@ const tariffs = [
     ],
   },
 ]
+
+// ======Временно, для кнопок Заказать сервер перемещение к форме обратной связи. 
+// В дальнейшем нужно будет сделать переход на страницу оплаты и поправить класс на самих кнопках.
+const scrollToAnchor = (id) => {
+    const element = document.getElementById(id)
+
+    if (element) {
+
+        const offset = 120
+
+        const elementPosition =
+            element.getBoundingClientRect().top + window.pageYOffset
+
+        const offsetPosition = elementPosition - offset
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+        })
+    }
+}
+
+
 </script>
 
 <template>
@@ -74,8 +97,11 @@ const tariffs = [
           </li>
         </ul>
 
-        <button>
-          Заказать сервер
+        <button
+         class="server-cta__button"
+         @click="scrollToAnchor('callback')"
+        >
+          ЗАКАЗАТЬ СЕРВЕР
         </button>
 
       </article>

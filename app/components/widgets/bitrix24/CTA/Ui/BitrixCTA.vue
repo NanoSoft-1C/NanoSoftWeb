@@ -1,3 +1,24 @@
+<script setup>
+const scrollToAnchor = (id) => {
+    const element = document.getElementById(id)
+
+    if (element) {
+
+        const offset = 120
+
+        const elementPosition =
+            element.getBoundingClientRect().top + window.pageYOffset
+
+        const offsetPosition = elementPosition - offset
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+        })
+    }
+}
+</script>
+
 <template>
   <section class="bitrix-cta wrapper">
 
@@ -14,8 +35,10 @@
 
     </div>
 
-    <button class="btn-primary">
-      Оставить заявку
+    <button class="btn-primary"
+    @click="scrollToAnchor('callback')"
+    >
+      ОСТАВИТЬ ЗАЯВКУ
     </button>
 
   </section>
