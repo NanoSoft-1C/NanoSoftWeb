@@ -59,11 +59,11 @@ const scrollToAnchor = (id) => {
 
   background: linear-gradient(
     135deg,
-    rgba(255, 198, 120, 0.18),
-    rgba(255,255,255,.03)
+    rgba(var(--color-accent-rgb), 0.18),
+    rgba(var(--color-white-rgb), 0.03)
   );
 
-  border: 1px solid rgba(255,255,255,.08);
+  border: 1px solid rgba(var(--color-white-rgb), 0.08);
 }
 
 .server-cta__box h2 {
@@ -83,8 +83,8 @@ const scrollToAnchor = (id) => {
   padding: 0 36px;
   border-radius: 18px;
   border: none;
-  background: #ffc678;
-  color: #111;
+  background: var(--color-accent);
+  color: var(--color-illustration-dark);
   font-weight: 700;
   cursor: pointer;
 }

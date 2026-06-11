@@ -9,7 +9,6 @@
                 @mouseenter="!isMobile && openServices()"
                 @mouseleave="!isMobile && closeServices()"
             >
-
                 <button
                     class="starting__menu-btn"
                     @click="handleServicesClick"
@@ -25,34 +24,17 @@
 
                 <div
                     class="starting__dropdown-menu"
-                    :class="{
-                        'starting__dropdown-menu--open': isServicesOpen
-                    }"
+                    :class="{ 'starting__dropdown-menu--open': isServicesOpen }"
                 >
-                    <button
-                        class="starting__dropdown-item"
-                        @click="props.scrollToAnchor('footer')"
-                    >Продукты 1C</button>
-
-                    <button
-                        class="starting__dropdown-item"
-                        @click="props.scrollToAnchor('footer')"
-                    >Аренда серверов</button>
-
-                    <button
-                        class="starting__dropdown-item"
-                        @click="props.scrollToAnchor('footer')"
-                    >CRM Битрикс 24</button>
-
-                    <button
-                        class="starting__dropdown-item"
-                        @click="props.scrollToAnchor('footer')"
-                    >Аудит отдела продаж</button>
+                    <button class="starting__dropdown-item" @click="props.scrollToAnchor('footer')">Продукты 1C</button>
+                    <button class="starting__dropdown-item" @click="props.scrollToAnchor('footer')">Аренда серверов</button>
+                    <button class="starting__dropdown-item" @click="props.scrollToAnchor('footer')">CRM Битрикс 24</button>
+                    <button class="starting__dropdown-item" @click="props.scrollToAnchor('footer')">Аудит отдела продаж</button>
                 </div>
             </div>
 
             <button class="starting__menu-btn" @click="props.scrollToAnchor('cases')">Кейсы</button>
-            <!-- <button class="starting__menu-btn" @click="props.scrollToAnchor('callback')">Обратная связь</button> -->
+            <button class="starting__menu-btn" @click="props.scrollToAnchor('callback')">Обратная связь</button>
             <button class="starting__menu-btn" @click="props.scrollToAnchor('footer')">Контакты</button>
         </div>
 
@@ -61,273 +43,245 @@
         <div class="starting-container">
             <div class="starting__shadow"></div>
 
-            <div class="starting__title">
-                <span class="starting__title-text">IT решения</span>
-                <span class="starting__title-text starting__title-text--accent">для вашего бизнеса</span>
-                <span class="starting__title-text">на базе 1С и CRM систем</span>
-            </div>
+            <img class="starting__logo" src="@/assets/sprites/NSLogoGorizont.svg" alt="Логотип">
 
-            <p class="starting__subtitle">
-                Помогаем компаниям связать продажи, учёт, аналитику и внутренние процессы в единую систему без хаоса и ручной работы
-            </p>
+            <div class="starting__title">
+                <p class="starting__title-text--mobile title-h3">
+                    IT-решения для вашего бизнеса<br>
+                    на базе 1С и CRM систем
+                </p>
+
+                <span class="starting__title-main">
+                    IT-решения для вашего бизнеса
+                </span>
+
+                <div class="starting__title-second-line">
+                    <span>на базе</span>
+
+                    <div class="starting__title-transfer">
+                        <span class="starting__title-transfer-item">1С</span>
+                    </div>
+
+                    <span>и CRM систем</span>
+                </div>
+            </div>
         </div>
 
         <img class="starting__corner" src="@/assets/sprites/arrowCorner.svg" alt="Corner">
-
-        <div class="starting__btn" @click="props.scrollToAnchor('callback')">Получить консультацию</div>
     </section>
 </template>
 
 <script setup>
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+
 const props = defineProps({
     scrollToAnchor: {
         type: Function,
         required: true,
     }
 });
-import { ref, onMounted, onBeforeUnmount } from 'vue';
 
-const isServicesOpen = ref(false)
-const windowWidth = ref(1920)
+const isServicesOpen = ref(false);
+const windowWidth = ref(1920);
+const isMobile = computed(() => windowWidth.value <= 768);
 
-const isMobile = computed(() => windowWidth.value <= 768)
-
-let servicesTimeout = null
+let servicesTimeout = null;
 
 const canvas = ref(null);
 let ctx;
 let animationFrameId;
-let windowWidthOld = 0
-
-// ─── НАСТРОЙКИ ───────────────────────────────────────────────
-const CONFIG = {
-    // Количество звёзд по брейкпоинтам
-    starsCount: { phone: 60, tablet: 100, laptop: 140, desktop: 200 },
-
-    // Размер звёзд (min и max)
-    starSizeMin: 4.4,
-    starSizeMax: 7.2,
-
-    // Соотношение inner/outer луча звёздочки
-    starInnerRatio: 0.25,
-
-    // Доля 4-конечных звёзд (остальные — точки)
-    starShapeRatio: 0.55,
-
-    // Цвет звёзд (r, g, b)
-    starColor: '255, 140, 50',
-
-    // Свечение вокруг звёздочки (множитель от outer-радиуса)
-    starGlowRadius: 2.5,
-    starGlowOpacity: 0.25,
-
-    // Скорость дрейфа (min и max)
-    starSpeedMin: 0.05,
-    starSpeedMax: 0.35,
-
-    // Вертикальный разброс скорости (±)
-    starDriftY: 0.15,
-
-    // Мерцание
-    twinkleSpeedMin: 0.005,
-    twinkleSpeedMax: 0.025,
-    twinkleBrightness: 0.4, // нижняя граница яркости (0–1)
-
-    // Линии
-    lineMaxDistance: 280,      // макс. дистанция для рисования линии
-    lineMaxDistanceMobile: 120,
-    lineColor: '255, 140, 50', // оранжевый (r, g, b)
-    lineWidthMin: 0.3,
-    lineWidthMax: 2.4,         // макс. толщина (у близких точек)
-    lineOpacityMax: 0.45,      // макс. прозрачность линии
-};
-// ─────────────────────────────────────────────────────────────
+let windowWidthOld = 0;
 
 const points = [];
 
-function getStarsCount() {
-    const w = window.innerWidth;
-    if (w <= 500)  return CONFIG.starsCount.phone;
-    if (w <= 768)  return CONFIG.starsCount.tablet;
-    if (w <= 1024) return CONFIG.starsCount.laptop;
-    return CONFIG.starsCount.desktop;
+function getPointsCount() {
+    const width = window.innerWidth;
+
+    if (width <= 425) return 25;
+    if (width <= 768) return 30;
+    if (width <= 1024) return 40;
+
+    return 80;
 }
 
-function getLineMaxDistance() {
-    return window.innerWidth <= 768
-        ? CONFIG.lineMaxDistanceMobile
-        : CONFIG.lineMaxDistance;
+function dynamicMaxDistance() {
+    const width = window.innerWidth;
+
+    if (width <= 425) return 300;
+    if (width <= 768) return 400;
+    if (width <= 1024) return 420;
+
+    return 450;
 }
 
 function resize() {
-    canvas.value.width  = canvas.value.clientWidth;
+    if (!canvas.value) return;
+
+    canvas.value.width = canvas.value.clientWidth;
     canvas.value.height = canvas.value.clientHeight;
 }
 
-function createStar(fromEdge = false) {
-    const size = Math.random() * (CONFIG.starSizeMax - CONFIG.starSizeMin) + CONFIG.starSizeMin;
-    const speed = Math.random() * (CONFIG.starSpeedMax - CONFIG.starSpeedMin) + CONFIG.starSpeedMin;
-    return {
-        x: fromEdge ? -20 : Math.random() * canvas.value.width,
-        y: Math.random() * canvas.value.height,
-        size,
-        opacity: Math.random() * 0.5 + 0.4,
-        vx: speed,
-        vy: (Math.random() - 0.5) * CONFIG.starDriftY * 2,
-        twinkleSpeed:  Math.random() * (CONFIG.twinkleSpeedMax - CONFIG.twinkleSpeedMin) + CONFIG.twinkleSpeedMin,
-        twinkleOffset: Math.random() * Math.PI * 2,
-        isStar: Math.random() > CONFIG.starShapeRatio,
-    };
-}
-
 function initPoints() {
+    if (!canvas.value) return;
+
     points.length = 0;
-    const count = getStarsCount();
-    for (let i = 0; i < count; i++) points.push(createStar(false));
+
+    const currentPointsCount = getPointsCount();
+
+    for (let i = 0; i < currentPointsCount; i++) {
+        points.push({
+            x: Math.random() * canvas.value.width,
+            y: Math.random() * canvas.value.height,
+            vx: (Math.random() - 0.5) * 1.5,
+            vy: (Math.random() - 0.5) * 1.5,
+            radius: 2.4,
+
+            isStar: Math.random() < 0.14,
+            twinklePhase: Math.random() * Math.PI * 2,
+            twinkleSpeed: 0.018 + Math.random() * 0.025,
+        });
+    }
 }
 
-function drawStarShape(x, y, outerR, innerR, opacity) {
-    const spikes = 4;
-    const step = Math.PI / spikes;
-    ctx.save();
+function drawLine(p1, p2, opacity) {
+    const whiteRgb = getComputedStyle(document.documentElement)
+        .getPropertyValue('--color-white-rgb')
+        .trim() || '255, 255, 255';
+
+    ctx.strokeStyle = `rgba(${whiteRgb}, ${opacity})`;
+    ctx.lineWidth = 0.5;
+
     ctx.beginPath();
-    ctx.translate(x, y);
-    ctx.rotate(-Math.PI / 4);
-    for (let i = 0; i < spikes * 2; i++) {
-        const r = i % 2 === 0 ? outerR : innerR;
-        const angle = i * step;
-        if (i === 0) ctx.moveTo(Math.cos(angle) * r, Math.sin(angle) * r);
-        else         ctx.lineTo(Math.cos(angle) * r, Math.sin(angle) * r);
-    }
-    ctx.closePath();
-    ctx.fillStyle = `rgba(${CONFIG.starColor}, ${opacity})`;
-    ctx.fill();
-    ctx.restore();
-}
-
-function drawLines() {
-    const maxDist = getLineMaxDistance();
-    for (let i = 0; i < points.length; i++) {
-        if (!points[i].isStar) continue; // пропускаем кружки
-        for (let j = i + 1; j < points.length; j++) {
-            if (!points[j].isStar) continue; // пропускаем кружки
-
-            const dx = points[i].x - points[j].x;
-            const dy = points[i].y - points[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist >= maxDist) continue;
-
-            const t = 1 - dist / maxDist;
-            const opacity = t * CONFIG.lineOpacityMax;
-            const lineWidth = CONFIG.lineWidthMin + t * (CONFIG.lineWidthMax - CONFIG.lineWidthMin);
-
-            ctx.beginPath();
-            ctx.moveTo(points[i].x, points[i].y);
-            ctx.lineTo(points[j].x, points[j].y);
-            ctx.strokeStyle = `rgba(${CONFIG.lineColor}, ${opacity})`;
-            ctx.lineWidth = lineWidth;
-            ctx.stroke();
-        }
-    }
+    ctx.moveTo(p1.x, p1.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.stroke();
 }
 
 function animate() {
-    if (canvas.value.style.opacity < 1) {
-        canvas.value.style.opacity = Math.min(1, Number(canvas.value.style.opacity) + 0.005);
+    if (!canvas.value || !ctx) return;
+
+    if (Number(canvas.value.style.opacity) < 1) {
+        canvas.value.style.opacity = Number(canvas.value.style.opacity) + 0.005;
     }
 
     ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
 
-    const time = performance.now() * 0.001;
+    const maxDistance = dynamicMaxDistance();
 
-    // Двигаем точки
-    for (let i = points.length - 1; i >= 0; i--) {
-        const p = points[i];
+    for (const p of points) {
         p.x += p.vx;
         p.y += p.vy;
-        if (p.x > canvas.value.width + 30) points[i] = createStar(true);
+
+        if (p.x <= 0 || p.x >= canvas.value.width) p.vx *= -1;
+        if (p.y <= 0 || p.y >= canvas.value.height) p.vy *= -1;
     }
 
-    // Сначала линии (под звёздами)
-    drawLines();
+    for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+            const dx = points[i].x - points[j].x;
+            const dy = points[i].y - points[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
 
-    // Потом звёзды
+            if (dist < maxDistance) {
+                const opacity = 1 - dist / maxDistance;
+                drawLine(points[i], points[j], opacity);
+            }
+        }
+    }
+
     for (const p of points) {
-        const twinkle = 0.5 + 0.5 * Math.sin(time * p.twinkleSpeed * 60 + p.twinkleOffset);
-        const opacity = p.opacity * (CONFIG.twinkleBrightness + (1 - CONFIG.twinkleBrightness) * twinkle);
+        let alpha = 0.85;
+        let radius = p.radius;
 
         if (p.isStar) {
-            const outer = p.size * 2.2;
-            const inner = outer * CONFIG.starInnerRatio;
+            p.twinklePhase += p.twinkleSpeed;
 
-            // Свечение
-            ctx.save();
-            const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, outer * CONFIG.starGlowRadius);
-            grd.addColorStop(0, `rgba(${CONFIG.starColor}, ${opacity * CONFIG.starGlowOpacity})`);
-            grd.addColorStop(1, `rgba(${CONFIG.starColor}, 0)`);
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, outer * CONFIG.starGlowRadius, 0, Math.PI * 2);
-            ctx.fillStyle = grd;
-            ctx.fill();
-            ctx.restore();
+            const twinkle = Math.pow((Math.sin(p.twinklePhase) + 1) / 2, 5);
 
-            drawStarShape(p.x, p.y, outer, inner, opacity);
-        } else {
+            alpha = 0.45 + twinkle * 0.55;
+            radius = p.radius + twinkle * 1.8;
+
+            const glowRadius = 8 + twinkle * 18;
+
+            const gradient = ctx.createRadialGradient(
+                p.x,
+                p.y,
+                0,
+                p.x,
+                p.y,
+                glowRadius
+            );
+
+            gradient.addColorStop(0, `rgba(255, 255, 255, ${1 * twinkle})`);
+            gradient.addColorStop(0.3, `rgba(255, 255, 255, ${0.45 * twinkle})`);
+            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+            ctx.fillStyle = gradient;
             ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${CONFIG.starColor}, ${opacity * 0.7})`;
+            ctx.arc(p.x, p.y, glowRadius, 0, Math.PI * 2);
             ctx.fill();
         }
+
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+        ctx.fill();
     }
 
     animationFrameId = requestAnimationFrame(animate);
 }
 
 function handleResize() {
-    if(windowWidthOld != canvas.value.clientWidth) {
-        resize()
-        initPoints()
+    if (!canvas.value) return;
+
+    if (windowWidthOld !== canvas.value.clientWidth) {
+        resize();
+        initPoints();
+        windowWidthOld = canvas.value.clientWidth;
     }
-    windowWidth.value = window.innerWidth
+
+    windowWidth.value = window.innerWidth;
 }
 
 function openServices() {
-    clearTimeout(servicesTimeout)
-    isServicesOpen.value = true
+    clearTimeout(servicesTimeout);
+    isServicesOpen.value = true;
 }
 
 function closeServices() {
     servicesTimeout = setTimeout(() => {
-        isServicesOpen.value = false
-    }, 150)
+        isServicesOpen.value = false;
+    }, 150);
 }
 
 function handleServicesClick() {
-
     if (isMobile.value) {
-        isServicesOpen.value = !isServicesOpen.value
-        return
+        isServicesOpen.value = !isServicesOpen.value;
+        return;
     }
 
-    props.scrollToAnchor('advantages')
+    props.scrollToAnchor('advantages');
 }
 
 onMounted(() => {
-    
+    if (!canvas.value) return;
+
     canvas.value.style.opacity = 0;
-    
+
     ctx = canvas.value.getContext('2d');
 
-    handleResize()
-
-    windowWidthOld = canvas.value.clientWidth
+    handleResize();
 
     window.addEventListener('resize', handleResize);
+
     animate();
 });
 
 onBeforeUnmount(() => {
     window.removeEventListener('resize', handleResize);
-    cancelAnimationFrame(animationFrameId);
+
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+    }
 });
 </script>

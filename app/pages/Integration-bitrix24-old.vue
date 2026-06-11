@@ -234,9 +234,9 @@ useSeoMeta({
   align-items: center;
   padding: 10px 18px;
   border-radius: 999px;
-  background: rgba(255, 198, 120, 0.12);
-  border: 1px solid rgba(255, 198, 120, 0.2);
-  color: #ffc678;
+  background: rgba(var(--color-accent-rgb), 0.12);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.2);
+  color: var(--color-accent);
   font-size: 14px;
   margin-bottom: 24px;
 }
@@ -272,8 +272,8 @@ useSeoMeta({
 }
 
 .btn-primary {
-  background: #ffc678;
-  color: #111;
+  background: var(--color-accent);
+  color: var(--color-illustration-dark);
 }
 
 .btn-primary:hover {
@@ -282,8 +282,8 @@ useSeoMeta({
 
 .btn-secondary {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.15);
-  color: #fff;
+  border: 1px solid rgba(var(--color-white-rgb), 0.15);
+  color: var(--color-white);
 }
 
 .bitrix-hero__image img,
@@ -309,8 +309,8 @@ useSeoMeta({
 
 .bitrix-card,
 .process-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(var(--color-white-rgb), 0.03);
+  border: 1px solid rgba(var(--color-white-rgb), 0.06);
   border-radius: 28px;
   padding: 36px;
   backdrop-filter: blur(10px);
@@ -320,7 +320,7 @@ useSeoMeta({
 .process-card span {
   font-size: 48px;
   font-weight: 700;
-  color: #ffc678;
+  color: var(--color-accent);
   display: block;
   margin-bottom: 20px;
 }
@@ -344,8 +344,8 @@ useSeoMeta({
   gap: 20px;
   padding: 28px;
   border-radius: 24px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(var(--color-white-rgb), 0.03);
+  border: 1px solid rgba(var(--color-white-rgb), 0.06);
 }
 
 .service-item__icon {
@@ -355,8 +355,8 @@ useSeoMeta({
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffc678;
-  color: #111;
+  background: var(--color-accent);
+  color: var(--color-illustration-dark);
   font-weight: 700;
 }
 
@@ -366,8 +366,8 @@ useSeoMeta({
   border-radius: 40px;
   background: linear-gradient(
     135deg,
-    rgba(255,198,120,0.18),
-    rgba(255,255,255,0.03)
+    rgba(var(--color-accent-rgb), 0.18),
+    rgba(var(--color-white-rgb), 0.03)
   );
   display: flex;
   justify-content: space-between;

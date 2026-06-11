@@ -148,11 +148,11 @@ class Block {
     ctx.globalAlpha = this.opacity
 
     // glow
-    ctx.shadowColor = 'rgb(255, 188, 108)'
+    ctx.shadowColor = 'var(--color-accent)'
     ctx.shadowBlur = this.glow
 
     // фон
-    ctx.fillStyle = 'rgb(255, 188, 108)'
+    ctx.fillStyle = 'var(--color-accent)'
     ctx.beginPath()
     ctx.roundRect(
       this.x - w / 2,
@@ -226,7 +226,7 @@ class Block {
     }
 
     // текст
-    ctx.fillStyle = 'rgb(73, 73, 73)'
+    ctx.fillStyle = 'var(--color-black)'
     ctx.font = `${h * 0.3}px sans-serif`
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'

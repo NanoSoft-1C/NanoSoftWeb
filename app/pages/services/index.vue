@@ -70,9 +70,9 @@
     }
 
     function svgAnimator() {
-        const colorBlack = "#211715"
-        const colorWhite = "#FFFEFD"
-        const colorOrange = "#FFC678"
+        const colorBlack = "var(--color-illustration-dark)"
+        const colorWhite = "var(--color-white)"
+        const colorOrange = "var(--color-accent)"
 
         const svgs = document.querySelectorAll("svg.svg-animate");
         if (!svgs.length) return;

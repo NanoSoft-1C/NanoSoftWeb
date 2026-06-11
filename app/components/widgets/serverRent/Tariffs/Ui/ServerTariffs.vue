@@ -117,8 +117,8 @@ const scrollToAnchor = (id) => {
   display: inline-flex;
   padding: 10px 18px;
   border-radius: 999px;
-  background: rgba(255, 198, 120, 0.12);
-  color: #ffc678;
+  background: rgba(var(--color-accent-rgb), 0.12);
+  color: var(--color-accent);
   margin-bottom: 24px;
 }
 
@@ -132,7 +132,7 @@ const scrollToAnchor = (id) => {
 }
 
 .server-tariffs__head span {
-  color: #ffc678;
+  color: var(--color-accent);
 }
 
 .server-tariffs__head h2 {
@@ -149,8 +149,8 @@ const scrollToAnchor = (id) => {
 .server-tariffs__card {
   padding: 40px;
   border-radius: 32px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(var(--color-white-rgb), 0.03);
+  border: 1px solid rgba(var(--color-white-rgb), 0.08);
 }
 
 .server-tariffs__card h3 {
@@ -161,7 +161,7 @@ const scrollToAnchor = (id) => {
 .server-tariffs__price {
   font-size: 42px;
   font-weight: 700;
-  color: #ffc678;
+  color: var(--color-accent);
   margin-bottom: 30px;
 }
 
@@ -181,8 +181,8 @@ const scrollToAnchor = (id) => {
   height: 58px;
   border-radius: 18px;
   border: none;
-  background: #ffc678;
-  color: #111;
+  background: var(--color-accent);
+  color: var(--color-illustration-dark);
   font-weight: 700;
   cursor: pointer;
 }

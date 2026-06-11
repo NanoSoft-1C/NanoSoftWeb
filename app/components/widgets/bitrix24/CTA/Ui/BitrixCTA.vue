@@ -29,8 +29,7 @@ const scrollToAnchor = (id) => {
       </h2>
 
       <p>
-        Интегрируем 1С и Битрикс так,
-        чтобы Ваши сотрудники забыли про Excel 😄
+        Оставьте заявку, мы разберем ваши задачи и предложим оптимальное решение на базе Битрикс24.
       </p>
 
     </div>
@@ -65,8 +64,8 @@ const scrollToAnchor = (id) => {
   background:
     linear-gradient(
       135deg,
-      rgba(255,198,120,.18),
-      rgba(255,255,255,.03)
+      rgba(var(--color-accent-rgb), 0.18),
+      rgba(var(--color-white-rgb), 0.03)
     );
 }
 
@@ -76,8 +75,8 @@ const scrollToAnchor = (id) => {
   padding: 0 40px;
   border: none;
   border-radius: 18px;
-  background: #ffc678;
-  color: #111;
+  background: var(--color-accent);
+  color: var(--color-illustration-dark);
   cursor: pointer;
 }
 

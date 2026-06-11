@@ -71,8 +71,8 @@
   display: inline-flex;
   padding: 10px 18px;
   border-radius: 999px;
-  background: rgba(255, 198, 120, 0.12);
-  color: #ffc678;
+  background: rgba(var(--color-accent-rgb), 0.12);
+  color: var(--color-accent);
   margin-bottom: 24px;
 }
 
@@ -87,8 +87,8 @@
 
   border-radius: 28px;
 
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.06);
+  background: rgba(var(--color-white-rgb), 0.03);
+  border: 1px solid rgba(var(--color-white-rgb), 0.06);
 }
 
 .process-card span {
@@ -99,7 +99,7 @@
   font-size: 48px;
   font-weight: 700;
 
-  color: #ffc678;
+  color: var(--color-accent);
 }
 
 @media (max-width: 992px) {

@@ -17,6 +17,7 @@ const advantages = [
     text: 'Помощь специалистов в любое время',
   },
 ]
+
 </script>
 
 <template>
@@ -69,7 +70,7 @@ const advantages = [
 }
 
 .server-advantages__head span {
-  color: #ffc678;
+  color: var(--color-accent);
 }
 
 .server-advantages__head h2 {
@@ -85,8 +86,8 @@ const advantages = [
 }
 
 .server-advantages__card {
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(var(--color-white-rgb), 0.03);
+  border: 1px solid rgba(var(--color-white-rgb), 0.08);
   border-radius: 28px;
   padding: 32px;
   backdrop-filter: blur(12px);
@@ -116,8 +117,8 @@ const advantages = [
   display: inline-flex;
   padding: 10px 18px;
   border-radius: 999px;
-  background: rgba(255, 198, 120, 0.12);
-  color: #ffc678;
+  background: rgba(var(--color-accent-rgb), 0.12);
+  color: var(--color-accent);
   margin-bottom: 24px;
 }
 </style>

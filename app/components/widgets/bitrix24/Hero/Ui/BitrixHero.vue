@@ -77,8 +77,8 @@ const scrollToAnchor = (id) => {
   display: inline-flex;
   padding: 10px 18px;
   border-radius: 999px;
-  background: rgba(255, 198, 120, 0.12);
-  color: #ffc678;
+  background: rgba(var(--color-accent-rgb), 0.12);
+  color: var(--color-accent);
   margin-bottom: 24px;
 }
 
@@ -113,14 +113,14 @@ const scrollToAnchor = (id) => {
 }
 
 .btn-primary {
-  background: #ffc678;
-  color: #111;
+  background: var(--color-accent);
+  color: var(--color-illustration-dark);
 }
 
 .btn-secondary {
   background: transparent;
-  border: 1px solid rgba(255,255,255,.15);
-  color: white;
+  border: 1px solid rgba(var(--color-white-rgb), 0.15);
+  color: var(--color-white);
 }
 
 .bitrix-hero__image img {

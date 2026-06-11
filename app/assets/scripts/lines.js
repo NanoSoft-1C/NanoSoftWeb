@@ -1,5 +1,7 @@
-const colorWhite = '#D0D0D0'
-const colorBlack = '#494949'
+const rootStyles = getComputedStyle(document.documentElement)
+
+const colorWhite = rootStyles.getPropertyValue('--color-white').trim() || '#FFFFFF'
+const colorBlack = rootStyles.getPropertyValue('--color-black').trim() || '#121821'
 
 const lineWidth = 16
 const pointRadius = 16

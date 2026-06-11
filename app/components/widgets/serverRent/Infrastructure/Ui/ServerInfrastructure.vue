@@ -36,8 +36,8 @@
   display: inline-flex;
   padding: 10px 18px;
   border-radius: 999px;
-  background: rgba(255, 198, 120, 0.12);
-  color: #ffc678;
+  background: rgba(var(--color-accent-rgb), 0.12);
+  color: var(--color-accent);
   margin-bottom: 24px;
 }
 
@@ -52,7 +52,7 @@
 }
 
 .server-infrastructure span {
-  color: #ffc678;
+  color: var(--color-accent);
 }
 
 .server-infrastructure h2 {

@@ -1,12 +1,74 @@
-@function color-white($alpha: 1) { @return rgba(255, 254, 253, $alpha) };
-@function color-black($alpha: 1) { @return rgba(73, 73, 73, $alpha) };
-@function color-orange($alpha: 1) { @return rgba(255, 188, 108, $alpha) };
-@function color-bodily($alpha: 1) { @return rgba(255, 212, 136, $alpha) };
-@function color-gradient($alpha: 1, $rotate: 90deg) { 
-    @return linear-gradient($rotate, rgba(255, 212, 136, $alpha) 0%, rgba(255, 188, 108, $alpha) 100%) 
+:root {
+    /* Главная палитра сайта. Меняешь цвета здесь — меняется весь сайт. */
+
+    --color-white-rgb: 255, 255, 255; /* #FFFFFF */
+
+    --color-black-rgb: 18, 24, 33; /* #121821 */
+    --color-black-dark-rgb: 10, 15, 23; /* #0A0F17 */
+
+    --color-accent-rgb: 255, 177, 26; /* #FFB11A */
+    --color-accent-light-rgb: 255, 200, 91; /* #FFC85B */
+
+    --color-gray-rgb: 156, 163, 175; /* #9CA3AF */
+
+    --color-illustration-dark-rgb: 33, 23, 21;
+    --color-illustration-brown-rgb: 169, 138, 117;
+    --color-error-rgb: 231, 76, 60;
+
+    --color-white: rgb(var(--color-white-rgb));
+
+    --color-black: rgb(var(--color-black-rgb));
+    --color-black-dark: rgb(var(--color-black-dark-rgb));
+
+    --color-accent: rgb(var(--color-accent-rgb));
+    --color-accent-light: rgb(var(--color-accent-light-rgb));
+
+    --color-gray: rgb(var(--color-gray-rgb));
+
+    --color-illustration-dark: rgb(var(--color-illustration-dark-rgb));
+    --color-illustration-brown: rgb(var(--color-illustration-brown-rgb));
+    --color-error: rgb(var(--color-error-rgb));
+}
+
+@function color-white($alpha: 1) {
+    @return rgba(var(--color-white-rgb), $alpha)
 };
 
+@function color-black($alpha: 1) {
+    @return rgba(var(--color-black-rgb), $alpha)
+};
 
+@function color-black-dark($alpha: 1) {
+    @return rgba(var(--color-black-dark-rgb), $alpha)
+};
+
+@function color-gray($alpha: 1) {
+    @return rgba(var(--color-gray-rgb), $alpha)
+};
+
+@function color-orange($alpha: 1) {
+    @return rgba(var(--color-accent-rgb), $alpha)
+};
+
+@function color-bodily($alpha: 1) {
+    @return rgba(var(--color-accent-light-rgb), $alpha)
+};
+
+@function color-illustration-dark($alpha: 1) {
+    @return rgba(var(--color-illustration-dark-rgb), $alpha)
+};
+
+@function color-illustration-brown($alpha: 1) {
+    @return rgba(var(--color-illustration-brown-rgb), $alpha)
+};
+
+@function color-error($alpha: 1) {
+    @return rgba(var(--color-error-rgb), $alpha)
+};
+
+@function color-gradient($alpha: 1, $rotate: 90deg) {
+    @return linear-gradient($rotate, color-bodily($alpha) 0%, color-orange($alpha) 100%)
+};
 
 $max-width-content: 1366px;
 
@@ -16,7 +78,7 @@ $font-size-h3: 27.65px;
 $font-size-text: 23.04px;
 $font-size-subtext: 16px;
 $font-size-small: 15px;
-
+$font-size-menu: 16px;
 
 @mixin phone {
     @media screen and (max-width: 500px) {

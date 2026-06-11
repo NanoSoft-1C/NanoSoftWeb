@@ -19,7 +19,7 @@
         </div>
 
         <div class="mapCompanys__block mapCompanys__block-download-contain mapCompanys__block--bottom">
-          <a class="mapCompanys__block-download title-h3" href="./files/reference.pdf">Скачать кейсы наших проектов</a>
+          <a class="mapCompanys__block-download title-h3" href="./files/reference.pdf">Скачать референс наших проектов</a>
 
           <svg class="mapCompanys__block-corner mapCompanys__block-corner--left-bottom corner corner-black corner-left corner-bottom corner-rotate-270">
             <use xlink:href="@/assets/sprites/sprite.svg#corner"></use>

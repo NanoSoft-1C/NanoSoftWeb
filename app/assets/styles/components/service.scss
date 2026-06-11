@@ -213,7 +213,7 @@
                 display: block;
                 height: 3px;
                 width: 100%;
-                background: linear-gradient(90deg, color-white(0) 0%, rgb(128 128 127) 100%);
+                background: linear-gradient(90deg, color-white(0) 0%, rgba(var(--color-black-rgb), 0.6) 100%);
             }
 
             &::before{
@@ -258,7 +258,7 @@
 
                     &:hover{
                         padding: 8px calc(16px + 6px + 8px) 8px calc(16px + 6px + 8px);
-                        background-color: rgb(128 128 127);
+                        background-color: rgba(var(--color-black-rgb), 0.6);
                         border: 3px solid color-white();
                         color: color-white();
                         cursor: pointer;

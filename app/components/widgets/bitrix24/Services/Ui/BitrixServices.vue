@@ -136,8 +136,8 @@
   display: inline-flex;
   padding: 10px 18px;
   border-radius: 999px;
-  background: rgba(255, 198, 120, 0.12);
-  color: #ffc678;
+  background: rgba(var(--color-accent-rgb), 0.12);
+  color: var(--color-accent);
   margin-bottom: 24px;
 }
 
@@ -160,8 +160,8 @@
 
   border-radius: 24px;
 
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.06);
+  background: rgba(var(--color-white-rgb), 0.03);
+  border: 1px solid rgba(var(--color-white-rgb), 0.06);
 }
 
 .service-item__icon {
@@ -170,13 +170,13 @@
 
   border-radius: 20px;
 
-  background: #ffc678;
+  background: var(--color-accent);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  color: #111;
+  color: var(--color-illustration-dark);
   font-weight: 700;
 }
 

@@ -3,6 +3,8 @@ useSeoMeta({
   title: 'Аренда серверов — NanoSoft',
   description: 'Аренда выделенных серверов и VPS. Настройка, поддержка и масштабирование инфраструктуры. Аренда сервера для 1С.',
 })
+
+
 </script>
 
 <template>
@@ -25,4 +27,5 @@ useSeoMeta({
 .server-page {
   overflow: hidden;
 }
+
 </style>

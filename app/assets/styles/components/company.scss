@@ -12,10 +12,10 @@
 
     &__franch {
         position: relative;
-        width: 400px;
-        min-width: 400px;
-        height: 250px;
-        min-height: 250px;
+        width: 650px;
+        min-width: 650px;
+        height: 400px;
+        min-height: 400px;
 
         &::after {
             content: "А к р е д и т о в а н н а я ᠌ к о м п а н и я";
@@ -30,7 +30,7 @@
             text-align: justify;
             text-align-last: justify;
 
-            border-top: 1px solid #fff;
+            border-top: 1px solid var(--color-white);
             padding-top: 8px;
             opacity: .3;
         }
@@ -49,13 +49,8 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 400px;
-            height: 250px;
-
-            #wipe1{
-                scale: 0.59;
-                translate: 3px 0;
-            }
+            width: 650px;
+            height: 400px;
         }
     }
 

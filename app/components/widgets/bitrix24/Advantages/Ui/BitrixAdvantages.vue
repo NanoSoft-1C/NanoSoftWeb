@@ -182,11 +182,11 @@ const toggleCard = (index) => {
 
   border-radius: 999px;
 
-  background: rgba(255, 198, 120, 0.12);
+  background: rgba(var(--color-accent-rgb), 0.12);
 
-  border: 1px solid rgba(255, 198, 120, 0.2);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.2);
 
-  color: #ffc678;
+  color: var(--color-accent);
 
   margin-bottom: 24px;
 }
@@ -205,8 +205,8 @@ const toggleCard = (index) => {
 }
 
 .bitrix-card {
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.06);
+  background: rgba(var(--color-white-rgb), 0.03);
+  border: 1px solid rgba(var(--color-white-rgb), 0.06);
   border-radius: 28px;
   padding: 36px;
 
@@ -223,8 +223,8 @@ const toggleCard = (index) => {
 }
 
 .bitrix-card.active {
-  border-color: #ffc678;
-  background: rgba(255,198,120,.08);
+  border-color: var(--color-accent);
+  background: rgba(var(--color-accent-rgb), 0.08);
 }
 
 .bitrix-card__top {
@@ -236,12 +236,12 @@ const toggleCard = (index) => {
 .bitrix-card__number {
   font-size: 48px;
   font-weight: 700;
-  color: #ffc678;
+  color: var(--color-accent);
 }
 
 .bitrix-card__icon {
   font-size: 32px;
-  color: #ffc678;
+  color: var(--color-accent);
 }
 
 .bitrix-card__content {

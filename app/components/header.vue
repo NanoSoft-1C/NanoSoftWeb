@@ -90,12 +90,12 @@
                         Кейсы
                     </button>
 
-                    <!-- <button
+                    <button
                         class="header__menu-btn"
                         @click="changeVisibleMenu(); scrollToAnchor('callback')"
                     >
                         Обратная связь
-                    </button> -->
+                    </button>
 
                     <button
                         class="header__menu-btn"
