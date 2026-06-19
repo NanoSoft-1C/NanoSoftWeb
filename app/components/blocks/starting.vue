@@ -1,64 +1,77 @@
 <template>
     <section class="starting" id="starting">
-        <div class="starting__menu">
-
-            <button class="starting__menu-btn" @click="props.scrollToAnchor('company')">О компании</button>
-
-            <div
-                class="starting__dropdown"
-                @mouseenter="!isMobile && openServices()"
-                @mouseleave="!isMobile && closeServices()"
-            >
-
-                <button
-                    class="starting__menu-btn"
-                    @click="handleServicesClick"
+        <div class="starting__header">
+            <div class="starting__header-content">
+                <img 
+                    class="starting__header-logo"
+                    src="@/assets/sprites/NSLogo.svg" 
+                    alt=""
                 >
-                    Услуги
 
-                    <img
-                        class="starting__menu-btn-corner"
-                        src="@/assets/sprites/arrowCorner.svg"
-                        alt="Corner"
+                <div class="starting__header-menu">
+                    <button class="starting__header-menu-btn" @click="props.scrollToAnchor('company')">О компании</button>
+
+                    <div
+                        class="starting__dropdown"
+                        @mouseenter="!isMobile && openServices()"
+                        @mouseleave="!isMobile && closeServices()"
                     >
-                </button>
+
+                        <button
+                            class="starting__header-menu-btn"
+                            @click="handleServicesClick"
+                        >
+                            Услуги
+
+                            <img
+                                class="starting__header-menu-btn-corner"
+                                src="@/assets/sprites/arrowCorner.svg"
+                                alt="Corner"
+                            >
+                        </button>
+
+                        <div
+                            class="starting__dropdown-menu"
+                            :class="{
+                                'starting__dropdown-menu--open': isServicesOpen
+                            }"
+                        >
+                            <button
+                                class="starting__dropdown-item"
+                                @click="props.scrollToAnchor('footer')"
+                            >Продукты 1C</button>
+
+                            <button
+                                class="starting__dropdown-item"
+                                @click="props.scrollToAnchor('footer')"
+                            >Аренда серверов</button>
+
+                            <button
+                                class="starting__dropdown-item"
+                                @click="props.scrollToAnchor('footer')"
+                            >CRM Битрикс 24</button>
+
+                            <button
+                                class="starting__dropdown-item"
+                                @click="props.scrollToAnchor('footer')"
+                            >Аудит отдела продаж</button>
+                        </div>
+                    </div>
+
+                    <button class="starting__header-menu-btn" @click="props.scrollToAnchor('cases')">Кейсы</button>
+                    <button class="starting__header-menu-btn" @click="props.scrollToAnchor('footer')">Контакты</button>
+                </div>
 
                 <div
-                    class="starting__dropdown-menu"
-                    :class="{
-                        'starting__dropdown-menu--open': isServicesOpen
-                    }"
-                >
-                    <button
-                        class="starting__dropdown-item"
-                        @click="props.scrollToAnchor('footer')"
-                    >Продукты 1C</button>
-
-                    <button
-                        class="starting__dropdown-item"
-                        @click="props.scrollToAnchor('footer')"
-                    >Аренда серверов</button>
-
-                    <button
-                        class="starting__dropdown-item"
-                        @click="props.scrollToAnchor('footer')"
-                    >CRM Битрикс 24</button>
-
-                    <button
-                        class="starting__dropdown-item"
-                        @click="props.scrollToAnchor('footer')"
-                    >Аудит отдела продаж</button>
-                </div>
+                    class="starting__header-callback"
+                    @click="props.scrollToAnchor('callback')"
+                >Получить консультацию</div>
             </div>
-
-            <button class="starting__menu-btn" @click="props.scrollToAnchor('cases')">Кейсы</button>
-            <!-- <button class="starting__menu-btn" @click="props.scrollToAnchor('callback')">Обратная связь</button> -->
-            <button class="starting__menu-btn" @click="props.scrollToAnchor('footer')">Контакты</button>
         </div>
 
         <canvas ref="canvas" class="starting__canvas"></canvas>
 
-        <div class="starting-container">
+        <!--<div class="starting-container">
             <div class="starting__shadow"></div>
 
             <div class="starting__title">
@@ -72,9 +85,7 @@
             </p>
         </div>
 
-        <img class="starting__corner" src="@/assets/sprites/arrowCorner.svg" alt="Corner">
-
-        <div class="starting__btn" @click="props.scrollToAnchor('callback')">Получить консультацию</div>
+        <img class="starting__corner" src="@/assets/sprites/arrowCorner.svg" alt="Corner"> -->
     </section>
 </template>
 
