@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header :isScrolled="isScrolled" :scrollToAnchor="scrollToAnchor"></Header>
+        <Header :scrollToAnchor="scrollToAnchor"></Header>
 
         <slot />
 
@@ -11,38 +11,18 @@
 </template>
 
 <script setup>
-    import { ref, onMounted, onBeforeUnmount } from 'vue'
-
-
-    const isScrolled = ref(false)
-
-    function handleScroll() {
-        isScrolled.value = window.scrollY > window.innerHeight/2
-    }
-
-    onMounted(() => {
-        window.addEventListener('scroll', handleScroll)
-        handleScroll()
-    })
-
-    onBeforeUnmount(() => {
-        window.removeEventListener('scroll', handleScroll)
-    })
-
-
     function scrollToAnchor(anchorId) {
         if (process.server) return 
 
         const element = document.querySelector("#" + anchorId)
         const header = document.querySelector('#header')
-        const headerShadow = document.querySelector('.header__shadow')
 
         if (!element) return
 
         const elementRect = element.getBoundingClientRect()
         const elementTop = elementRect.top + window.scrollY
 
-        const scrollPosition = elementTop - header.offsetHeight - headerShadow.offsetHeight
+        const scrollPosition = elementTop - header.offsetHeight
 
         window.scrollTo({
             top: scrollPosition,

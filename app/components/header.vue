@@ -1,16 +1,12 @@
 <template>
     <header
         id="header"
-        :class="[
-            'header',
-            isScrolled ? 'header--visible' : '',
-            route.fullPath != '/' ? 'header--static' : ''
-        ]"
+        class="header"
     >
         <div class="header-wrapper">
             <nuxt-link to="/"><img
                 class="header__logo"
-                src="@/assets/sprites/NSLogoGorizont.svg"
+                src="@/assets/sprites/NSLogo.svg"
                 alt="Логотип"
             ></nuxt-link>
 
@@ -92,13 +88,6 @@
 
                     <button
                         class="header__menu-btn"
-                        @click="changeVisibleMenu(); scrollToAnchor('callback')"
-                    >
-                        Обратная связь
-                    </button>
-
-                    <button
-                        class="header__menu-btn"
                         @click="changeVisibleMenu(); scrollToAnchor('footer')"
                     >
                         Контакты
@@ -122,9 +111,14 @@
                     </a>
                 </div>
             </div>
-        </div>
 
-        <div class="header__shadow"></div>
+            <button
+                class="header__cta"
+                @click="scrollToAnchor('callback')"
+            >
+                Получить консультацию
+            </button>
+        </div>
     </header>
 </template>
 
@@ -158,8 +152,6 @@ function handleServicesClick() {
     props.scrollToAnchor('advantages')
 }
 
-const route = useRoute()
-
 const isMenuOpen = ref(false)
 const isServicesOpen = ref(false)
 let servicesTimeout = null
@@ -181,7 +173,6 @@ function closeServices() {
 }
 
 const props = defineProps({
-    isScrolled: Boolean,
     scrollToAnchor: Function,
 })
 </script>

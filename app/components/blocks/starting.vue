@@ -1,78 +1,59 @@
 <template>
     <section class="starting" id="starting">
-        <div class="starting__menu">
-
-            <button class="starting__menu-btn" @click="props.scrollToAnchor('company')">О компании</button>
-
-            <div
-                class="starting__dropdown"
-                @mouseenter="!isMobile && openServices()"
-                @mouseleave="!isMobile && closeServices()"
-            >
-                <button
-                    class="starting__menu-btn"
-                    @click="handleServicesClick"
-                >
-                    Услуги
-
-                    <img
-                        class="starting__menu-btn-corner"
-                        src="@/assets/sprites/arrowCorner.svg"
-                        alt="Corner"
-                    >
-                </button>
-
-                <div
-                    class="starting__dropdown-menu"
-                    :class="{ 'starting__dropdown-menu--open': isServicesOpen }"
-                >
-                    <button class="starting__dropdown-item" @click="props.scrollToAnchor('footer')">Продукты 1C</button>
-                    <button class="starting__dropdown-item" @click="props.scrollToAnchor('footer')">Аренда серверов</button>
-                    <button class="starting__dropdown-item" @click="props.scrollToAnchor('footer')">CRM Битрикс 24</button>
-                    <button class="starting__dropdown-item" @click="props.scrollToAnchor('footer')">Аудит отдела продаж</button>
-                </div>
-            </div>
-
-            <button class="starting__menu-btn" @click="props.scrollToAnchor('cases')">Кейсы</button>
-            <button class="starting__menu-btn" @click="props.scrollToAnchor('callback')">Обратная связь</button>
-            <button class="starting__menu-btn" @click="props.scrollToAnchor('footer')">Контакты</button>
-        </div>
-
         <canvas ref="canvas" class="starting__canvas"></canvas>
+        <div class="starting__glow"></div>
+        <div class="starting__veil"></div>
 
         <div class="starting-container">
-            <div class="starting__shadow"></div>
+            <div class="starting__hero">
 
-            <img class="starting__logo" src="@/assets/sprites/NSLogoGorizont.svg" alt="Логотип">
+                <div class="starting__frame">
+                    <span class="starting__frame-line starting__frame-line--v"></span>
+                    <span class="starting__frame-line starting__frame-line--top"></span>
+                    <svg class="starting__frame-cut starting__frame-cut--top" viewBox="0 0 24 24">
+                        <line x1="0" y1="24" x2="24" y2="0" />
+                    </svg>
+                    <svg class="starting__frame-cut starting__frame-cut--bottom" viewBox="0 0 24 24">
+                        <line x1="0" y1="0" x2="24" y2="24" />
+                    </svg>
+                    <span class="starting__dots starting__dots--corner"><i></i><i></i><i></i></span>
+                    <span class="starting__node starting__node--bottom"></span>
+                </div>
 
-            <div class="starting__title">
-                <p class="starting__title-text--mobile title-h3">
-                    IT-решения для вашего бизнеса<br>
-                    на базе 1С и CRM систем
-                </p>
+                <div class="starting__content">
+                    <!-- <div class="starting__topline">
+                        <span class="starting__dots"><i></i><i></i><i></i></span>
+                        <span class="starting__rule"></span>
+                        <span class="starting__node"></span>
+                    </div> -->
 
-                <span class="starting__title-main">
-                    IT-решения для вашего бизнеса
-                </span>
+                    <h1 class="starting__title">
+                        <span class="starting__title-line">IT решения</span>
+                        <span class="starting__title-line starting__title-line--accent">для вашего бизнеса</span>
+                        <span class="starting__title-line">на базе 1С и CRM систем</span>
+                    </h1>
 
-                <div class="starting__title-second-line">
-                    <span>на базе</span>
+                    <p class="starting__subtext">
+                        Помогаем компаниям связать продажи, учёт, аналитику<br>
+                        и внутренние процессы в единую систему без хаоса<br>
+                        и ручной работы
+                    </p>
 
-                    <div class="starting__title-transfer">
-                        <span class="starting__title-transfer-item">1С</span>
-                    </div>
-
-                    <span>и CRM систем</span>
+                    <button class="starting__cta" @click="props.scrollToAnchor('company')">
+                        <span class="starting__cta-text">Узнать больше</span>
+                        <span class="starting__cta-line">
+                            <span class="starting__rule"></span>
+                            <span class="starting__node"></span>
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
-
-        <img class="starting__corner" src="@/assets/sprites/arrowCorner.svg" alt="Corner">
     </section>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 const props = defineProps({
     scrollToAnchor: {
@@ -80,12 +61,6 @@ const props = defineProps({
         required: true,
     }
 });
-
-const isServicesOpen = ref(false);
-const windowWidth = ref(1920);
-const isMobile = computed(() => windowWidth.value <= 768);
-
-let servicesTimeout = null;
 
 const canvas = ref(null);
 let ctx;
@@ -130,7 +105,8 @@ function initPoints() {
 
     for (let i = 0; i < currentPointsCount; i++) {
         points.push({
-            x: Math.random() * canvas.value.width,
+            // смещаем облако точек в правую часть экрана (референс)
+            x: (0.35 + Math.random() * 0.7) * canvas.value.width,
             y: Math.random() * canvas.value.height,
             vx: (Math.random() - 0.5) * 1.5,
             vy: (Math.random() - 0.5) * 1.5,
@@ -143,13 +119,18 @@ function initPoints() {
     }
 }
 
-function drawLine(p1, p2, opacity) {
-    const whiteRgb = getComputedStyle(document.documentElement)
-        .getPropertyValue('--color-white-rgb')
-        .trim() || '255, 255, 255';
+function cssRgb(name, fallback) {
+    return getComputedStyle(document.documentElement)
+        .getPropertyValue(name)
+        .trim() || fallback;
+}
 
-    ctx.strokeStyle = `rgba(${whiteRgb}, ${opacity})`;
-    ctx.lineWidth = 0.5;
+let accentRgb = '255, 177, 26';
+let accentLightRgb = '255, 200, 91';
+
+function drawLine(p1, p2, opacity) {
+    ctx.strokeStyle = `rgba(${accentRgb}, ${opacity * 0.7})`;
+    ctx.lineWidth = 0.6;
 
     ctx.beginPath();
     ctx.moveTo(p1.x, p1.y);
@@ -212,9 +193,9 @@ function animate() {
                 glowRadius
             );
 
-            gradient.addColorStop(0, `rgba(255, 255, 255, ${1 * twinkle})`);
-            gradient.addColorStop(0.3, `rgba(255, 255, 255, ${0.45 * twinkle})`);
-            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+            gradient.addColorStop(0, `rgba(${accentLightRgb}, ${1 * twinkle})`);
+            gradient.addColorStop(0.3, `rgba(${accentRgb}, ${0.45 * twinkle})`);
+            gradient.addColorStop(1, `rgba(${accentRgb}, 0)`);
 
             ctx.fillStyle = gradient;
             ctx.beginPath();
@@ -222,7 +203,7 @@ function animate() {
             ctx.fill();
         }
 
-        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+        ctx.fillStyle = `rgba(${accentLightRgb}, ${alpha})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
         ctx.fill();
@@ -239,28 +220,6 @@ function handleResize() {
         initPoints();
         windowWidthOld = canvas.value.clientWidth;
     }
-
-    windowWidth.value = window.innerWidth;
-}
-
-function openServices() {
-    clearTimeout(servicesTimeout);
-    isServicesOpen.value = true;
-}
-
-function closeServices() {
-    servicesTimeout = setTimeout(() => {
-        isServicesOpen.value = false;
-    }, 150);
-}
-
-function handleServicesClick() {
-    if (isMobile.value) {
-        isServicesOpen.value = !isServicesOpen.value;
-        return;
-    }
-
-    props.scrollToAnchor('advantages');
 }
 
 onMounted(() => {
@@ -269,6 +228,9 @@ onMounted(() => {
     canvas.value.style.opacity = 0;
 
     ctx = canvas.value.getContext('2d');
+
+    accentRgb = cssRgb('--color-accent-rgb', '255, 177, 26');
+    accentLightRgb = cssRgb('--color-accent-light-rgb', '255, 200, 91');
 
     handleResize();
 

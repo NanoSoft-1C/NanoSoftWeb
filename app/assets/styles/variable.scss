@@ -11,6 +11,9 @@
 
     --color-gray-rgb: 156, 163, 175; /* #9CA3AF */
 
+    --color-slate-rgb: 63, 66, 73; /* #3F4249 — графитовый фон hero */
+    --color-slate-dark-rgb: 46, 49, 55; /* #2E3137 — затемнение по краям */
+
     --color-illustration-dark-rgb: 33, 23, 21;
     --color-illustration-brown-rgb: 169, 138, 117;
     --color-error-rgb: 231, 76, 60;
@@ -24,6 +27,9 @@
     --color-accent-light: rgb(var(--color-accent-light-rgb));
 
     --color-gray: rgb(var(--color-gray-rgb));
+
+    --color-slate: rgb(var(--color-slate-rgb));
+    --color-slate-dark: rgb(var(--color-slate-dark-rgb));
 
     --color-illustration-dark: rgb(var(--color-illustration-dark-rgb));
     --color-illustration-brown: rgb(var(--color-illustration-brown-rgb));
@@ -44,6 +50,14 @@
 
 @function color-gray($alpha: 1) {
     @return rgba(var(--color-gray-rgb), $alpha)
+};
+
+@function color-slate($alpha: 1) {
+    @return rgba(var(--color-slate-rgb), $alpha)
+};
+
+@function color-slate-dark($alpha: 1) {
+    @return rgba(var(--color-slate-dark-rgb), $alpha)
 };
 
 @function color-orange($alpha: 1) {
