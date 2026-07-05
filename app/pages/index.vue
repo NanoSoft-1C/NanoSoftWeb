@@ -4,7 +4,11 @@
 
     <BlocksCompany id="company" class="canvasItem"></BlocksCompany>
 
-    <BlocksResult></BlocksResult>
+    <BlocksWhyChoose></BlocksWhyChoose>
+
+    <BlocksNumbers></BlocksNumbers>
+
+    <!-- <BlocksResult></BlocksResult>
 
     <BlocksAdvantages id="advantages" :scrollToAnchor="scrollToAnchor"></BlocksAdvantages>
 
@@ -31,7 +35,7 @@
         class="list--right"
     ></BlocksList>
 
-    <BlocksCertificates></BlocksCertificates>
+    <BlocksCertificates></BlocksCertificates> -->
 
 </template>
 

@@ -3,6 +3,7 @@
 .company{
     display: flex;
     flex-direction: row;
+    gap: 48px;
 
     @include laptopL{
         flex-direction: column-reverse;
@@ -12,27 +13,11 @@
 
     &__franch {
         position: relative;
-        width: 650px;
-        min-width: 650px;
-        height: 400px;
-        min-height: 400px;
-
-        &::after {
-            content: "А к р е д и т о в а н н а я ᠌ к о м п а н и я";
-        
-            display: block;
-            position: relative;
-            left: 50%;
-            translate: -50% -20px;
-            width: 90%;
-        
-            text-transform: uppercase;
-            text-align: justify;
-            text-align-last: justify;
-
-            border-top: 1px solid var(--color-white);
-            padding-top: 8px;
-            opacity: .3;
+        width: 450px;
+        min-width: 450px;
+       
+        &-container{
+            padding: 32px;
         }
 
         @include tablet{
@@ -41,7 +26,9 @@
 
         &-background {
             width: 100%;
-            height: 100%;
+            // height: 100%;
+            height: 270px;
+            min-height: 270px;
             object-fit: cover;
         }
 
@@ -49,32 +36,137 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 650px;
-            height: 400px;
+            width: 450px;
+            height: 270px;
         }
+    }
+
+    &__subtext{
+        text-transform: uppercase;
+        text-align: justify;
+        text-align-last: justify;
+
+        border-top: 1px solid var(--color-white);
+        padding-top: 8px;
+        opacity: .3;
+    }
+
+    &__frame{
+        position: absolute;
+        inset: -16px;
+        pointer-events: none;
+
+        &-line{
+            position: absolute;
+
+            background: color-orange(.55);
+
+            &--v{
+                left: 0;
+                top: 22px;
+                bottom: 22px;
+
+                width: 2px;
+            }
+
+            &--top,
+            &--bottom{
+                left: 22px;
+
+                width: 200px;
+                height: 2px;
+            }
+
+            &--top{ top: 0; }
+            &--bottom{ bottom: 0; }
+        }
+
+        &-cut{
+            position: absolute;
+            left: 0;
+
+            width: 22px;
+            height: 22px;
+
+            fill: none;
+            stroke: color-orange(.55);
+            stroke-width: 2;
+
+            &--top{ top: 0; }
+            &--bottom{ bottom: 0; }
+        }
+    }
+
+    &__dots{
+        position: absolute;
+        top: 1px; /* центр на верхней линии рамки (½ её толщины) */
+        left: 232px; /* сразу за верхней линией: 22 + 200 + 10 */
+
+        display: flex;
+        gap: 5px;
+
+        translate: 0 -50%;
+
+        i{
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: color-orange(.85);
+        }
+    }
+
+    &__node{
+        position: absolute;
+        left: 22px; /* нижний-левый угол рамки (конец нижнего среза) */
+        bottom: 0;
+
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: 2px solid color-orange(.85);
+
+        translate: -50% 50%;
     }
 
     &__content{
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         flex-direction: column;
         gap: 16px;
 
+        max-width: 680px;
+
         &-title{
-            text-align: center;
+            text-align: left;
         }
 
         &-text{
-            max-width: 900px;
-            text-align: center;
+            color: color-gray();
+            text-align: left;
         }
 
         &-line{
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
             width: 100%;
-            height: 1px;
-            background-color: color-white();
+        }
+
+        &-rule{
+            flex: 1 1 auto;
+            height: 2px;
+            background: color-orange(.5);
+        }
+
+        &-node{
+            flex: none;
+
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 2px solid color-orange(.85);
         }
     }
 }
@@ -84,7 +176,7 @@
     stroke-dashoffset: 3500;
     // animation: wipe 2s ease-in-out forwards;
     transform: translate(1%, 0%);
-    scale: 0.95;
+    scale: 0.67;
 }
 
 @keyframes wipe {

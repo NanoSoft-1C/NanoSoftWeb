@@ -2,6 +2,8 @@
 
 @use './components/starting';
 @use './components/company';
+@use './components/whyChoose';
+@use './components/numbers';
 @use './components/result';
 @use './components/companys';
 @use './components/advantages';
@@ -155,7 +157,7 @@ body{
 
     &-medium{
         font-size: $font-size-text;
-        line-height: 120%;
+        line-height: 190%;
         letter-spacing: 0%;
 
         @include tablet{
