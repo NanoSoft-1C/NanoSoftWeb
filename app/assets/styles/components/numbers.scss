@@ -12,8 +12,6 @@
     }
 
     &__inner{
-        position: relative;
-
         max-width: $max-width-content;
         margin: 0 auto;
 
@@ -22,18 +20,6 @@
         gap: 60px;
 
         padding: 48px 56px;
-
-        border: 2px solid color-orange();
-
-        /* золотые клинья по всем 4 углам + заливка последним слоем */
-        background:
-            linear-gradient(135deg, color-orange() 0, color-orange() 18px, transparent 18px),
-            linear-gradient(225deg, color-orange() 0, color-orange() 18px, transparent 18px),
-            linear-gradient(315deg, color-orange() 0, color-orange() 18px, transparent 18px),
-            linear-gradient(45deg,  color-orange() 0, color-orange() 18px, transparent 18px),
-            color-black();
-
-        clip-path: polygon(26px 0, calc(100% - 26px) 0, 100% 26px, 100% calc(100% - 26px), calc(100% - 26px) 100%, 26px 100%, 0 calc(100% - 26px), 0 26px);
 
         @include laptop{
             flex-direction: column;
@@ -69,13 +55,16 @@
         text-transform: uppercase;
         letter-spacing: .18em;
 
-        &::before{
-            content: "";
+        &-dots{
+            display: inline-flex;
+            gap: 5px;
 
-            width: 28px;
-            height: 2px;
-
-            background: color-orange();
+            i{
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: color-orange(.85);
+            }
         }
     }
 

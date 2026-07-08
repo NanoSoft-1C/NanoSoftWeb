@@ -8,13 +8,19 @@
 
     <BlocksNumbers></BlocksNumbers>
 
+    <BlocksOurServices></BlocksOurServices>
+
+    <BlocksDirections></BlocksDirections>
+
+    <BlocksCtaBanner :scrollToAnchor="scrollToAnchor"></BlocksCtaBanner>
+
     <!-- <BlocksResult></BlocksResult>
 
-    <BlocksAdvantages id="advantages" :scrollToAnchor="scrollToAnchor"></BlocksAdvantages>
+    <BlocksAdvantages id="advantages" :scrollToAnchor="scrollToAnchor"></BlocksAdvantages>-->
 
     <BlocksCompanys id="cases"></BlocksCompanys>
 
-    <BlocksList 
+    <!-- <BlocksList 
         :titleHead="'Работаем честно и с гарантией результата '"
         :titleSubtext="'Нам стоит доверять!'"
         :listBlock="'list__block1'"

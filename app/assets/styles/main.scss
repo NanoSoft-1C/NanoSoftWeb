@@ -4,6 +4,9 @@
 @use './components/company';
 @use './components/whyChoose';
 @use './components/numbers';
+@use './components/ourServices';
+@use './components/directions';
+@use './components/ctaBanner';
 @use './components/result';
 @use './components/companys';
 @use './components/advantages';
@@ -182,6 +185,34 @@ body{
     &-bodily{
         color: color-bodily();
     }
+}
+
+/* Переиспользуемый срез углов (все 4 угла + золотая рамка + клинья).
+   Добавь класс .cutCorners к блоку. Настройка через переменные:
+   --cut (размер среза), --cut-color (рамка/клинья), --cut-fill (заливка). */
+.cutCorners{
+    --cut: 26px;
+    --wedge: 18px; /* ≈ cut / √2, чтобы клин доставал до диагонали среза */
+    --cut-color: #{color-orange()};
+    --cut-fill: #{color-black()};
+
+    position: relative;
+
+    border: 2px solid var(--cut-color);
+
+    background:
+        linear-gradient(135deg, var(--cut-color) 0, var(--cut-color) var(--wedge), transparent var(--wedge)),
+        linear-gradient(225deg, var(--cut-color) 0, var(--cut-color) var(--wedge), transparent var(--wedge)),
+        linear-gradient(315deg, var(--cut-color) 0, var(--cut-color) var(--wedge), transparent var(--wedge)),
+        linear-gradient(45deg,  var(--cut-color) 0, var(--cut-color) var(--wedge), transparent var(--wedge)),
+        var(--cut-fill);
+
+    clip-path: polygon(
+        var(--cut) 0, calc(100% - var(--cut)) 0,
+        100% var(--cut), 100% calc(100% - var(--cut)),
+        calc(100% - var(--cut)) 100%, var(--cut) 100%,
+        0 calc(100% - var(--cut)), 0 var(--cut)
+    );
 }
 
 .border{

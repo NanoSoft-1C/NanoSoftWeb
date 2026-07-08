@@ -3,7 +3,7 @@
         <div class="why__inner">
 
             <div class="why__intro">
-                <span class="why__label">Преимущества</span>
+                <span class="why__label"><span class="why__label-dots"><i></i><i></i><i></i></span>Преимущества</span>
 
                 <h2 class="why__title">
                     Почему выбирают<br>

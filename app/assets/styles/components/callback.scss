@@ -1,114 +1,244 @@
 @use '../variable' as *;
 
 .callback{
-    max-width: 1024px;
-    margin: 0 auto 64px auto;
+    padding: 56px 0;
 
-    &__title, &__text{
-        text-align: center;
+    @include tablet{
+        padding: 40px 0;
     }
 
-    &__text{
-        margin-bottom: 24px;
-    }
+    /* ===== Панель со срезанными углами ===== */
 
-    &-container{
-        display: grid;
-        align-items: center;
-        grid-template-columns: 400px 1fr;
-        gap: 64px;
+    &__inner{
+        position: relative;
 
-        @include tablet {
-            display: flex;
-        }
+        max-width: $max-width-content;
+        margin: 0 auto;
 
-        @include phone {
-            display: flex;
-            flex-direction: column-reverse;  
-        }
-    }
-
-    &__form{
         display: flex;
-        flex-direction: column;
-        gap: 8px;
+        align-items: center;
+        gap: 48px;
 
-        &-input, &-button, &-submit, &-download{
-            padding: 8px;
-            border-radius: 6px;
-            border: 1px solid color-white();
-            color: color-black();
-            text-align: center;
+        padding: 44px 56px;
+
+        /* внешний слой = обводка */
+        background: color-orange(.35);
+
+        clip-path: polygon(22px 0, calc(100% - 22px) 0, 100% 22px, 100% calc(100% - 22px), calc(100% - 22px) 100%, 22px 100%, 0 calc(100% - 22px), 0 22px);
+
+        &::before{
+            content: "";
+
+            position: absolute;
+            inset: 1px;
+            z-index: 0;
+
+            background: color-black();
+
+            clip-path: polygon(22px 0, calc(100% - 22px) 0, 100% 22px, 100% calc(100% - 22px), calc(100% - 22px) 100%, 22px 100%, 0 calc(100% - 22px), 0 22px);
         }
 
-        &-input{
-            width: 100%;
-
-            &-wrapper {
-                position: relative;
-                display: flex;
-                align-items: center;
-            }
+        > *{
+            position: relative;
+            z-index: 1;
         }
 
-        &-agreement{
-            text-align: center;
+        @include tablet{
+            flex-direction: column;
+            gap: 28px;
 
-            a{
-                color: color-bodily();
-            }
-        }
-
-        &-buttons{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-
-        &-button{
-            background-color: color-bodily();
-            border: 1px solid color-bodily();
-            transition: .4s ease;
-
-            &:hover{
-                background-color: color-white();
-                cursor: pointer;  
-            }
-        }
-
-        @include phone {
-            width: 100%;  
+            padding: 28px 20px;
         }
     }
+
+    /* ===== Левая часть: иллюстрация + точки ===== */
 
     &__image{
-        height: calc(100%);
-        width: calc(100%);
+        position: relative;
+        flex: 0 0 340px;
+
+        @include laptop{
+            flex-basis: 260px;
+        }
 
         @include tablet{
             display: none;
         }
 
         &-img{
-            translate: 5% 5%;
-
-            @include tablet {
-                width: 140%;
-                max-height: 90%;  
-            }
-
-            @include phone {
-                width: 90%;
-            }
-        }
-
-        @include phone {
-            display: none;
+            display: block;
+            width: 100%;
+            height: auto;
         }
     }
 
+    &__dots{
+        position: absolute;
+        top: -8px;
+        left: -18px;
 
-    .popup {
+        width: 96px;
+        height: 90px;
+
+        background-image: radial-gradient(color-white(.16) 1.5px, transparent 1.6px);
+        background-size: 18px 18px;
+    }
+
+    /* ===== Правая часть: заголовок + текст + форма ===== */
+
+    &__main{
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    &__title{
+        color: color-white();
+        font-size: 30px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-transform: uppercase;
+        letter-spacing: .02em;
+
+        @include laptop{
+            font-size: 26px;
+        }
+
+        &-accent{
+            color: color-orange();
+        }
+    }
+
+    &__text{
+        margin-top: 8px;
+        margin-bottom: 24px;
+
+        color: color-gray();
+        font-size: $font-size-subtext;
+
+        &-accent{
+            color: color-orange();
+        }
+    }
+
+    &__error{
+        display: block;
+        margin-top: -4px;
+
+        color: color-error();
+        font-size: 13px;
+    }
+
+    /* золотая звёздочка обязательного поля поверх тёмного инпута */
+    .required-star{
+        top: 50%;
+        right: 16px;
+        translate: 0 -50%;
+
+        color: color-orange();
+        font-size: 16px;
+    }
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+
+        &-input{
+            width: 100%;
+            padding: 14px 18px;
+
+            color: color-white();
+            background: color-black(.25);
+
+            border: 1px solid color-white(.14);
+            border-radius: 8px;
+
+            font-size: $font-size-subtext;
+
+            transition: .3s ease;
+
+            &::placeholder{
+                color: color-gray();
+            }
+
+            &:focus{
+                outline: none;
+                border-color: color-orange();
+            }
+
+            &.error{
+                border-color: color-error();
+            }
+
+            &-wrapper{
+                position: relative;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        &-buttons{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+
+            margin-top: 6px;
+
+            @include phone{
+                grid-template-columns: 1fr;
+            }
+        }
+
+        &-button{
+            padding: 14px;
+
+            border-radius: 8px;
+            font-size: $font-size-menu;
+
+            cursor: pointer;
+            transition: .3s ease;
+
+            /* Позвоните мне — золотая заливка */
+            &:first-child{
+                color: color-black();
+                background: color-orange();
+                border: 1px solid color-orange();
+
+                &:hover{
+                    background: color-bodily();
+                    border-color: color-bodily();
+                }
+            }
+
+            /* Напишите мне — обводка */
+            &:last-child{
+                color: color-white();
+                background: color-orange(0);
+                border: 1px solid color-orange();
+
+                &:hover{
+                    color: color-black();
+                    background: color-orange();
+                }
+            }
+        }
+
+        &-agreement{
+            margin-top: 6px;
+
+            color: color-gray();
+            font-size: 12px;
+            line-height: 1.4;
+
+            a{
+                color: color-orange();
+            }
+        }
+    }
+
+    /* ===== Попапы (без изменений логики) ===== */
+
+    .popup{
         background: color-white();
 
         display: flex;
@@ -124,13 +254,13 @@
 
         animation: fadeIn .2s ease-in-out;
 
-        *{color: color-black();}
+        *{ color: color-black(); }
 
         &-ok{
             max-width: 350px;
         }
 
-        &-overlay {
+        &-overlay{
             position: fixed;
             inset: 0;
             background: color-black(0.5);
@@ -146,7 +276,7 @@
             text-align: center;
         }
 
-        &__textarea {
+        &__textarea{
             width: 100%;
             min-height: 100px;
 
@@ -157,16 +287,15 @@
             border: 1px solid color-black();
         }
 
-        &__button {
+        &__button{
             padding: 10px 18px;
-            border: none;
             border-radius: 8px;
             background: color-bodily();
             border: 1px solid color-bodily();
             cursor: pointer;
             transition: .4s ease;
 
-            &:hover {
+            &:hover{
                 background: color-white();
             }
         }
@@ -182,8 +311,8 @@
         }
     }
 
-    @keyframes fadeIn {
+    @keyframes fadeIn{
         from { opacity: 0; transform: scale(0.9); }
-        to { opacity: 1; transform: scale(1); }
+        to   { opacity: 1; transform: scale(1); }
     }
 }

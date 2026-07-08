@@ -1,12 +1,8 @@
 <template>
   <section class="callback">
-    <h2 class="callback__title title-h2">Обратная связь</h2>
-    <p class="callback__text text-big">
-      Мы свяжемся с вами в течение <span class="text-bodily">15 минут</span>!
-    </p>
-
-    <div class="callback-container">
+    <div class="callback__inner">
       <div class="callback__image">
+        <span class="callback__dots" aria-hidden="true"></span>
         <svg class="callback__image-img svg-animate" viewBox="0 0 392 329" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M89.1916 301.708C186.788 301.708 228.123 309.115 284.627 301.708C303.627 299.218 383.127 244 379.127 165.5C375.829 100.772 291.553 70.0701 262.627 54C208.627 23.9999 170.127 61 138.127 151C91.1268 172.5 81.0562 171.126 50.6265 194.5C-52.873 274 26.0743 300.268 89.1916 301.708Z" fill="var(--color-accent)" stroke="var(--color-accent)"/>
           <path d="M323.076 2.19604C353.598 4.50119 378.453 26.0483 386.342 55.7677C397.907 99.3294 378.099 134.087 335.111 145.535C321.377 149.193 308.684 149.7 297.357 147.356C291.017 152.168 286.52 155.394 278.11 161C277.934 151.479 277.864 147.353 277.953 139.739C262.905 130.563 251.85 114.649 246.133 93.11C236.076 55.2297 256.416 15.6518 297.718 4.65067C305.973 2.41212 314.546 1.5823 323.076 2.19604Z" fill="var(--color-white)"/>
@@ -84,7 +80,15 @@
         </svg>
       </div>
 
-      <form class="callback__form" @submit.prevent>
+      <div class="callback__main">
+        <h2 class="callback__title">
+          Получить <span class="callback__title-accent">консультацию</span>
+        </h2>
+        <p class="callback__text">
+          Мы свяжемся с вами в течение <span class="callback__text-accent">15 минут</span>!
+        </p>
+
+        <form class="callback__form" @submit.prevent>
 
         <!-- ФИО -->
         <div class="callback__form-input-wrapper">
@@ -164,6 +168,7 @@
           Отправляя форму, Вы соглашаетесь с <a href="./files/policy.pdf">Политикой конфиденциальности</a> и даёте <a href="./files/agreement.pdf">согласие на обработку персональных данных</a> компанией "Нано Софт"
         </div>
       </form>
+      </div>
     </div>
 
     <div v-if="popup.visible" class="popup-overlay" @click.self="closePopup">

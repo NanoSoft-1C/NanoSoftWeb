@@ -59,13 +59,16 @@
         text-transform: uppercase;
         letter-spacing: .18em;
 
-        &::before{
-            content: "";
+        &-dots{
+            display: inline-flex;
+            gap: 5px;
 
-            width: 28px;
-            height: 2px;
-
-            background: color-orange();
+            i{
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: color-orange(.85);
+            }
         }
     }
 

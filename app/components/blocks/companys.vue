@@ -1,14 +1,24 @@
 <template>
   <section class="companys wrapper">
-    
+
+    <div class="listCompanys__frame">
+      <span class="listCompanys__frame-line listCompanys__frame-line--v"></span>
+      <span class="listCompanys__frame-line listCompanys__frame-line--top"></span>
+      <svg class="listCompanys__frame-cut listCompanys__frame-cut--top" viewBox="0 0 24 24">
+        <line x1="0" y1="24" x2="24" y2="0" />
+      </svg>
+      <svg class="listCompanys__frame-cut listCompanys__frame-cut--bottom" viewBox="0 0 24 24">
+        <line x1="0" y1="0" x2="24" y2="24" />
+      </svg>
+      <span class="listCompanys__dots"><i></i><i></i><i></i></span>
+    </div>
+
     <div class="mapCompanys">
       <div ref="mapContainer" class="mapCompanys__map"></div>
 
       <div class="mapCompanys-container">
 
-        <div class="mapCompanys__block mapCompanys__block--top">
-          <h2 class="mapCompanys__block-title title-h2">КОМПАНИИ, КОТОРЫЕ НАМ ДОВЕРЯЮТ</h2>
-          
+        <div class="mapCompanys__block mapCompanys__block--top">          
           <svg class="mapCompanys__block-corner mapCompanys__block-corner--left-top corner corner-black corner-left corner-top-inside corner-rotate-180">
             <use xlink:href="@/assets/sprites/sprite.svg#corner"></use>
           </svg>
@@ -16,10 +26,13 @@
           <svg class="mapCompanys__block-corner corner corner-black corner-right-outside corner-bottom-outside corner-rotate-180">
             <use xlink:href="@/assets/sprites/sprite.svg#corner"></use>
           </svg>
+
+          <span class="mapCompanys__block-label">Наши партнеры</span>
+          <h2 class="mapCompanys__block-title">КОМПАНИИ,<br>КОТОРЫЕ <span class="mapCompanys__block-title-accent">НАМ ДОВЕРЯЮТ</span></h2>
         </div>
 
         <div class="mapCompanys__block mapCompanys__block-download-contain mapCompanys__block--bottom">
-          <a class="mapCompanys__block-download title-h3" href="./files/reference.pdf">Скачать референс наших проектов</a>
+          <a class="mapCompanys__block-download title-h3" href="./files/reference.pdf">Кейсы наших проектов </a>
 
           <svg class="mapCompanys__block-corner mapCompanys__block-corner--left-bottom corner corner-black corner-left corner-bottom corner-rotate-270">
             <use xlink:href="@/assets/sprites/sprite.svg#corner"></use>
@@ -231,7 +244,7 @@ onMounted(() => {
 
   const grayLayer = new TileLayer({
     source: new XYZ({
-      url: 'https://{a-d}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+      url: 'https://{a-d}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
       attributions:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
     }),
