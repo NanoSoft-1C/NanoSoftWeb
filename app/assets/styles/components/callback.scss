@@ -19,12 +19,7 @@
         align-items: center;
         gap: 48px;
 
-        padding: 44px 56px;
-
-        /* внешний слой = обводка */
-        background: color-orange(.35);
-
-        clip-path: polygon(22px 0, calc(100% - 22px) 0, 100% 22px, 100% calc(100% - 22px), calc(100% - 22px) 100%, 22px 100%, 0 calc(100% - 22px), 0 22px);
+        padding: 36px 56px;
 
         &::before{
             content: "";

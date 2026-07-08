@@ -39,9 +39,9 @@
         :srcImage="'woman-computer-2'"
         :svgVisible="'woman-computer-2'" 
         class="list--right"
-    ></BlocksList>
+    ></BlocksList> -->
 
-    <BlocksCertificates></BlocksCertificates> -->
+    <BlocksCertificates></BlocksCertificates> 
 
 </template>
 

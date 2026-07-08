@@ -215,6 +215,15 @@ body{
     );
 }
 
+/* Серый фильтр для тёмных тайлов карты (OpenLayers). Слою карты задай
+   className: 'grayTiles' — фильтр ляжет только на тайлы, не на маркеры. */
+.grayTiles{
+    position: absolute;
+    inset: 0;
+
+    filter: brightness(1.6) contrast(.8);
+}
+
 .border{
     border: 1px solid color-white();
     border-radius: 26px 0px 26px 0px;

@@ -243,6 +243,7 @@ onMounted(() => {
   view = new View({})
 
   const grayLayer = new TileLayer({
+    className: 'grayTiles',
     source: new XYZ({
       url: 'https://{a-d}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
       attributions:

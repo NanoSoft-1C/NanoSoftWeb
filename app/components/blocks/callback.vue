@@ -1,6 +1,6 @@
 <template>
   <section class="callback">
-    <div class="callback__inner">
+    <div class="callback__inner cutCorners">
       <div class="callback__image">
         <span class="callback__dots" aria-hidden="true"></span>
         <svg class="callback__image-img svg-animate" viewBox="0 0 392 329" fill="none" xmlns="http://www.w3.org/2000/svg">

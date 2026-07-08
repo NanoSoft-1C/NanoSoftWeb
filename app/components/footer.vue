@@ -29,6 +29,8 @@
         <div class="footer__signature">
           <p class="footer__signature-text">© 2026 Nano Soft<br> Все права защищены</p>
 
+          <p class="footer__signature-map-credit">Карта: © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/">CARTO</a></p>
+
           <button 
             class="footer__signature-developers"
             :class="{ 'footer__signature-developers--open': blockDevVisible }" 
@@ -57,7 +59,7 @@ import Feature from 'ol/Feature'
 import Point from 'ol/geom/Point'
 import VectorSource from 'ol/source/Vector'
 import VectorLayer from 'ol/layer/Vector'
-import { Icon, Style, Text, Fill, Stroke } from 'ol/style'
+import { Icon, Style } from 'ol/style'
 import XYZ from 'ol/source/XYZ'
 
 const mapContainer = ref(null)
@@ -80,13 +82,6 @@ onMounted(() => {
         anchor: [0.5, 1],
         src: '/images/markers/marker-map-NanoSoft.png',
         scale: 0.7
-      }),
-      text: new Text({
-        text: 'Вологодская область,\nг. Вологда, ул. Октябрьская, д. 27',
-        offsetY: -60,
-        font: 'bold 14px Arial',
-        fill: new Fill({ color: 'var(--color-illustration-dark)' }),
-        stroke: new Stroke({ color: 'var(--color-white)', width: 3 })
       })
     })
   )
@@ -98,8 +93,9 @@ onMounted(() => {
   })
 
   const grayLayer = new TileLayer({
+    className: 'grayTiles',
     source: new XYZ({
-      url: 'https://{a-d}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+      url: 'https://{a-d}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
       attributions:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
     }),
@@ -109,6 +105,7 @@ onMounted(() => {
   const map = new Map({
     target: mapContainer.value,
     layers: [grayLayer, vectorLayer],
+    controls: [],
     view: new View({
       center: coords,
       zoom: 16

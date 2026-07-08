@@ -50,7 +50,7 @@
         &-line{
             position: absolute;
 
-            background: color-orange(.55);
+            background: color-orange();
 
             &--v{
                 left: 0;
@@ -77,7 +77,7 @@
             height: 22px;
 
             fill: none;
-            stroke: color-orange(.55);
+            stroke: color-orange();
             stroke-width: 2;
 
             &--top{ top: 0; }
@@ -99,7 +99,7 @@
             width: 5px;
             height: 5px;
             border-radius: 50%;
-            background: color-orange(.85);
+            background: color-orange();
         }
     }
 
