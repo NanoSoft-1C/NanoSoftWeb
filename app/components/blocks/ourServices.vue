@@ -4,7 +4,7 @@
         <div class="servicesHead__glow"></div>
         <div class="servicesHead__veil"></div>
 
-        <div class="servicesHead__inner">
+        <div class="servicesHead__inner wrapper">
             <div class="servicesHead__lead">
 
                 <div class="servicesHead__frame">

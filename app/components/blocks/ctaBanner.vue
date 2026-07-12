@@ -1,5 +1,5 @@
 <template>
-    <section class="ctaBanner" id="ctaBanner">
+    <section class="ctaBanner wrapper" id="ctaBanner">
         <div class="ctaBanner__inner cutCorners">
 
             <span class="ctaBanner__dots" aria-hidden="true"></span>

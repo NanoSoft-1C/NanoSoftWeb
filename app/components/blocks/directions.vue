@@ -1,6 +1,6 @@
 <template>
     <section class="directions" id="directions">
-        <div class="directions__inner">
+        <div class="directions__inner wrapper">
 
             <div class="directions__head">
                 <span class="directions__head-rule"></span>

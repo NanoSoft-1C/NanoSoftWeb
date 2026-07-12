@@ -3,17 +3,6 @@
 .directions{
     width: 100%;
 
-    padding: 48px 0 64px;
-
-    @include tablet{
-        padding: 40px 0 48px;
-    }
-
-    &__inner{
-        max-width: $max-width-content;
-        margin: 0 auto;
-    }
-
     /* ===== Заголовок-разделитель ===== */
 
     &__head{
@@ -45,25 +34,25 @@
         display: grid;
         grid-template-columns: repeat(5, 1fr);
 
-        @include laptop{
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px 24px;
-        }
-
-        @include tablet{
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        @include phone{
+        @include laptopL{
             grid-template-columns: 1fr;
+            gap: 32px;
         }
     }
 
     &__item{
         padding: 0 28px;
 
+        /* laptopL: одна колонка — вертикальная линия-акцент слева у каждого пункта */
+        @include laptopL{
+            padding: 0 0 0 24px;
+            border-left: 2px solid color-orange();
+        }
+
         &:first-child{
             padding-left: 0;
+
+            @include laptopL{ padding-left: 24px; }
         }
 
         &:last-child{
@@ -72,14 +61,6 @@
 
         &:not(:first-child){
             border-left: 2px solid color-orange();
-        }
-
-        @include laptop{
-            padding: 0;
-
-            &:not(:first-child){
-                border-left: none;
-            }
         }
 
         &-num{

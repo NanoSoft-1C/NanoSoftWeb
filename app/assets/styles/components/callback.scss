@@ -50,10 +50,29 @@
 
     &__image{
         position: relative;
-        flex: 0 0 340px;
+        isolation: isolate;
+
+        flex: 0 0 clamp(440px, 42%, 560px);
+        max-width: 560px;
+
+        &::before{
+            content: "";
+
+            position: absolute;
+            inset: 8% -4% 2% -8%;
+            z-index: 0;
+
+            background:
+                radial-gradient(ellipse at 42% 45%, color-orange(.3) 0%, color-orange(.14) 34%, color-orange(0) 68%);
+
+            filter: blur(24px);
+            opacity: .7;
+            pointer-events: none;
+        }
 
         @include laptop{
-            flex-basis: 260px;
+            flex-basis: 400px;
+            max-width: 400px;
         }
 
         @include tablet{
@@ -62,8 +81,16 @@
 
         &-img{
             display: block;
+            position: relative;
+            z-index: 1;
+
             width: 100%;
             height: auto;
+            object-fit: contain;
+
+            filter:
+                drop-shadow(0 0 22px color-orange(.16))
+                drop-shadow(0 22px 36px color-black(.42));
         }
     }
 

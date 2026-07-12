@@ -6,13 +6,7 @@
     width: 100%;
     overflow: hidden;
 
-    padding: 56px 0;
-
     color: color-white();
-
-    @include tablet{
-        padding: 40px 0;
-    }
 
     /* ===== Фоновые слои ===== */
 
@@ -56,9 +50,6 @@
     &__inner{
         position: relative;
         z-index: 2;
-
-        max-width: $max-width-content;
-        margin: 0 auto;
     }
 
     &__lead{

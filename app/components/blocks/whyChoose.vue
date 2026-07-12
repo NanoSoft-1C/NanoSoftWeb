@@ -1,6 +1,6 @@
 <template>
     <section class="why" id="why">
-        <div class="why__inner">
+        <div class="why__inner wrapper">
 
             <div class="why__intro">
                 <span class="why__label"><span class="why__label-dots"><i></i><i></i><i></i></span>Преимущества</span>

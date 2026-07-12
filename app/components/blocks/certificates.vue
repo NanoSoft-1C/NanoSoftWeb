@@ -1,6 +1,6 @@
 <template>
     <section id="certificates" class="certificates">
-        <h2 class="certificates-title title-h2">Наши сертификаты</h2>
+        <h2 class="certificates-title title-h2">Наши <span class="text-orange">сертификаты</span></h2>
 
         <div
             id="certificatesSlider"

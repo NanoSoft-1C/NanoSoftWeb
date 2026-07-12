@@ -1,5 +1,5 @@
 <template>
-    <section class="numbers" id="numbers">
+    <section class="numbers wrapper" id="numbers">
         <div class="numbers__inner cutCorners">
 
             <div class="numbers__intro">
