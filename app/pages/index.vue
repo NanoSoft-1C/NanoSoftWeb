@@ -14,32 +14,7 @@
 
     <BlocksCtaBanner :scrollToAnchor="scrollToAnchor"></BlocksCtaBanner>
 
-    <!-- <BlocksResult></BlocksResult>
-
-    <BlocksAdvantages id="advantages" :scrollToAnchor="scrollToAnchor"></BlocksAdvantages>-->
-
     <BlocksCompanys id="cases"></BlocksCompanys>
-
-    <!-- <BlocksList 
-        :titleHead="'Работаем честно и с гарантией результата '"
-        :titleSubtext="'Нам стоит доверять!'"
-        :listBlock="'list__block1'"
-        :listId="'block__list1'"
-        :textArray="textArray" 
-        :srcImage="'woman-computer'"
-        :svgVisible="'woman-computer'"
-    ></BlocksList>
-
-    <BlocksList
-        :titleHead="'Техническая поддержка и сопровождение вашего бизнеса'" 
-        :titleSubtext="'Вы не останетесь один на один с вашей проблемой'"
-        :listBlock="'list__block2'"
-        :listId="'block__list2'"   
-        :textArray="textArray2" 
-        :srcImage="'woman-computer-2'"
-        :svgVisible="'woman-computer-2'" 
-        class="list--right"
-    ></BlocksList> -->
 
     <BlocksCertificates></BlocksCertificates> 
 

@@ -56,25 +56,13 @@
                                 }"
                                 class="header__dropdown-menu"
                             >
-                                <button
-                                    class="header__dropdown-item"
-                                    @click="changeVisibleMenu(); scrollToAnchor('footer')"
-                                >Продукты 1C</button>
+                                <nuxt-link class="header__dropdown-item" :to="'/'">Продукты 1C</nuxt-link>
 
-                                <button
-                                    class="header__dropdown-item"
-                                    @click="changeVisibleMenu(); scrollToAnchor('footer')"
-                                >Аренда серверов</button>
+                                <nuxt-link class="header__dropdown-item" :to="'/server-rent'">Аренда серверов</nuxt-link>
 
-                                <button
-                                    class="header__dropdown-item"
-                                    @click="changeVisibleMenu(); scrollToAnchor('footer')"
-                                >CRM Битрикс 24</button>
+                                <nuxt-link class="header__dropdown-item" :to="'/Integration-bitrix24'">CRM Битрикс 24</nuxt-link>
 
-                                <button
-                                    class="header__dropdown-item"
-                                    @click="changeVisibleMenu(); scrollToAnchor('footer')"
-                                >Аудит отдела продаж</button>
+                                <nuxt-link class="header__dropdown-item" :to="'/'">Аудит отдела продаж</nuxt-link>
                             </div>
                         </Transition>
                     </div>
