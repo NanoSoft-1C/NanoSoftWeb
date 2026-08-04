@@ -89,7 +89,13 @@
             background-color: color-orange(0);
             border: 0px solid color-black();
             padding: 8px;
+            
             text-align: center;
+            text-decoration: none;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             @include tablet {
                 width: 100%;
