@@ -33,6 +33,10 @@
         @include laptop {
             padding: 0 16px;
             width: calc(25% + 2px);
+
+            .listCompanys-corner{
+                display: none;
+            }
         }
 
         @include tablet {
@@ -46,6 +50,10 @@
         inset: 0;
         z-index: 5;
         pointer-events: none;
+
+        @include laptop {
+            display: none;
+        }
 
         &-line{
             position: absolute;
@@ -224,6 +232,10 @@
 
             text-align: center;
             padding: 0px 0px 32px 32px;
+
+            @include laptop{
+                padding: 0 0 16px 0;
+            }
         }
 
         &--bottom{
@@ -248,8 +260,17 @@
 
             color: color-black();
 
+            @include laptop{
+                padding: 16px 0 0 0;
+                height: calc(140px - 16px);
+            }
+
             &-contain{
                 padding: 32px 0 0 32px;
+
+                @include laptop{
+                    padding: 16px 0 0 0;
+                }
 
                 @include tablet {
                     padding: 16px 0 0 0;
@@ -264,27 +285,19 @@
         &-corner{
             &--left-top{
                 @include laptop{
-                    top: auto;
-                    bottom: calc(-26px - -1px);
-                    left: 13px;
-                    rotate: 90deg;
-                }
-
-                @include laptop{
-                    left: -1px;
+                    top: auto !important;
+                    bottom: calc(-26px - -1px) !important;
+                    left: 0px !important;
+                    rotate: 90deg !important;
                 }
             }
 
             &--left-bottom{
                 @include laptop{
-                    top: calc(-26px - -1px);
-                    bottom: auto;
-                    left: 13px;
-                    rotate: 0deg;
-                }
-
-                @include laptop{
-                    left: -1px;
+                    top: calc(-26px - -1px) !important;
+                    bottom: auto !important;
+                    left: 0px !important;
+                    rotate: 0deg !important;
                 }
             }
         }
@@ -292,7 +305,6 @@
         @include laptop {
             width: calc(75%);
             border-radius: 0;
-            padding: 16px 0;
         }
 
         @include tablet {
@@ -300,7 +312,7 @@
         }
 
         @include phone {
-            height: 150px;
+            height: auto;
             padding: 16px 0;
         }
     }

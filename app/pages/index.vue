@@ -57,14 +57,13 @@
 
         const element = document.querySelector("#" + anchorId)
         const header = document.querySelector('#header')
-        const headerShadow = document.querySelector('.header__shadow')
 
         if (!element) return
 
         const elementRect = element.getBoundingClientRect()
         const elementTop = elementRect.top + window.scrollY
 
-        const scrollPosition = elementTop - header.offsetHeight - headerShadow.offsetHeight
+        const scrollPosition = elementTop - header.offsetHeight
 
         window.scrollTo({
             top: scrollPosition,

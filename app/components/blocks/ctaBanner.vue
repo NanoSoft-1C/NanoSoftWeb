@@ -9,7 +9,7 @@
                 <p class="ctaBanner__subtext">Расскажите о своей задаче, и мы предложим оптимальное решение.</p>
             </div>
 
-            <button class="ctaBanner__btn" @click="props.scrollToAnchor('callback')">
+            <button class="ctaBanner__btn" @click="scrollToAnchor('callback')">
                 Получить консультацию
                 <svg class="ctaBanner__btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 12h14"/>
