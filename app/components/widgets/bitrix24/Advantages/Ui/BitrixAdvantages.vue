@@ -178,7 +178,7 @@ const toggleCard = (index) => {
 .bitrix-badge {
   display: inline-flex;
 
-  padding: 10px 18px;
+  padding: 12px 24px;
 
   border-radius: 999px;
 
@@ -187,6 +187,9 @@ const toggleCard = (index) => {
   border: 1px solid rgba(var(--color-accent-rgb), 0.2);
 
   color: var(--color-accent);
+
+  font-size: clamp(18px, 1.5vw, 22px);
+  font-weight: 600;
 
   margin-bottom: 24px;
 }

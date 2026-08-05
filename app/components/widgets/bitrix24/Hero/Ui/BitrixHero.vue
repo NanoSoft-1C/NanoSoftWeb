@@ -36,14 +36,14 @@ const scrollToAnchor = (id) => {
       <p class="bitrix-hero__text">
         Внедрим Битрикс24 под любые задачи вашего бизнеса,<br>
         от базовой настройки до комплексной автоматизации и интеграций с внешними сервисами.
-        
+
       </p>
 
       <div class="bitrix-hero__buttons">
         <button class="btn-primary"
-         @click="scrollToAnchor('callback')"
+         @click="scrollToAnchor('footer')"
         >
-          СВЯЗАТЬСЯ С НАМИ И ОБСУДИТЬ ВАШ ПРОЕКТ
+          ОБСУДИТЬ ПРОЕКТ
         </button>
 
       </div>
@@ -52,7 +52,7 @@ const scrollToAnchor = (id) => {
 
     <div class="bitrix-hero__image">
       <img
-        src="/images/bitrix24/hero-bitrix.svg"
+        src="/images/bitrix24/hero-bitrix.png"
         alt="Интеграция Битрикс24"
       >
     </div>
@@ -68,17 +68,20 @@ const scrollToAnchor = (id) => {
   min-height: 100vh;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
   gap: 60px;
 }
 
 .bitrix-hero__badge {
   display: inline-flex;
-  padding: 10px 18px;
+  padding: 12px 24px;
   border-radius: 999px;
   background: rgba(var(--color-accent-rgb), 0.12);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.2);
   color: var(--color-accent);
+  font-size: clamp(18px, 1.5vw, 22px);
+  font-weight: 600;
   margin-bottom: 24px;
 }
 
@@ -102,29 +105,32 @@ const scrollToAnchor = (id) => {
   flex-wrap: wrap;
 }
 
-.btn-primary,
-.btn-secondary {
+.btn-primary {
   height: 60px;
   font-weight: 700;
   padding: 0 32px;
   border-radius: 18px;
   border: none;
   cursor: pointer;
-}
 
-.btn-primary {
   background: var(--color-accent);
-  color: var(--color-illustration-dark);
+  color: var(--color-black);
+
+  transition: background .3s ease;
 }
 
-.btn-secondary {
-  background: transparent;
-  border: 1px solid rgba(var(--color-white-rgb), 0.15);
-  color: var(--color-white);
+.btn-primary:hover {
+  background: var(--color-accent-light);
+}
+
+.bitrix-hero__image {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .bitrix-hero__image img {
-  width: 85%;
+  width: 100%;
+  max-width: 480px;
   border-radius: 32px;
 }
 
@@ -133,6 +139,10 @@ const scrollToAnchor = (id) => {
     grid-template-columns: 1fr;
     padding-top: 120px;
     min-height: auto;
+  }
+
+  .bitrix-hero__image {
+    justify-content: center;
   }
 }
 </style>
