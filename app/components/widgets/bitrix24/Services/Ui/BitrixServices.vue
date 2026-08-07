@@ -198,7 +198,6 @@
 .bitrix-services__image img {
   width: 100%;
   max-width: 480px;
-  border-radius: 32px;
 }
 
 @media (max-width: 992px) {
