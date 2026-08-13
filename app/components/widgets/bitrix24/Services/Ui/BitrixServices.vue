@@ -125,7 +125,7 @@
 
 .bitrix-services {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 60px;
   align-items: center;
 
@@ -134,10 +134,13 @@
 
 .bitrix-subtitle {
   display: inline-flex;
-  padding: 10px 18px;
+  padding: 12px 24px;
   border-radius: 999px;
   background: rgba(var(--color-accent-rgb), 0.12);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.2);
   color: var(--color-accent);
+  font-size: clamp(18px, 1.5vw, 22px);
+  font-weight: 600;
   margin-bottom: 24px;
 }
 
@@ -164,6 +167,13 @@
   border: 1px solid rgba(var(--color-white-rgb), 0.06);
 }
 
+.service-item h3 {
+  margin-bottom: 8px;
+
+  color: var(--color-accent);
+  font-size: 22px;
+}
+
 .service-item__icon {
   min-width: 70px;
   height: 70px;
@@ -180,14 +190,23 @@
   font-weight: 700;
 }
 
+.bitrix-services__image {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .bitrix-services__image img {
-  width: 85%;
-  border-radius: 32px;
+  width: 100%;
+  max-width: 480px;
 }
 
 @media (max-width: 992px) {
   .bitrix-services {
     grid-template-columns: 1fr;
+  }
+
+  .bitrix-services__image {
+    justify-content: center;
   }
 }
 </style>

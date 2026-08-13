@@ -24,18 +24,18 @@ const scrollToAnchor = (id) => {
 
     <div>
 
-      <h2>
-        Готовы автоматизировать бизнес?
+      <h2 class="bitrix-cta__title">
+        Готовы <span class="bitrix-cta__title-accent">автоматизировать</span> бизнес?
       </h2>
 
-      <p>
+      <p class="bitrix-cta__text">
         Оставьте заявку, мы разберем ваши задачи и предложим оптимальное решение на базе Битрикс24.
       </p>
 
     </div>
 
     <button class="btn-primary"
-    @click="scrollToAnchor('callback')"
+    @click="scrollToAnchor('footer')"
     >
       ОСТАВИТЬ ЗАЯВКУ
     </button>
@@ -69,6 +69,21 @@ const scrollToAnchor = (id) => {
     );
 }
 
+.bitrix-cta__title {
+  margin-bottom: 12px;
+
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.2;
+}
+
+.bitrix-cta__title-accent {
+  color: var(--color-accent);
+}
+
+.bitrix-cta__text {
+  opacity: .8;
+}
+
 .btn-primary {
   height: 64px;
   font-weight: 700;
@@ -76,8 +91,16 @@ const scrollToAnchor = (id) => {
   border: none;
   border-radius: 18px;
   background: var(--color-accent);
-  color: var(--color-illustration-dark);
+  color: var(--color-black);
   cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: background .3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-light);
 }
 
 @media (max-width: 992px) {
@@ -85,6 +108,11 @@ const scrollToAnchor = (id) => {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .btn-primary {
+    white-space: normal;
+    height: auto;
+    padding: 20px 32px;
+  }
 }
 </style>
-

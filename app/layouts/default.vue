@@ -4,7 +4,7 @@
 
         <slot />
 
-        <BlocksCallback id="callback"></BlocksCallback>
+        <BlocksCallback v-if="isCallbackVisible" id="callback"></BlocksCallback>
 
         <Footer id="footer"></Footer>
     </div>
@@ -14,7 +14,8 @@
     function scrollToAnchor(anchorId) {
         if (process.server) return 
 
-        const element = document.querySelector("#" + anchorId)
+        // На страницах без блока обратной связи кнопки ведут к контактам в футере
+        const element = document.querySelector("#" + anchorId) || (anchorId === 'callback' ? document.querySelector('#footer') : null)
         const header = document.querySelector('#header')
 
         if (!element) return
@@ -32,6 +33,14 @@
 
 
     const route = useRoute()
+
+    // Страницы, на которых блок обратной связи не показывается
+    const pagesWithoutCallback = ['Integration-bitrix24']
+
+    const isCallbackVisible = computed(
+        () => !pagesWithoutCallback.includes(route.name)
+    )
+
     const pagesSEO = {
         'index': {
             title: 'Нано Софт',
