@@ -93,8 +93,9 @@ const scrollToAnchor = (id) => {
 }
 
 .bitrix-hero__text {
-  font-size: 18px;
-  line-height: 1.7;
+  color: rgba(var(--color-gray-rgb), 1);
+  font-size: 16px;
+  line-height: 1.6;
   opacity: .8;
   margin-bottom: 40px;
 }

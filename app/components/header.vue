@@ -60,7 +60,7 @@
 
                                 <nuxt-link class="header__dropdown-item" :to="'/server-rent'">Аренда серверов</nuxt-link>
 
-                                <nuxt-link class="header__dropdown-item" :to="'/Integration-bitrix24'">CRM Битрикс 24</nuxt-link>
+                                <nuxt-link class="header__dropdown-item" :to="'/Integration-bitrix24'">CRM <br> Битрикс24</nuxt-link>
 
                                 <nuxt-link class="header__dropdown-item" :to="'/'">Аудит отдела продаж</nuxt-link>
                             </div>

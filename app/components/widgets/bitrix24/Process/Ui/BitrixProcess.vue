@@ -2,19 +2,19 @@
 const steps = [
   {
     title: 'Аналитика',
-    text: 'Изучаем процессы компании и определяем задачи, которые должно решать внедрение.',
+    text: 'Изучаем процессы компании и&nbsp;определяем задачи, которые должно решать внедрение.',
   },
   {
     title: 'Проектирование',
-    text: 'Разрабатываем структуру системы, сценарии работы и план реализации проекта внедрения.',
+    text: 'Разрабатываем структуру системы, сценарии работы и&nbsp;план реализации проекта внедрения.',
   },
   {
     title: 'Внедрение',
-    text: 'Настраиваем Битрикс24, автоматизацию и интеграции в соответствии с задачами бизнеса.',
+    text: 'Настраиваем Битрикс24, автоматизацию и&nbsp;интеграции в соответствии с задачами бизнеса.',
   },
   {
-    title: 'Запуск и поддержка',
-    text: 'Тестируем решение, обучаем сотрудников и сопровождаем работу системы после запуска.',
+    title: 'Запуск и&nbsp;поддержка',
+    text: 'Тестируем решение, обучаем сотрудников и&nbsp;сопровождаем работу системы после запуска.',
   },
 ]
 </script>
@@ -43,13 +43,9 @@ const steps = [
 
         <div class="process-card">
 
-          <h3 class="process-card__title">
-            {{ step.title }}
-          </h3>
+          <h3 class="process-card__title" v-html="step.title"> </h3>
 
-          <p class="process-card__text">
-            {{ step.text }}
-          </p>
+          <p class="process-card__text" v-html="step.text"></p>
 
         </div>
 
@@ -136,6 +132,9 @@ const steps = [
 }
 
 .process-card__title {
+  display: flex;
+  height: 70px;
+  align-items: center;
   margin-bottom: 14px;
 
   color: var(--color-accent);
@@ -162,7 +161,7 @@ const steps = [
   height: 32px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1224px) {
   .bitrix-process__flow {
     flex-direction: column;
     gap: 8px;
