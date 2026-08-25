@@ -245,25 +245,13 @@
         }
     }
 
+    /* Внешний вид — общий класс .btn в main.scss */
     &__cta{
         flex: none;
 
-        padding: 12px 24px;
-
-        color: color-white();
-        background-color: color-orange(0);
-
-        border: 1px solid color-orange();
-        border-radius: 6px;
-
-        font-size: $font-size-menu;
-
-        cursor: pointer;
-        transition: .4s ease;
-
-        &:hover{
-            color: color-black();
-            background-color: color-orange();
+        /* .btn объявлен ниже по файлу, поэтому переопределяем через двойной класс */
+        &.btn{
+            padding: 12px 24px;
         }
 
         @include tablet{

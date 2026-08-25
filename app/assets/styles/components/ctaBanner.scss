@@ -63,42 +63,8 @@
         line-height: 1.5;
     }
 
+    /* Внешний вид — общий класс .btn в main.scss */
     &__btn{
         flex: none;
-
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-
-        padding: 14px 28px;
-
-        color: color-white();
-        background: color-orange(0);
-
-        border: 1px solid color-orange();
-        border-radius: 6px;
-
-        font-size: $font-size-menu;
-
-        cursor: pointer;
-        transition: .3s ease;
-
-        &-arrow{
-            width: 18px;
-            height: 18px;
-
-            stroke: currentColor;
-
-            transition: transform .3s ease;
-        }
-
-        &:hover{
-            color: color-black();
-            background: color-orange();
-
-            .ctaBanner__btn-arrow{
-                transform: translateX(4px);
-            }
-        }
     }
 }

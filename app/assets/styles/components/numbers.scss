@@ -41,29 +41,6 @@
         }
     }
 
-    &__label{
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-
-        color: color-orange();
-        font-size: $font-size-small;
-        text-transform: uppercase;
-        letter-spacing: .18em;
-
-        &-dots{
-            display: inline-flex;
-            gap: 5px;
-
-            i{
-                width: 5px;
-                height: 5px;
-                border-radius: 50%;
-                background: color-orange(.85);
-            }
-        }
-    }
-
     &__title{
         margin-top: 20px;
 

@@ -1,28 +1,15 @@
-<script setup>
-useSeoMeta({
-  title: 'Интеграция Битрикс24 — NanoSoft',
-  description: 'Интеграция Битрикс24 и 1С. Автоматизация CRM и бизнес-процессов.',
-})
-</script>
-
 <template>
-  <main class="bitrix-page">
 
-    <WidgetsBitrix24HeroUiBitrixHero/>
+    <BlocksBitrix24Hero :scrollToAnchor="scrollToAnchor"></BlocksBitrix24Hero>
 
-    <WidgetsBitrix24AdvantagesUiBitrixAdvantages/>
+    <BlocksBitrix24Advantages></BlocksBitrix24Advantages>
 
-    <WidgetsBitrix24ServicesUiBitrixServices/>
+    <BlocksBitrix24Services></BlocksBitrix24Services>
 
-    <WidgetsBitrix24ProcessUiBitrixProcess />
+    <BlocksBitrix24Process></BlocksBitrix24Process>
 
-    <WidgetsBitrix24CTAUiBitrixCTA />
-
-  </main>
 </template>
 
-<style scoped lang="scss">
-.bitrix-page {
-  overflow: hidden;
-}
-</style>
+<script setup>
+    const scrollToAnchor = useScrollToAnchor()
+</script>

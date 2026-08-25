@@ -27,24 +27,7 @@
         svgAnimator()
     })
 
-    function scrollToAnchor(anchorId) {
-        if (process.server) return 
-
-        const element = document.querySelector("#" + anchorId)
-        const header = document.querySelector('#header')
-
-        if (!element) return
-
-        const elementRect = element.getBoundingClientRect()
-        const elementTop = elementRect.top + window.scrollY
-
-        const scrollPosition = elementTop - header.offsetHeight
-
-        window.scrollTo({
-            top: scrollPosition,
-            behavior: 'smooth'
-        })
-    }
+    const scrollToAnchor = useScrollToAnchor()
 
     function svgAnimator() {
         const colorBlack = "var(--color-illustration-dark)"

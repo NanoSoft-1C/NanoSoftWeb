@@ -3,7 +3,7 @@
         <div class="numbers__inner cutCorners">
 
             <div class="numbers__intro">
-                <span class="numbers__label"><span class="numbers__label-dots"><i></i><i></i><i></i></span>Наши результаты</span>
+                <span class="label"><span class="label-dots"><i></i><i></i><i></i></span>Наши результаты</span>
                 <h2 class="numbers__title">Цифры, которыми<br>мы гордимся</h2>
                 <p class="numbers__text">
                     За годы работы мы помогли десяткам компаний

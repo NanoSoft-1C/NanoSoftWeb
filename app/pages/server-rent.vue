@@ -1,31 +1,15 @@
-<script setup>
-useSeoMeta({
-  title: 'Аренда серверов — NanoSoft',
-  description: 'Аренда выделенных серверов и VPS. Настройка, поддержка и масштабирование инфраструктуры. Аренда сервера для 1С.',
-})
-
-
-</script>
-
 <template>
-  <main class="server-page">
 
-    <WidgetsServerRentHeroUiServerHero />
+    <BlocksServerRentHero :scrollToAnchor="scrollToAnchor"></BlocksServerRentHero>
 
-    <WidgetsServerRentAdvantagesUiServerAdvantages />
+    <BlocksServerRentAdvantages></BlocksServerRentAdvantages>
 
-    <WidgetsServerRentTariffsUiServerTariffs />
+    <BlocksServerRentTariffs :scrollToAnchor="scrollToAnchor"></BlocksServerRentTariffs>
 
-    <WidgetsServerRentInfrastructureUiServerInfrastructure />
+    <BlocksServerRentInfrastructure></BlocksServerRentInfrastructure>
 
-    <WidgetsServerRentCTAUiServerCTA />
-
-  </main>
 </template>
 
-<style scoped lang="scss">
-.server-page {
-  overflow: hidden;
-}
-
-</style>
+<script setup>
+    const scrollToAnchor = useScrollToAnchor()
+</script>

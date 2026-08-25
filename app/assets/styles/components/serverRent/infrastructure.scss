@@ -1,0 +1,43 @@
+@use '../../variable' as *;
+
+.serverInfrastructure{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 60px;
+
+    @include laptop{
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    &__title{
+        margin: 20px 0 30px;
+    }
+
+    &__text{
+        max-width: 600px;
+
+        color: color-gray();
+    }
+
+    &__image{
+        display: flex;
+        justify-content: flex-end;
+
+        @include laptop{
+            justify-content: center;
+        }
+
+        /* Слот под картинку: любая новая картинка встанет в те же пропорции */
+        &-img{
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 3 / 2;
+
+            object-fit: cover;
+
+            border-radius: 26px 0px 26px 0px;
+        }
+    }
+}

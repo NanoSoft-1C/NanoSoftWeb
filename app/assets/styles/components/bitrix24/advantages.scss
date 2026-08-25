@@ -1,0 +1,120 @@
+@use '../../variable' as *;
+
+.bitrixAdvantages{
+
+    &__inner{
+        padding: 48px 56px;
+
+        @include laptop{
+            padding: 40px;
+        }
+
+        @include tablet{
+            padding: 32px 24px;
+        }
+    }
+
+    &__head{
+        margin-bottom: 40px;
+    }
+
+    &__title{
+        margin-top: 20px;
+    }
+
+    &__grid{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+
+        align-items: start;
+
+        @include laptopL{
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include tablet{
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__card{
+        /* Сетка на align-items: start, поэтому закрытые карточки равняем
+           минимальной высотой: паддинги 36*2 + номер 48 + отступ 16 + два ряда
+           заголовка 66. Открытая карточка растёт дальше сама. */
+        min-height: 210px;
+
+        padding: 36px;
+
+        background: color-white(.03);
+        border: 1px solid color-white(.06);
+        border-radius: 26px 0px 26px 0px;
+
+        cursor: pointer;
+        transition: .4s ease;
+
+        &:hover{
+            transform: translateY(-4px);
+        }
+
+        &--active{
+            background: color-orange(.08);
+            border-color: color-orange();
+        }
+
+        @include tablet{
+            min-height: 0;
+
+            padding: 28px 24px;
+        }
+
+        &-top{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &-number{
+            color: color-orange();
+            font-size: $font-size-h1;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        &-icon{
+            color: color-orange();
+            font-size: $font-size-h3;
+            line-height: 1;
+        }
+
+        &-title{
+            margin-top: 16px;
+        }
+
+        &-content{
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+
+            will-change: max-height;
+
+            transition:
+                max-height .6s cubic-bezier(.4, 0, .2, 1),
+                opacity .35s ease,
+                margin-top .35s ease;
+
+            &--open{
+                max-height: 300px;
+                opacity: 1;
+
+                margin-top: 20px;
+            }
+        }
+
+        &-text{
+            color: color-gray();
+            font-size: $font-size-subtext;
+            line-height: 170%;
+        }
+    }
+}

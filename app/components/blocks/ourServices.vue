@@ -7,22 +7,11 @@
         <div class="servicesHead__inner wrapper">
             <div class="servicesHead__lead">
 
-                <div class="servicesHead__frame">
-                    <span class="servicesHead__frame-line servicesHead__frame-line--v"></span>
-                    <span class="servicesHead__frame-line servicesHead__frame-line--top"></span>
-                    <span class="servicesHead__frame-line servicesHead__frame-line--bottom"></span>
-                    <svg class="servicesHead__frame-cut servicesHead__frame-cut--top" viewBox="0 0 24 24">
-                        <line x1="0" y1="24" x2="24" y2="0" />
-                    </svg>
-                    <svg class="servicesHead__frame-cut servicesHead__frame-cut--bottom" viewBox="0 0 24 24">
-                        <line x1="0" y1="0" x2="24" y2="24" />
-                    </svg>
-                    <span class="servicesHead__node"></span>
-                </div>
+                <UiFrame />
 
                 <div class="servicesHead__content">
-                    <span class="servicesHead__label">
-                        <span class="servicesHead__label-dots"><i></i><i></i><i></i></span>
+                    <span class="label">
+                        <span class="label-dots"><i></i><i></i><i></i></span>
                         Наши услуги
                     </span>
 

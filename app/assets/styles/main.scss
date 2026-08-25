@@ -21,6 +21,16 @@
 @use './components/header';
 @use './components/footer';
 
+@use './components/bitrix24/hero';
+@use './components/bitrix24/advantages' as bitrixAdvantages;
+@use './components/bitrix24/services' as bitrixServices;
+@use './components/bitrix24/process';
+
+@use './components/serverRent/hero' as serverHero;
+@use './components/serverRent/advantages' as serverAdvantages;
+@use './components/serverRent/tariffs';
+@use './components/serverRent/infrastructure';
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap');
 
 
@@ -108,6 +118,15 @@ body{
     &--white{
         background-color: color-white();
         box-shadow: 0px 0px 22px 26px color-white();
+    }
+
+    /* Первая секция страницы — отступает от фиксированной шапки */
+    &--hero{
+        margin-top: calc(#{$header-height} + 60px);
+
+        @include tablet{
+            margin-top: calc(#{$header-height-tablet} + 32px);
+        }
     }
 
     @include laptopL{
@@ -215,6 +234,85 @@ body{
     );
 }
 
+/* Декоративная «скоба» — вертикаль слева со срезанными углами, короткая линия
+   сверху и длинная снизу с кружком на конце. Разметка — компонент <UiFrame>.
+   Родителю нужен position: relative. Настройка: --frame-color, --frame-cut,
+   --frame-top / --frame-bottom (длины линий, задаются пропсами компонента). */
+.frame{
+    --frame-color: #{color-orange()};
+    --frame-cut: 22px;
+    --frame-top: 60px;
+    --frame-bottom: 320px;
+
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    &-line{
+        position: absolute;
+
+        background: var(--frame-color);
+
+        &--v{
+            left: 0;
+            top: var(--frame-cut);
+            bottom: var(--frame-cut);
+
+            width: 2px;
+        }
+
+        &--top,
+        &--bottom{
+            left: var(--frame-cut);
+
+            height: 2px;
+        }
+
+        /* линии не вылезают за блок на узких экранах */
+        &--top{
+            top: 0;
+
+            width: min(var(--frame-top), calc(100% - var(--frame-cut) * 2));
+        }
+
+        &--bottom{
+            bottom: 0;
+
+            width: min(var(--frame-bottom), calc(100% - var(--frame-cut) * 2));
+        }
+    }
+
+    &-cut{
+        position: absolute;
+        left: 0;
+
+        width: var(--frame-cut);
+        height: var(--frame-cut);
+
+        fill: none;
+        stroke: var(--frame-color);
+        stroke-width: 2;
+
+        &--top{ top: 0; }
+        &--bottom{ bottom: 0; }
+    }
+
+    /* кружок-терминатор живёт внутри нижней линии, поэтому всегда на её конце */
+    &-node{
+        position: absolute;
+        top: 50%;
+        left: 100%;
+
+        width: 8px;
+        height: 8px;
+
+        border-radius: 50%;
+        border: 2px solid var(--frame-color);
+
+        translate: -50% -50%;
+    }
+}
+
 /* Серый фильтр для тёмных тайлов карты (OpenLayers). Слою карты задай
    className: 'grayTiles' — фильтр ляжет только на тайлы, не на маркеры. */
 .grayTiles{
@@ -227,6 +325,71 @@ body{
 .border{
     border: 1px solid color-white();
     border-radius: 26px 0px 26px 0px;
+}
+
+/* Метка-подпись над заголовком секции ("••• НАШИ РЕЗУЛЬТАТЫ").
+   Разметка: <span class="label"><span class="label-dots"><i></i><i></i><i></i></span>Текст</span> */
+.label{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    color: color-orange();
+    font-size: $font-size-small;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+
+    &-dots{
+        display: inline-flex;
+        gap: 5px;
+
+        i{
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: color-orange(.85);
+        }
+    }
+}
+
+/* Основная кнопка сайта. Стрелка внутри — <svg class="btn__arrow">. */
+.btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 14px 28px;
+
+    color: color-white();
+    background: color-orange(0);
+
+    border: 1px solid color-orange();
+    border-radius: 6px;
+
+    font-size: $font-size-menu;
+    text-align: center;
+
+    cursor: pointer;
+    transition: .3s ease;
+
+    &__arrow{
+        width: 18px;
+        height: 18px;
+
+        stroke: currentColor;
+
+        transition: transform .3s ease;
+    }
+
+    &:hover{
+        color: color-black();
+        background: color-orange();
+
+        .btn__arrow{
+            transform: translateX(4px);
+        }
+    }
 }
 
 .tag{

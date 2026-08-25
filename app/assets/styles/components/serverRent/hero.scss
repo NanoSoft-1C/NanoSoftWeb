@@ -1,0 +1,53 @@
+@use '../../variable' as *;
+
+.serverHero{
+
+    &__inner{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        gap: 60px;
+
+        position: relative;
+
+        padding: 40px 32px 44px 56px;
+
+        @include laptop{
+            grid-template-columns: 1fr;
+            gap: 40px;
+
+            padding: 36px 24px 40px 48px;
+        }
+
+        @include tablet{
+            padding: 32px 16px 36px 40px;
+        }
+    }
+
+    &__title{
+        margin: 20px 0 24px;
+    }
+
+    &__text{
+        max-width: 640px;
+        margin-bottom: 40px;
+
+        color: color-gray();
+    }
+
+    &__image{
+        display: flex;
+        justify-content: flex-end;
+
+        @include laptop{
+            justify-content: center;
+        }
+
+        &-img{
+            width: 100%;
+            max-width: 520px;
+
+            border-radius: 26px 0px 26px 0px;
+        }
+    }
+}

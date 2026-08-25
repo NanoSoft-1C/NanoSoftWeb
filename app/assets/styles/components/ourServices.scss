@@ -59,100 +59,12 @@
         padding: 30px 24px 34px 56px;
     }
 
-    /* ===== Скоба ===== */
-
-    &__frame{
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-
-        &-line{
-            position: absolute;
-
-            background: color-orange();
-
-            &--v{
-                left: 0;
-                top: 22px;
-                bottom: 22px;
-
-                width: 2px;
-            }
-
-            &--top{
-                left: 22px;
-                top: 0;
-
-                width: 60px;
-                height: 2px;
-            }
-
-            &--bottom{
-                left: 22px;
-                bottom: 0;
-
-                width: 320px;
-                height: 2px;
-            }
-        }
-
-        &-cut{
-            position: absolute;
-            left: 0;
-
-            width: 22px;
-            height: 22px;
-
-            fill: none;
-            stroke: color-orange();
-            stroke-width: 2;
-
-            &--top{ top: 0; }
-            &--bottom{ bottom: 0; }
-        }
-    }
-
-    &__node{
-        position: absolute;
-        left: 342px; /* конец нижней линии: 22 + 320 */
-        bottom: 0;
-
-        width: 8px;
-        height: 8px;
-
-        border-radius: 50%;
-        border: 2px solid color-orange(.85);
-
-        translate: -50% 50%;
-    }
+    /* Скоба — общий компонент <UiFrame> и класс .frame в main.scss */
 
     /* ===== Контент ===== */
 
     &__content{
         position: relative;
-    }
-
-    &__label{
-        display: inline-flex;
-        align-items: center;
-        gap: 14px;
-
-        color: color-orange();
-        font-size: $font-size-small;
-        text-transform: uppercase;
-        letter-spacing: .18em;
-
-        &-dots{
-            display: inline-flex;
-            gap: 5px;
-
-            i{
-                width: 5px;
-                height: 5px;
-                border-radius: 50%;
-                background: color-orange(.85);
-            }
-        }
     }
 
     &__title{

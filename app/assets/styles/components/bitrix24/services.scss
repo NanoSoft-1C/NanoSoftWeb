@@ -1,0 +1,94 @@
+@use '../../variable' as *;
+
+.bitrixServices{
+
+    &__inner{
+        display: grid;
+        grid-template-columns: 1.2fr .8fr;
+        align-items: center;
+        gap: 60px;
+
+        position: relative;
+
+        padding: 40px 32px 44px 56px;
+
+        @include laptop{
+            padding: 36px 24px 40px 48px;
+        }
+
+        @include tablet{
+            padding: 32px 16px 36px 40px;
+        }
+
+        @include laptopL{
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+    }
+
+    &__title{
+        margin: 20px 0 40px;
+    }
+
+    &__items{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__item{
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+
+        padding: 28px;
+
+        background: color-white(.03);
+        border: 1px solid color-white(.06);
+        border-radius: 26px 0px 26px 0px;
+
+        @include phone{
+            flex-direction: column;
+            gap: 16px;
+
+            padding: 24px 20px;
+        }
+
+        &-icon{
+            flex: none;
+
+            width: 48px;
+            height: 48px;
+
+            stroke: color-orange();
+        }
+
+        &-title{
+            margin-bottom: 8px;
+
+            color: color-orange();
+        }
+
+        &-text{
+            color: color-gray();
+            font-size: $font-size-subtext;
+            line-height: 170%;
+        }
+    }
+
+    &__image{
+        display: flex;
+        justify-content: flex-end;
+
+        @include laptopL{
+            justify-content: center;
+        }
+
+        &-img{
+            width: 100%;
+            max-width: 480px;
+
+            border-radius: 26px;
+        }
+    }
+}

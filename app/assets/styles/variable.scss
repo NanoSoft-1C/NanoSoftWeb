@@ -86,6 +86,10 @@
 
 $max-width-content: 1366px;
 
+/* Высота фиксированной шапки — на неё отступают первые секции страниц */
+$header-height: 109px;
+$header-height-tablet: 99px;
+
 $font-size-h1: 47.78px;
 $font-size-h2: 39.81px;
 $font-size-h3: 27.65px;

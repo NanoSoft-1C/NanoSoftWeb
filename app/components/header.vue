@@ -101,7 +101,7 @@
             </div>
 
             <button
-                class="header__cta"
+                class="header__cta btn"
                 @click="scrollToAnchor('callback')"
             >
                 Получить консультацию

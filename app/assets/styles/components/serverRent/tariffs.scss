@@ -1,0 +1,84 @@
+@use '../../variable' as *;
+
+.serverTariffs{
+
+    &__inner{
+        position: relative;
+
+        padding: 40px 32px 44px 56px;
+
+        @include laptop{
+            padding: 36px 24px 40px 48px;
+        }
+
+        @include tablet{
+            padding: 32px 16px 36px 40px;
+        }
+    }
+
+    &__head{
+        margin-bottom: 60px;
+    }
+
+    &__title{
+        margin-top: 20px;
+    }
+
+    &__grid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+
+        @include laptop{
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__card{
+        display: flex;
+        flex-direction: column;
+
+        padding: 40px;
+
+        background: color-white(.03);
+        border: 1px solid color-white(.08);
+        border-radius: 26px 0px 26px 0px;
+
+        @include tablet{
+            padding: 32px 24px;
+        }
+
+        &-title{
+            margin-bottom: 20px;
+        }
+
+        &-price{
+            margin-bottom: 30px;
+
+            color: color-orange();
+            font-size: $font-size-h2;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        &-list{
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+
+            margin-bottom: 32px;
+            padding-left: 20px;
+        }
+
+        &-item{
+            color: color-gray();
+            font-size: $font-size-subtext;
+            line-height: 140%;
+        }
+
+        &-btn{
+            width: 100%;
+            margin-top: auto;
+        }
+    }
+}
