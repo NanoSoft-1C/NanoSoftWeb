@@ -27,13 +27,13 @@
                         <span class="starting__node"></span>
                     </div> -->
 
-                    <h1 class="starting__title">
+                    <h1 class="starting__title title-h1">
                         <span class="starting__title-line">IT решения</span>
                         <span class="starting__title-line starting__title-line--accent">для вашего бизнеса</span>
                         <span class="starting__title-line">на базе 1С и CRM систем</span>
                     </h1>
 
-                    <p class="starting__subtext">
+                    <p class="starting__subtext text-medium">
                         Помогаем компаниям связать продажи, учёт, аналитику<br>
                         и внутренние процессы в единую систему без хаоса<br>
                         и ручной работы

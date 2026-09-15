@@ -70,7 +70,7 @@
     &__hero{
         position: relative;
 
-        max-width: 680px;
+        max-width: 780px;
         padding: 48px 24px 48px 56px;
     }
 
@@ -84,7 +84,7 @@
         &-line{
             position: absolute;
 
-            background: color-orange(.55);
+            background: color-orange();
 
             &--v{
                 left: 0;
@@ -111,7 +111,7 @@
             height: 22px;
 
             fill: none;
-            stroke: color-orange(.55);
+            stroke: color-orange();
             stroke-width: 2;
 
             &--top{ top: 0; }
@@ -141,7 +141,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: color-orange(.85);
+            background: color-orange();
         }
 
         &--corner{
@@ -156,7 +156,7 @@
     &__rule{
         flex: 1 1 auto;
         height: 2px;
-        background: color-orange(.5);
+        background: color-orange();
     }
 
     &__node{
@@ -164,7 +164,7 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        border: 2px solid color-orange(.85);
+        border: 2px solid color-orange();
 
         &--bottom{
             position: absolute;
@@ -196,12 +196,12 @@
     /* ===== Подзаголовок ===== */
 
     &__subtext{
-        max-width: 520px;
+        max-width: 650px;
         margin-bottom: 44px;
 
         color: color-gray();
         font-size: $font-size-subtext;
-        line-height: 1.6;
+        line-height: 1.6 !important;
     }
 
     /* ===== CTA ===== */

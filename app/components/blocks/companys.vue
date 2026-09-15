@@ -121,8 +121,6 @@ import { onMounted, ref } from 'vue'
 import 'ol/ol.css'
 import Map from 'ol/Map'
 import View from 'ol/View'
-import TileLayer from 'ol/layer/Tile'
-import OSM from 'ol/source/OSM'
 import { fromLonLat } from 'ol/proj'
 import Feature from 'ol/Feature'
 import Point from 'ol/geom/Point'
@@ -130,7 +128,7 @@ import VectorSource from 'ol/source/Vector'
 import VectorLayer from 'ol/layer/Vector'
 import { Icon, Style } from 'ol/style'
 import { DTScroll } from '@/assets/scripts/slider'
-import XYZ from 'ol/source/XYZ'
+import { createBasemapLayer } from '@/assets/scripts/basemap'
 import { boundingExtent } from 'ol/extent'
 
 import organizations from '@/assets/data/organizations.json'
@@ -242,14 +240,7 @@ onMounted(() => {
 
   view = new View({})
 
-  const grayLayer = new TileLayer({
-    className: 'grayTiles',
-    source: new XYZ({
-      url: 'https://{a-d}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-      attributions:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
-    }),
-  })
+  const grayLayer = createBasemapLayer()
 
   map = new Map({
     target: mapContainer.value,
@@ -260,10 +251,12 @@ onMounted(() => {
   fitAllMarkers()
 
   map.on('singleclick', evt => {
+    // подложка теперь векторная, поэтому клик по дороге или зданию тоже вернул бы
+    // фичу — ограничиваем поиск слоем с маркерами организаций
     map.forEachFeatureAtPixel(evt.pixel, feature => {
       const key = feature.get('orgKey')
       selectOrg(key)
-    })
+    }, { layerFilter: layer => layer === vectorLayer })
   })
 
   new MutationObserver((item) => {

@@ -29,7 +29,7 @@
         <div class="footer__signature">
           <p class="footer__signature-text">© 2026 Nano Soft<br> Все права защищены</p>
 
-          <p class="footer__signature-map-credit">Карта: © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/">CARTO</a></p>
+          <p class="footer__signature-map-credit">Карта: © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://openfreemap.org/">OpenFreeMap</a></p>
 
           <button 
             class="footer__signature-developers"
@@ -52,15 +52,13 @@ import { onMounted, ref } from 'vue'
 import 'ol/ol.css'
 import Map from 'ol/Map'
 import View from 'ol/View'
-import TileLayer from 'ol/layer/Tile'
-import OSM from 'ol/source/OSM'
 import { fromLonLat } from 'ol/proj'
 import Feature from 'ol/Feature'
 import Point from 'ol/geom/Point'
 import VectorSource from 'ol/source/Vector'
 import VectorLayer from 'ol/layer/Vector'
 import { Icon, Style } from 'ol/style'
-import XYZ from 'ol/source/XYZ'
+import { createBasemapLayer } from '@/assets/scripts/basemap'
 
 const mapContainer = ref(null)
 const countClickDev = ref(0)
@@ -92,14 +90,7 @@ onMounted(() => {
     })
   })
 
-  const grayLayer = new TileLayer({
-    className: 'grayTiles',
-    source: new XYZ({
-      url: 'https://{a-d}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-      attributions:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
-    }),
-  })
+  const grayLayer = createBasemapLayer()
 
   // Создаем карту
   const map = new Map({
