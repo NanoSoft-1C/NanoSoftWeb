@@ -4,7 +4,7 @@
         class="header"
     >
         <div class="header-wrapper">
-            <nuxt-link to="/"><img
+            <nuxt-link to="/" @click="closeMenu"><img
                 class="header__logo"
                 src="@/assets/sprites/NSLogo.svg"
                 alt="Логотип"
@@ -26,7 +26,7 @@
 
                     <button
                         class="header__menu-btn"
-                        @click="changeVisibleMenu(); scrollToAnchor('company')"
+                        @click="closeMenu(); scrollToAnchor('company')"
                     >
                         О компании
                     </button>
@@ -56,27 +56,27 @@
                                 }"
                                 class="header__dropdown-menu"
                             >
-                                <nuxt-link class="header__dropdown-item" :to="'/'">Продукты 1C</nuxt-link>
+                                <nuxt-link class="header__dropdown-item" :to="'/'" @click="closeMenu">Продукты 1C</nuxt-link>
 
-                                <nuxt-link class="header__dropdown-item" :to="'/server-rent'">Аренда серверов</nuxt-link>
+                                <nuxt-link class="header__dropdown-item" :to="'/server-rent'" @click="closeMenu">Аренда серверов</nuxt-link>
 
-                                <nuxt-link class="header__dropdown-item" :to="'/Integration-bitrix24'">CRM <br> Битрикс24</nuxt-link>
+                                <nuxt-link class="header__dropdown-item" :to="'/Integration-bitrix24'" @click="closeMenu">CRM <br> Битрикс24</nuxt-link>
 
-                                <nuxt-link class="header__dropdown-item" :to="'/'">Аудит отдела продаж</nuxt-link>
+                                <nuxt-link class="header__dropdown-item" :to="'/'" @click="closeMenu">Аудит отдела продаж</nuxt-link>
                             </div>
                         </Transition>
                     </div>
 
                     <button
                         class="header__menu-btn"
-                        @click="changeVisibleMenu(); scrollToAnchor('cases')"
+                        @click="closeMenu(); scrollToAnchor('cases')"
                     >
                         Кейсы
                     </button>
 
                     <button
                         class="header__menu-btn"
-                        @click="changeVisibleMenu(); scrollToAnchor('footer')"
+                        @click="closeMenu(); scrollToAnchor('footer')"
                     >
                         Контакты
                     </button>
@@ -136,7 +136,7 @@ function handleServicesClick() {
         return
     }
 
-    changeVisibleMenu()
+    closeMenu()
     props.scrollToAnchor('advantages')
 }
 
@@ -147,6 +147,12 @@ let servicesTimeout = null
 function changeVisibleMenu() {
     isMenuOpen.value = !isMenuOpen.value
     if(!isMenuOpen.value) isServicesOpen.value = false
+}
+
+// Пункты меню и ссылки всегда закрывают меню (а не переключают его)
+function closeMenu() {
+    isMenuOpen.value = false
+    isServicesOpen.value = false
 }
 
 function openServices() {
