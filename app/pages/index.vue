@@ -23,8 +23,18 @@
 <script setup>
     import { ref, onMounted } from 'vue'
 
+    // Пришли из шапки с другой страницы (/#company): Nuxt сам не листает, листаем в onMounted
+    // той же функцией, что и кнопки на главной, — плавно и ровно под шапку
+    definePageMeta({
+        scrollToTop: (to) => !to.hash,
+    })
+
+    const route = useRoute()
+
     onMounted(() => {
         svgAnimator()
+
+        if (route.hash) scrollToAnchor(route.hash.slice(1))
     })
 
     const scrollToAnchor = useScrollToAnchor()

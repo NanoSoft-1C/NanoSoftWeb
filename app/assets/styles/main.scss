@@ -58,6 +58,15 @@
     }
 }
 
+html{
+    /* Открыли ссылку с якорем (/#cases) — браузер сразу ставит блок под шапку, а не за неё */
+    scroll-padding-top: $header-height;
+
+    @include tablet{
+        scroll-padding-top: $header-height-tablet;
+    }
+}
+
 body{
     position: relative;
     background-color: color-black();
@@ -83,6 +92,9 @@ body{
 
 #app{
     position: relative;
+    /* Обрезаем то, что торчит за край (лента слайдера сертификатов и т.п.). overflow-x: hidden у body
+       прячет это только от пользователя — прокрутка к якорю всё равно могла увести страницу вбок */
+    overflow-x: clip;
 }
 
 .technicalWork{

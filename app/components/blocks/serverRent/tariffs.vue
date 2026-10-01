@@ -46,7 +46,7 @@
     const tariffs = [
         {
             name: 'VPS Start',
-            price: '29€/мес',
+            price: 'от 4500руб/мес',
             features: [
                 '2 vCPU',
                 '4 GB RAM',
@@ -56,7 +56,7 @@
         },
         {
             name: 'Business',
-            price: '79€/мес',
+            price: 'от 9000руб/мес',
             features: [
                 '6 vCPU',
                 '16 GB RAM',
@@ -66,7 +66,7 @@
         },
         {
             name: 'Enterprise',
-            price: '149€/мес',
+            price: 'от 15000руб/мес',
             features: [
                 '12 vCPU',
                 '32 GB RAM',

@@ -26,7 +26,7 @@
 
                     <button
                         class="header__menu-btn"
-                        @click="closeMenu(); scrollToAnchor('company')"
+                        @click="goToHomeAnchor('company')"
                     >
                         О компании
                     </button>
@@ -69,7 +69,7 @@
 
                     <button
                         class="header__menu-btn"
-                        @click="closeMenu(); scrollToAnchor('cases')"
+                        @click="goToHomeAnchor('cases')"
                     >
                         Кейсы
                     </button>
@@ -136,8 +136,21 @@ function handleServicesClick() {
         return
     }
 
+    goToHomeAnchor('servicesHead')
+}
+
+const route = useRoute()
+
+// Блоки главной: на главной плавно листаем к блоку, на других страницах открываем главную сразу на нём
+function goToHomeAnchor(anchorId) {
     closeMenu()
-    props.scrollToAnchor('advantages')
+
+    if (route.path === '/') {
+        props.scrollToAnchor(anchorId)
+        return
+    }
+
+    navigateTo({ path: '/', hash: '#' + anchorId })
 }
 
 const isMenuOpen = ref(false)

@@ -6,8 +6,8 @@ export function useScrollToAnchor() {
     return function scrollToAnchor(anchorId) {
         if (import.meta.server) return
 
-        const element = document.querySelector('#' + anchorId)
-            || (anchorId === 'callback' ? document.querySelector('#footer') : null)
+        const element = document.getElementById(anchorId)
+            || (anchorId === 'callback' ? document.getElementById('footer') : null)
 
         if (!element) return
 
@@ -18,6 +18,7 @@ export function useScrollToAnchor() {
 
         window.scrollTo({
             top: scrollPosition,
+            left: 0, // сайт не должен быть сдвинут вбок
             behavior: 'smooth'
         })
     }
